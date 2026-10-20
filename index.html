@@ -181,6 +181,7 @@
               <p class="text-zinc-300 text-sm sm:text-base" data-i18n="heroDesc">
                 Born at Level 6 in an artisanal toaster. Forged in carbon. 1.2 inches of indestructible sourdough crust ruling the kitchen island.
               </p>
+              <div class="mt-3 inline-flex items-center px-3 py-1.5 rounded-xl border border-emerald-500/40 bg-emerald-500/10 text-emerald-300 text-xs font-mono font-bold tracking-wide" data-i18n="heroCommunityNote">100% COMMUNITY PROJECT · ZERO INSIDER TOKEN ALLOCATIONS</div>
             </div>
           </div>
 
@@ -419,36 +420,53 @@
     <!-- TOKENOMICS SECTION -->
     <section id="tokenomics" class="scroll-mt-20">
       <div class="text-center max-w-2xl mx-auto mb-10 space-y-2">
-        <span class="text-xs font-mono uppercase tracking-widest text-crust" data-i18n="tokBadge">Solana Architecture</span>
+        <span class="text-xs font-mono uppercase tracking-widest text-crust" data-i18n="tokBadge">100% Community Project</span>
         <h2 class="font-display font-black text-3xl sm:text-4xl text-sourdough" data-i18n="tokTitle">CRUMB TOKENOMICS</h2>
-        <p class="text-zinc-400 text-sm" data-i18n="tokSub">Zero soggy promises. 100% transparent on-chain sourdough mathematics.</p>
+        <p class="text-zinc-400 text-sm" data-i18n="tokSub">1 billion $CRUMB. Every token allocated to public sale. Zero insider allocations.</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="bg-zinc-950 border border-zinc-800 hover:border-crust/60 rounded-3xl p-6 transition space-y-3">
-          <div class="text-xs font-mono uppercase text-crust" data-i18n="tokCard1Tag">Public Fair Launch</div>
-          <div class="font-display font-black text-4xl text-sourdough">80%</div>
-          <div class="font-mono text-xs text-zinc-400">800,000,000 $CRUMB</div>
-          <p class="text-sm text-zinc-300" data-i18n="tok80Desc">
-            Seeded directly into the Solana bonding curve & liquidity pool. LP tokens permanently incinerated upon graduation.
-          </p>
+
+      <div class="space-y-6">
+        <div class="relative overflow-hidden rounded-3xl border border-crust/60 bg-gradient-to-br from-amber-950/65 via-zinc-950 to-zinc-950 p-7 sm:p-10 shadow-2xl">
+          <div class="absolute right-0 top-0 h-44 w-44 rounded-full bg-crust/15 blur-3xl pointer-events-none"></div>
+          <div class="relative grid grid-cols-1 md:grid-cols-2 gap-6 md:items-center">
+            <div>
+              <div class="text-xs font-mono font-bold uppercase tracking-widest text-crust mb-3" data-i18n="tokCard1Tag">PUBLIC SALE — ENTIRE SUPPLY</div>
+              <h3 class="font-display font-black text-6xl sm:text-7xl text-sourdough leading-none text-glow">100%</h3>
+              <p class="font-mono text-sm text-amber-200 mt-3">1,000,000,000 $CRUMB</p>
+            </div>
+            <div class="text-sm sm:text-base text-zinc-200 leading-relaxed" data-i18n="tokSaleDesc">
+              All 1,000,000,000 $CRUMB tokens are allocated for public sale. No supply is reserved for the team, marketing, or partnerships.
+            </div>
+          </div>
+          <div class="relative mt-7 h-3 rounded-full overflow-hidden bg-zinc-900 border border-crust/30" aria-label="100% allocated to public sale">
+            <div class="h-full w-full rounded-full bg-gradient-to-r from-ember via-crust to-amber-300"></div>
+          </div>
+          <p class="relative text-xs font-mono text-zinc-400 mt-2 text-right">1,000,000,000 / 1,000,000,000 $CRUMB</p>
         </div>
 
-        <div class="bg-zinc-950 border border-zinc-800 hover:border-crust/60 rounded-3xl p-6 transition space-y-3">
-          <div class="text-xs font-mono uppercase text-crust" data-i18n="tokCard2Tag">Countertop Content Vault</div>
-          <div class="font-display font-black text-4xl text-sourdough">10%</div>
-          <div class="font-mono text-xs text-zinc-400">100,000,000 $CRUMB</div>
-          <p class="text-sm text-zinc-300" data-i18n="tok10VaultDesc">
-            Reserved for viral TikTok/Reels creator bounties, community animators, and meme contests via Squads Multi-Sig.
-          </p>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div class="rounded-2xl border border-zinc-800 bg-zinc-950 p-5 text-center space-y-2">
+            <p class="font-mono text-xs uppercase tracking-wider text-zinc-400" data-i18n="tokCard2Tag">Team &amp; Founders</p>
+            <div class="font-display font-black text-4xl text-sourdough">0%</div>
+            <p class="font-mono text-xs text-zinc-500">0 $CRUMB</p>
+          </div>
+          <div class="rounded-2xl border border-zinc-800 bg-zinc-950 p-5 text-center space-y-2">
+            <p class="font-mono text-xs uppercase tracking-wider text-zinc-400" data-i18n="tokCard3Tag">Marketing</p>
+            <div class="font-display font-black text-4xl text-sourdough">0%</div>
+            <p class="font-mono text-xs text-zinc-500">0 $CRUMB</p>
+          </div>
+          <div class="rounded-2xl border border-zinc-800 bg-zinc-950 p-5 text-center space-y-2">
+            <p class="font-mono text-xs uppercase tracking-wider text-zinc-400" data-i18n="tokCard4Tag">Partnerships</p>
+            <div class="font-display font-black text-4xl text-sourdough">0%</div>
+            <p class="font-mono text-xs text-zinc-500">0 $CRUMB</p>
+          </div>
         </div>
 
-        <div class="bg-zinc-950 border border-zinc-800 hover:border-crust/60 rounded-3xl p-6 transition space-y-3">
-          <div class="text-xs font-mono uppercase text-crust" data-i18n="tokCard3Tag">Core IP & Bakery Dev</div>
-          <div class="font-display font-black text-4xl text-sourdough">10%</div>
-          <div class="font-mono text-xs text-zinc-400">100,000,000 $CRUMB</div>
-          <p class="text-sm text-zinc-300" data-i18n="tok10TeamDesc">
-            Locked with 6-month cliff and 12-month linear vesting. Dedicated to 3D shorts, merchandise, and global brand expansion.
+        <div class="rounded-2xl border border-emerald-500/30 bg-emerald-500/5 p-6 sm:p-8 text-center">
+          <h3 class="font-display font-extrabold text-xl sm:text-2xl text-emerald-300" data-i18n="tokCommunityTag">100% COMMUNITY PROJECT</h3>
+          <p class="mt-2 text-sm text-zinc-300 max-w-3xl mx-auto" data-i18n="tokCommunityDesc">
+            CRUMB is built for its community. No tokens are reserved for founders, the team, marketing, or partners.
           </p>
         </div>
       </div>
@@ -643,15 +661,17 @@
           dialButterLabel: 'Butter Absorption Rate:',
           dialHolderLabel: 'Holder Hand Composition:',
           dialSpongeLabel: 'Sponge Threat Level:',
-          tokBadge: 'Solana Architecture',
+          tokBadge: "100% Community Project",
           tokTitle: 'CRUMB TOKENOMICS',
-          tokSub: 'Zero soggy promises. 100% transparent on-chain sourdough mathematics.',
-          tokCard1Tag: 'Public Fair Launch',
-          tokCard2Tag: 'Countertop Content Vault',
-          tokCard3Tag: 'Core IP & Bakery Dev',
-          tok80Desc: 'Seeded directly into the Solana bonding curve & liquidity pool. LP tokens permanently incinerated upon graduation.',
-          tok10VaultDesc: 'Reserved for viral TikTok/Reels creator bounties, community animators, and meme contests via Squads Multi-Sig.',
-          tok10TeamDesc: 'Locked with 6-month cliff and 12-month linear vesting. Dedicated to 3D shorts, merchandise, and global brand expansion.',
+          tokSub: "1 billion $CRUMB. Every token allocated to public sale. Zero insider allocations.",
+          tokCard1Tag: "Public Sale — Entire Supply",
+          tokCard2Tag: "Team & Founders",
+          tokCard3Tag: "Marketing",
+          tokCard4Tag: "Partnerships",
+          tokSaleDesc: "All 1,000,000,000 $CRUMB tokens are allocated for public sale. No supply is reserved for the team, marketing, or partnerships.",
+          tokCommunityTag: "100% COMMUNITY PROJECT",
+          tokCommunityDesc: "CRUMB is built for its community. No tokens are reserved for founders, the team, marketing, or partners.",
+          heroCommunityNote: "100% COMMUNITY PROJECT · ZERO INSIDER TOKEN ALLOCATIONS",
           secPill1Title: '✓ MINT REVOKED',
           secPill1Sub: 'Fixed 1B Supply',
           secPill2Title: '✓ FREEZE REVOKED',
@@ -746,15 +766,17 @@
           dialButterLabel: 'Tasa de Absorción de Mantequilla:',
           dialHolderLabel: 'Composición de Manos del Holder:',
           dialSpongeLabel: 'Nivel de Amenaza de la Esponja:',
-          tokBadge: 'Arquitectura Solana',
+          tokBadge: "Proyecto 100% comunitario",
           tokTitle: 'TOKENOMICS DE $CRUMB',
-          tokSub: 'Cero promesas blandas. Matemáticas de masa madre 100% transparentes en cadena.',
-          tokCard1Tag: 'Lanzamiento Justo Público',
-          tokCard2Tag: 'Bóveda de Contenido',
-          tokCard3Tag: 'IP Principal y Desarrollo',
-          tok80Desc: 'Lanzado directamente en la curva de liquidez de Solana. Tokens LP incinerados permanentemente al graduarse.',
-          tok10VaultDesc: 'Reservado para recompensas de creadores virales en TikTok/Reels y concursos de memes vía Multi-Sig.',
-          tok10TeamDesc: 'Bloqueado con 6 meses de espera y 12 meses de liberación lineal para cortos 3D y expansión global.',
+          tokSub: "Mil millones de $CRUMB. Todos los tokens destinados a la venta pública. Sin asignaciones internas.",
+          tokCard1Tag: "Venta pública — Oferta total",
+          tokCard2Tag: "Equipo y fundadores",
+          tokCard3Tag: "Marketing",
+          tokCard4Tag: "Alianzas",
+          tokSaleDesc: "Los 1.000.000.000 de tokens $CRUMB están destinados a la venta pública. No se reserva ninguna parte para el equipo, marketing o alianzas.",
+          tokCommunityTag: "PROYECTO 100% DE LA COMUNIDAD",
+          tokCommunityDesc: "CRUMB es un proyecto para su comunidad. No se reservan tokens para fundadores, equipo, marketing ni socios.",
+          heroCommunityNote: "PROYECTO 100% COMUNITARIO · SIN ASIGNACIONES INTERNAS",
           secPill1Title: '✓ MINT REVOCADO',
           secPill1Sub: 'Suministro Fijo 1B',
           secPill2Title: '✓ FREEZE REVOCADO',
@@ -849,15 +871,17 @@
           dialButterLabel: 'Tasso di Assorbimento Burro:',
           dialHolderLabel: 'Composizione Mani degli Holder:',
           dialSpongeLabel: 'Livello Minaccia della Spugna:',
-          tokBadge: 'Architettura Solana',
+          tokBadge: "Progetto 100% della community",
           tokTitle: 'TOKENOMICS DI $CRUMB',
-          tokSub: 'Zero promesse molli. Matematica del lievito madre 100% trasparente on-chain.',
-          tokCard1Tag: 'Fair Launch Pubblico',
-          tokCard2Tag: 'Forziere Contenuti Community',
-          tokCard3Tag: 'Sviluppo IP & Panificio Core',
-          tok80Desc: 'Immesso direttamente nella curva di liquidità Solana. Token LP bruciati permanentemente al completamento.',
-          tok10VaultDesc: 'Riservato a premi per creator virali su TikTok/Reels, animatori e concorsi meme tramite Multi-Sig.',
-          tok10TeamDesc: 'Bloccato con cliff di 6 mesi e vesting lineare di 12 mesi per corti 3D, merchandising ed espansione globale.',
+          tokSub: "Un miliardo di $CRUMB. Tutti i token destinati alla vendita pubblica, senza quote riservate.",
+          tokCard1Tag: "Vendita pubblica — Offerta totale",
+          tokCard2Tag: "Team e fondatori",
+          tokCard3Tag: "Marketing",
+          tokCard4Tag: "Partnership",
+          tokSaleDesc: "Tutti i 1.000.000.000 token $CRUMB sono destinati alla vendita pubblica. Nessuna quota è riservata al team, al marketing o ai partner.",
+          tokCommunityTag: "PROGETTO 100% DELLA COMMUNITY",
+          tokCommunityDesc: "CRUMB è un progetto per la sua community. Nessun token è riservato a fondatori, team, marketing o partner.",
+          heroCommunityNote: "PROGETTO 100% COMMUNITY · ZERO QUOTE RISERVATE",
           secPill1Title: '✓ MINT REVOCATO',
           secPill1Sub: 'Offerta Fissa 1B',
           secPill2Title: '✓ FREEZE REVOCATO',
@@ -952,15 +976,17 @@
           dialButterLabel: 'Taxa de Absorção de Manteiga:',
           dialHolderLabel: 'Composição das Mãos do Holder:',
           dialSpongeLabel: 'Nível de Ameaça da Esponja:',
-          tokBadge: 'Arquitetura Solana Transparente',
+          tokBadge: "Projeto 100% da comunidade",
           tokTitle: 'TOKENOMICS DO $CRUMB',
-          tokSub: 'Zero promessas moles. Matemática de fermentação natural 100% transparente on-chain.',
-          tokCard1Tag: 'Lançamento Justo Público',
-          tokCard2Tag: 'Cofre de Conteúdo da Bancada',
-          tokCard3Tag: 'IP Principal & Padaria Dev',
-          tok80Desc: 'Lançado direto na curva de liquidez da Solana. Tokens de liquidez (LP) queimados permanentemente na graduação.',
-          tok10VaultDesc: 'Reservado para premiar criadores de vídeos virais no TikTok/Reels e memes da comunidade via carteira Multi-Sig.',
-          tok10TeamDesc: 'Trancado com carência de 6 meses e liberação ao longo de 12 meses para curtas 3D e expansão global da marca.',
+          tokSub: "1 bilhão de $CRUMB. Todos os tokens destinados à venda pública. Zero reservas internas.",
+          tokCard1Tag: "Venda pública — Oferta total",
+          tokCard2Tag: "Equipe e fundadores",
+          tokCard3Tag: "Marketing",
+          tokCard4Tag: "Parcerias",
+          tokSaleDesc: "Todos os 1.000.000.000 tokens $CRUMB são destinados à venda pública. Nenhuma parcela é reservada para equipe, marketing ou parcerias.",
+          tokCommunityTag: "PROJETO 100% DA COMUNIDADE",
+          tokCommunityDesc: "CRUMB é um projeto para sua comunidade. Nenhum token é reservado para fundadores, equipe, marketing ou parceiros.",
+          heroCommunityNote: "PROJETO 100% DA COMUNIDADE · ZERO ALOCAÇÃO INTERNA",
           secPill1Title: '✓ MINT REVOGADO',
           secPill1Sub: 'Oferta Fixa de 1B',
           secPill2Title: '✓ FREEZE REVOGADO',
@@ -1058,15 +1084,17 @@
           dialButterLabel: 'Taux d’Absorption du Beurre :',
           dialHolderLabel: 'Composition des Mains du Holder :',
           dialSpongeLabel: 'Niveau de Menace de l’Éponge :',
-          tokBadge: 'Architecture Solana',
+          tokBadge: "Projet 100 % communautaire",
           tokTitle: 'TOKENOMICS DE $CRUMB',
-          tokSub: 'Zéro promesse molle. Mathématiques au levain 100 % transparentes sur la blockchain.',
-          tokCard1Tag: 'Lancement Équitable Public',
-          tokCard2Tag: 'Coffre de Contenu Communautaire',
-          tokCard3Tag: 'IP Principale & Dev Boulangerie',
-          tok80Desc: 'Lancé équitablement dans la pool de liquidité Solana. Jetons LP définitivement brûlés.',
-          tok10VaultDesc: 'Réservé aux primes des créateurs TikTok/Reels viraux et concours de mèmes via Multi-Sig.',
-          tok10TeamDesc: 'Verrouillé avec falaise de 6 mois et acquisition linéaire sur 12 mois pour les courts-métrages 3D.',
+          tokSub: "Un milliard de $CRUMB. Tous les jetons destinés à la vente publique, sans réserve interne.",
+          tokCard1Tag: "Vente publique — Offre totale",
+          tokCard2Tag: "Équipe et fondateurs",
+          tokCard3Tag: "Marketing",
+          tokCard4Tag: "Partenariats",
+          tokSaleDesc: "Les 1 000 000 000 jetons $CRUMB sont destinés à la vente publique. Aucune part n’est réservée à l’équipe, au marketing ou aux partenaires.",
+          tokCommunityTag: "PROJET 100 % COMMUNAUTAIRE",
+          tokCommunityDesc: "CRUMB est un projet pour sa communauté. Aucun jeton n’est réservé aux fondateurs, à l’équipe, au marketing ou aux partenaires.",
+          heroCommunityNote: "PROJET 100 % COMMUNAUTAIRE · AUCUNE RÉSERVE INTERNE",
           secPill1Title: '✓ MINT RÉVOQUÉ',
           secPill1Sub: 'Offre Fixe 1B',
           secPill2Title: '✓ FREEZE RÉVOQUÉ',
@@ -1161,15 +1189,17 @@
           dialButterLabel: '黄油吸收率：',
           dialHolderLabel: '持币者手部材质：',
           dialSpongeLabel: '海绵威胁等级：',
-          tokBadge: 'Solana 链上架构',
+          tokBadge: "100% 社区项目",
           tokTitle: '$CRUMB 代币经济学',
-          tokSub: '拒绝软塌承诺。100% 链上透明的酸面包数学。',
-          tokCard1Tag: '公开公平发射',
-          tokCard2Tag: '台面社区内容金库',
-          tokCard3Tag: '核心 IP 与烘焙研发',
-          tok80Desc: '直接注入 Solana 联合曲线与流动性池。毕业时 LP 代币永久销毁。',
-          tok10VaultDesc: '通过多重签名金库预留，用于奖励 TikTok/Reels 爆款创作者与社区梗图大赛。',
-          tok10TeamDesc: '锁定6个月悬崖期及12个月线性解锁，专注于3D短片与全球品牌扩展。',
+          tokSub: "10亿枚 $CRUMB 全部用于公开销售，无内部预留份额。",
+          tokCard1Tag: "公开销售 — 全部供应量",
+          tokCard2Tag: "团队与创始人",
+          tokCard3Tag: "市场营销",
+          tokCard4Tag: "合作伙伴",
+          tokSaleDesc: "全部 1,000,000,000 枚 $CRUMB 代币均用于公开销售，不为团队、营销或合作伙伴预留任何份额。",
+          tokCommunityTag: "100% 社区项目",
+          tokCommunityDesc: "CRUMB 是属于社区的项目。创始人、团队、营销及合作伙伴均无代币预留份额。",
+          heroCommunityNote: "100% 社区项目 · 无内部代币预留",
           secPill1Title: '✓ 铸币权已撤销',
           secPill1Sub: '固定 10 亿总量',
           secPill2Title: '✓ 冻结权已撤销',
@@ -1264,15 +1294,17 @@
           dialButterLabel: 'मक्खन अवशोषण दर:',
           dialHolderLabel: 'होल्डर के हाथों की मजबूती:',
           dialSpongeLabel: 'स्पंज खतरे का स्तर:',
-          tokBadge: 'सोलाना आर्किटेक्चर',
+          tokBadge: "100% समुदाय का प्रोजेक्ट",
           tokTitle: '$CRUMB टोकनॉमिक्स',
-          tokSub: 'कोई झूठा वादा नहीं। 100% पारदर्शी ऑन-चेन गणित।',
-          tokCard1Tag: 'पब्लिक फेयर लॉन्च',
-          tokCard2Tag: 'कम्युनिटी कंटेंट वॉल्ट',
-          tokCard3Tag: 'कोर IP और बेकरी विकास',
-          tok80Desc: 'सीधे सोलाना लिक्विडिटी पूल में लॉन्च। LP टोकन हमेशा के लिए बर्न।',
-          tok10VaultDesc: 'वायरल TikTok/Reels क्रिएटर्स और कम्युनिटी मीम प्रतियोगिताओं के लिए सुरक्षित।',
-          tok10TeamDesc: '6 महीने के लॉक और 12 महीने की वेस्टिंग के साथ 3D एनिमेशन और ग्लोबल विस्तार के लिए।',
+          tokSub: "1 अरब $CRUMB टोकन सार्वजनिक बिक्री के लिए, बिना किसी अंदरूनी आवंटन के।",
+          tokCard1Tag: "सार्वजनिक बिक्री — पूरी आपूर्ति",
+          tokCard2Tag: "टीम और संस्थापक",
+          tokCard3Tag: "मार्केटिंग",
+          tokCard4Tag: "साझेदारियाँ",
+          tokSaleDesc: "सभी 1,000,000,000 $CRUMB टोकन सार्वजनिक बिक्री के लिए रखे गए हैं। टीम, मार्केटिंग या साझेदारों के लिए कोई हिस्सा आरक्षित नहीं है।",
+          tokCommunityTag: "100% समुदाय का प्रोजेक्ट",
+          tokCommunityDesc: "CRUMB समुदाय के लिए बना प्रोजेक्ट है। संस्थापकों, टीम, मार्केटिंग या भागीदारों के लिए कोई टोकन आरक्षित नहीं है।",
+          heroCommunityNote: "100% कम्युनिटी प्रोजेक्ट · कोई अंदरूनी आवंटन नहीं",
           secPill1Title: '✓ मिंट निरस्त',
           secPill1Sub: 'फिक्स्ड 1B सप्लाई',
           secPill2Title: '✓ फ्रीज निरस्त',
@@ -1367,15 +1399,17 @@
           dialButterLabel: 'معدل امتصاص الزبدة:',
           dialHolderLabel: 'صلابة أيدي حاملي العملة:',
           dialSpongeLabel: 'مستوى تهديد الإسفنجة:',
-          tokBadge: 'هيكلية سولانا الشفافة',
+          tokBadge: "مشروع مجتمعي 100%",
           tokTitle: 'اقتصاديات عملة $CRUMB',
-          tokSub: 'صفر وعود هشة. شفافية كاملة بنسبة 100% على السلسلة.',
-          tokCard1Tag: 'إطلاق عادل للجمهور',
-          tokCard2Tag: 'خزينة محتوى المجتمع',
-          tokCard3Tag: 'تطوير العلامة والمخبز',
-          tok80Desc: 'إطلاق عادل ومباشر في مجمع السيولة على سولانا مع حرق رموز السيولة نهائياً.',
-          tok10VaultDesc: 'مخصص لمكافآت صناع المحتوى الفيروسي على TikTok/Reels ومسابقات الميمز.',
-          tok10TeamDesc: 'مقفل لمدة 6 أشهر مع استحقاق تدريجي لمدة 12 شهراً لتطوير الرسوم المتحركة ثلاثية الأبعاد.',
+          tokSub: "مليار توكن $CRUMB مخصص بالكامل للبيع العام، دون حصص داخلية.",
+          tokCard1Tag: "البيع العام — كامل المعروض",
+          tokCard2Tag: "الفريق والمؤسسون",
+          tokCard3Tag: "التسويق",
+          tokCard4Tag: "الشراكات",
+          tokSaleDesc: "جميع توكنات $CRUMB البالغ عددها 1,000,000,000 مخصصة للبيع العام. لا توجد أي حصة محجوزة للفريق أو التسويق أو الشراكات.",
+          tokCommunityTag: "مشروع مجتمعي بنسبة 100%",
+          tokCommunityDesc: "CRUMB مشروع لمجتمعه. لا توجد توكنات محجوزة للمؤسسين أو الفريق أو التسويق أو الشركاء.",
+          heroCommunityNote: "مشروع مجتمعي 100% · دون تخصيصات داخلية",
           secPill1Title: '✓ إلغاء سك العملة',
           secPill1Sub: 'معروض ثابت 1 مليار',
           secPill2Title: '✓ إلغاء التجميد',
@@ -1470,15 +1504,17 @@
           dialButterLabel: 'Впитывание Масла:',
           dialHolderLabel: 'Состав Рук Холдеров:',
           dialSpongeLabel: 'Уровень Угрозы Губки:',
-          tokBadge: 'Архитектура Solana',
+          tokBadge: "Проект на 100% для сообщества",
           tokTitle: 'ТОКЕНОМИКА $CRUMB',
-          tokSub: 'Никаких размокших обещаний. 100% прозрачная ончейн-математика.',
-          tokCard1Tag: 'Честный Публичный Запуск',
-          tokCard2Tag: 'Фонд Контента Сообщества',
-          tokCard3Tag: 'Развитие IP и Пекарни',
-          tok80Desc: 'Честный запуск напрямую в пул ликвидности Solana. LP-токены навсегда сожжены.',
-          tok10VaultDesc: 'Резерв для наград авторам вирусных TikTok/Reels и мем-конкурсов через мультисиг.',
-          tok10TeamDesc: 'Заблокировано с клиффом 6 месяцев и линейным вестингом 12 месяцев для 3D-роликов.',
+          tokSub: "1 миллиард $CRUMB. Все токены предназначены для публичной продажи, без резервов для инсайдеров.",
+          tokCard1Tag: "Публичная продажа — Весь объём",
+          tokCard2Tag: "Команда и основатели",
+          tokCard3Tag: "Маркетинг",
+          tokCard4Tag: "Партнёрства",
+          tokSaleDesc: "Все 1 000 000 000 токенов $CRUMB предназначены для публичной продажи. Для команды, маркетинга и партнёров ничего не зарезервировано.",
+          tokCommunityTag: "ПРОЕКТ НА 100% ДЛЯ СООБЩЕСТВА",
+          tokCommunityDesc: "CRUMB — проект для своего сообщества. Для основателей, команды, маркетинга и партнёров токены не резервируются.",
+          heroCommunityNote: "100% ПРОЕКТ СООБЩЕСТВА · БЕЗ ВНУТРЕННИХ АЛЛОКАЦИЙ",
           secPill1Title: '✓ МИНТ ОТОЗВАН',
           secPill1Sub: 'Фиксированный 1 млрд',
           secPill2Title: '✓ ФРИЗ ОТОЗВАН',
