@@ -196,26 +196,14 @@
           </div>
         </div>
 
-        <!-- Contract Address Bar -->
-        <div class="bg-black/90 border-t border-zinc-800/80 px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div class="flex items-center gap-3 w-full sm:w-auto overflow-hidden">
-            <span class="text-xs font-mono uppercase px-2.5 py-1 rounded bg-crust/20 text-crust font-bold shrink-0" data-i18n="caLabel">SOLANA CA</span>
-            <code id="contractAddressText" class="text-xs sm:text-sm font-mono text-zinc-200 truncate select-all">CRUMBx6GodUnbutterableSourdough77777777pump</code>
-          </div>
-          <div class="flex items-center gap-2 w-full sm:w-auto justify-end">
-            <button id="editCaBtn" class="px-3 py-2 rounded-lg bg-zinc-900 hover:bg-zinc-800 text-zinc-400 hover:text-white text-xs font-mono border border-zinc-800 transition" title="Configure your real token address">
-              ⚙️ <span data-i18n="btnEditCA">Set CA</span>
-            </button>
-            <button id="copyCaBtn" class="px-4 py-2 rounded-lg bg-sourdough hover:bg-amber-200 text-black font-bold text-xs font-mono uppercase tracking-wider transition shrink-0">
-              📋 <span data-i18n="btnCopyCA">Copy CA</span>
-            </button>
-          </div>
-        </div>
 
-        <!-- Custom CA Input Drawer (Hidden by default) -->
-        <div id="caEditRow" class="hidden bg-zinc-900/95 border-t border-zinc-800 px-6 py-3 flex flex-col sm:flex-row items-center gap-3">
-          <input id="customCaInput" type="text" data-i18n-placeholder="caInputPlaceholder" placeholder="Paste your official Solana token address here..." class="w-full sm:flex-1 bg-black border border-zinc-700 rounded-lg px-3 py-2 text-xs font-mono text-sourdough focus:outline-none focus:border-crust" />
-          <button id="saveCaBtn" class="px-4 py-2 rounded-lg bg-crust text-black font-bold text-xs uppercase shrink-0" data-i18n="btnSaveCA">Save Address</button>
+        <!-- Contract status: the official mint has NOT been announced. No client-side editing. -->
+        <div class="bg-black/90 border-t border-zinc-800/80 px-6 py-4 flex flex-col sm:flex-row items-start sm:items-center gap-3">
+          <span class="text-xs font-mono uppercase px-2.5 py-1 rounded bg-amber-500/15 text-amber-300 font-bold shrink-0" data-i18n="caPendingLabel">OFFICIAL CONTRACT</span>
+          <div class="min-w-0">
+            <p class="font-mono text-sm text-amber-100" data-i18n="caPending">Not announced. Do not trust contract addresses shared by third parties.</p>
+            <p class="text-xs text-zinc-500 mt-1" data-i18n="caVerifiedLater">Only the official verified mint address will be displayed here.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -308,7 +296,8 @@
                 <span class="text-xs font-mono uppercase text-amber-200" data-i18n="globalDestroyed">Global Utensils Destroyed</span>
                 <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
               </div>
-              <span id="globalStrikesCount" class="font-mono font-black text-2xl sm:text-3xl text-sourdough mt-1 block">1,482,910</span>
+              <span id="globalStrikesCount" aria-live="polite" class="font-mono font-black text-2xl sm:text-3xl text-sourdough mt-1 block">—</span>
+              <p id="globalCounterStatus" role="status" class="text-xs text-amber-300/90 mt-2" data-i18n="counterPending">Live count unavailable — database connection pending</p>
             </div>
 
             <!-- Next Rank Progress -->
@@ -471,23 +460,16 @@
         </div>
       </div>
 
-      <!-- Security Pills -->
-      <div class="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-4">
-        <div class="bg-black border border-zinc-800 rounded-2xl p-4 text-center">
-          <span class="text-emerald-400 font-mono text-xs font-bold block" data-i18n="secPill1Title">✓ MINT REVOKED</span>
-          <span class="text-zinc-400 text-xs mt-1 block" data-i18n="secPill1Sub">Fixed 1B Supply</span>
-        </div>
-        <div class="bg-black border border-zinc-800 rounded-2xl p-4 text-center">
-          <span class="text-emerald-400 font-mono text-xs font-bold block" data-i18n="secPill2Title">✓ FREEZE REVOKED</span>
-          <span class="text-zinc-400 text-xs mt-1 block" data-i18n="secPill2Sub">100% Decentralized</span>
-        </div>
-        <div class="bg-black border border-zinc-800 rounded-2xl p-4 text-center">
-          <span class="text-emerald-400 font-mono text-xs font-bold block" data-i18n="secPill3Title">✓ 0% BUY/SELL TAX</span>
-          <span class="text-zinc-400 text-xs mt-1 block" data-i18n="secPill3Sub">Pure Memetic Frictionless</span>
-        </div>
-        <div class="bg-black border border-zinc-800 rounded-2xl p-4 text-center">
-          <span class="text-emerald-400 font-mono text-xs font-bold block" data-i18n="secPill4Title">✓ LP INCINERATED</span>
-          <span class="text-zinc-400 text-xs mt-1 block" data-i18n="secPill4Sub">Unruggable Foundation</span>
+
+      <!-- Security checklist remains pending until on-chain evidence is verified. -->
+      <div class="mt-6 rounded-2xl border border-amber-500/35 bg-amber-500/10 p-5 sm:p-6" role="note">
+        <div class="flex items-start gap-3">
+          <span aria-hidden="true" class="text-xl">⚠️</span>
+          <div>
+            <h3 class="font-mono font-bold text-amber-200 text-sm" data-i18n="securityPendingTitle">ON-CHAIN SECURITY — NOT YET VERIFIED</h3>
+            <p class="mt-2 text-zinc-300 text-sm leading-relaxed" data-i18n="securityPendingBody">Mint authority, freeze authority, trading fees, liquidity locks/burns and actual distribution have not been independently verified. No security guarantees are being made.</p>
+            <p class="mt-2 text-xs text-zinc-500" data-i18n="allocationNote">The token allocation shown above is the project's proposed plan, not a verified on-chain distribution.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -583,7 +565,10 @@
       const langOrder = ['en', 'es', 'it', 'pt', 'fr', 'zh', 'hi', 'ar', 'ru'];
       let currentLang = 'en';
       let userStrikes = 0;
-      let globalStrikes = 1482910;
+      let globalStrikes = null;
+      let globalCounterReady = false;
+      let globalCounterLimited = false;
+      let globalCounterFailed = false;
       let currentWeaponType = 'knife';
       let currentWeaponPower = 1;
       let currentWeaponIcon = '🔪';
@@ -596,10 +581,8 @@
       try {
         const saved = localStorage.getItem('crumb_user_strikes');
         if (saved) userStrikes = parseInt(saved, 10) || 0;
-        const savedCa = localStorage.getItem('crumb_custom_ca');
-        if (savedCa) {
-          document.getElementById('contractAddressText').textContent = savedCa;
-        }
+        // Remove the insecure visitor-editable legacy token address.
+        localStorage.removeItem('crumb_custom_ca');
       } catch (e) {}
 
       // Complete 9-Language Dictionary (Every single string on the site)
@@ -672,14 +655,17 @@
           tokCommunityTag: "100% COMMUNITY PROJECT",
           tokCommunityDesc: "CRUMB is built for its community. No tokens are reserved for founders, the team, marketing, or partners.",
           heroCommunityNote: "100% COMMUNITY PROJECT · ZERO INSIDER TOKEN ALLOCATIONS",
-          secPill1Title: '✓ MINT REVOKED',
-          secPill1Sub: 'Fixed 1B Supply',
-          secPill2Title: '✓ FREEZE REVOKED',
-          secPill2Sub: '100% Decentralized',
-          secPill3Title: '✓ 0% BUY/SELL TAX',
-          secPill3Sub: 'Pure Memetic Frictionless',
-          secPill4Title: '✓ LP INCINERATED',
-          secPill4Sub: 'Unruggable Foundation',
+          caPendingLabel: "OFFICIAL CONTRACT",
+          caPending: "Not announced. Do not trust contract addresses shared by third parties.",
+          caVerifiedLater: "Only the official verified mint address will be displayed here.",
+          securityPendingTitle: "ON-CHAIN SECURITY — NOT YET VERIFIED",
+          securityPendingBody: "Mint authority, freeze authority, trading fees, liquidity locks/burns and actual distribution have not been independently verified. No security guarantees are being made.",
+          allocationNote: "The token allocation shown above is the project's proposed plan, not a verified on-chain distribution.",
+          globalDestroyed: "Verified community taps",
+          counterPending: "Live count unavailable — database connection pending",
+          counterLive: "Live community counter · updated from server",
+          counterError: "Live count temporarily unavailable",
+          counterLimit: "Tap limit reached — some taps were not counted",
           memeBadge: 'Community Co-Creation Engine',
           memeTitle: 'THE BREADBOX MEME STUDIO',
           memeSub: 'Generate custom Crumb memes in seconds and download high-res PNGs ready to post on X, Reddit, and Telegram.',
@@ -777,14 +763,17 @@
           tokCommunityTag: "PROYECTO 100% DE LA COMUNIDAD",
           tokCommunityDesc: "CRUMB es un proyecto para su comunidad. No se reservan tokens para fundadores, equipo, marketing ni socios.",
           heroCommunityNote: "PROYECTO 100% COMUNITARIO · SIN ASIGNACIONES INTERNAS",
-          secPill1Title: '✓ MINT REVOCADO',
-          secPill1Sub: 'Suministro Fijo 1B',
-          secPill2Title: '✓ FREEZE REVOCADO',
-          secPill2Sub: '100% Descentralizado',
-          secPill3Title: '✓ 0% IMPUESTO',
-          secPill3Sub: 'Fricción Memética Cero',
-          secPill4Title: '✓ LP INCINERADO',
-          secPill4Sub: 'Base Inquebrantable',
+          caPendingLabel: "CONTRATO OFICIAL",
+          caPending: "Aún no anunciado. No confíes en contratos compartidos por terceros.",
+          caVerifiedLater: "Aquí aparecerá únicamente el contrato oficial verificado.",
+          securityPendingTitle: "SEGURIDAD EN CADENA — SIN VERIFICAR",
+          securityPendingBody: "No se han verificado independientemente la emisión, congelación, comisiones, liquidez ni distribución real. No se garantizan condiciones de seguridad.",
+          allocationNote: "La distribución mostrada es una propuesta, no una distribución comprobada en cadena.",
+          globalDestroyed: "Toques verificados de la comunidad",
+          counterPending: "Contador no disponible — falta conectar la base de datos",
+          counterLive: "Contador comunitario en vivo · actualizado por servidor",
+          counterError: "Contador temporalmente no disponible",
+          counterLimit: "Límite alcanzado — algunos toques no se contaron",
           memeBadge: 'Motor de Creación Comunitaria',
           memeTitle: 'ESTUDIO DE MEMES DE LA PANERA',
           memeSub: 'Genera memes personalizados de Crumb en segundos y descarga PNGs listos para X, Reddit y Telegram.',
@@ -882,14 +871,17 @@
           tokCommunityTag: "PROGETTO 100% DELLA COMMUNITY",
           tokCommunityDesc: "CRUMB è un progetto per la sua community. Nessun token è riservato a fondatori, team, marketing o partner.",
           heroCommunityNote: "PROGETTO 100% COMMUNITY · ZERO QUOTE RISERVATE",
-          secPill1Title: '✓ MINT REVOCATO',
-          secPill1Sub: 'Offerta Fissa 1B',
-          secPill2Title: '✓ FREEZE REVOCATO',
-          secPill2Sub: '100% Decentralizzato',
-          secPill3Title: '✓ 0% TASSE ACQUISTO/VENDITA',
-          secPill3Sub: 'Pura Fluidità Memetica',
-          secPill4Title: '✓ LP INCENERITO',
-          secPill4Sub: 'Fondamenta Inattaccabili',
+          caPendingLabel: "CONTRATTO UFFICIALE",
+          caPending: "Non ancora annunciato. Non fidarti di indirizzi condivisi da terzi.",
+          caVerifiedLater: "Qui apparirà solo l'indirizzo ufficiale verificato.",
+          securityPendingTitle: "SICUREZZA ON-CHAIN — NON VERIFICATA",
+          securityPendingBody: "Autorizzazioni di mint e freeze, commissioni, liquidità e distribuzione reale non sono state verificate indipendentemente. Nessuna garanzia di sicurezza.",
+          allocationNote: "La ripartizione mostrata è una proposta, non una distribuzione verificata on-chain.",
+          globalDestroyed: "Tocchi verificati dalla community",
+          counterPending: "Contatore non disponibile — database da collegare",
+          counterLive: "Contatore live della community · dati dal server",
+          counterError: "Contatore temporaneamente non disponibile",
+          counterLimit: "Limite raggiunto — alcuni tocchi non conteggiati",
           memeBadge: 'Motore di Co-Creazione Community',
           memeTitle: 'LO STUDIO MEME DEL PORTAPANE',
           memeSub: 'Genera meme personalizzati di Crumb in pochi secondi e scarica PNG ad alta risoluzione pronti per X, Reddit e Telegram.',
@@ -987,14 +979,17 @@
           tokCommunityTag: "PROJETO 100% DA COMUNIDADE",
           tokCommunityDesc: "CRUMB é um projeto para sua comunidade. Nenhum token é reservado para fundadores, equipe, marketing ou parceiros.",
           heroCommunityNote: "PROJETO 100% DA COMUNIDADE · ZERO ALOCAÇÃO INTERNA",
-          secPill1Title: '✓ MINT REVOGADO',
-          secPill1Sub: 'Oferta Fixa de 1B',
-          secPill2Title: '✓ FREEZE REVOGADO',
-          secPill2Sub: '100% Descentralizado',
-          secPill3Title: '✓ TAXA 0% COMPRA/VENDA',
-          secPill3Sub: 'Pura Fluidez Memética',
-          secPill4Title: '✓ LIQUIDEZ QUEIMADA',
-          secPill4Sub: 'Fundação Anti-Rug',
+          caPendingLabel: "CONTRATO OFICIAL",
+          caPending: "Ainda não anunciado. Não confie em endereços divulgados por terceiros.",
+          caVerifiedLater: "Somente o endereço oficial verificado será exibido aqui.",
+          securityPendingTitle: "SEGURANÇA ON-CHAIN — NÃO VERIFICADA",
+          securityPendingBody: "Permissões de emissão e congelamento, taxas, liquidez e distribuição efetiva ainda não foram verificadas de forma independente. Nenhuma garantia de segurança é declarada.",
+          allocationNote: "A distribuição acima é uma proposta do projeto, não uma distribuição confirmada na blockchain.",
+          globalDestroyed: "Toques reais da comunidade",
+          counterPending: "Contagem indisponível — falta conectar o banco de dados",
+          counterLive: "Contador da comunidade ao vivo · atualizado pelo servidor",
+          counterError: "Contagem ao vivo temporariamente indisponível",
+          counterLimit: "Limite de toques atingido — alguns não foram contados",
           memeBadge: 'Gerador Oficial para a Comunidade',
           memeTitle: 'ESTÚDIO DE MEMES DO CRUMB',
           memeSub: 'Crie memes personalizados do Crumb em segundos e baixe a imagem pronta para postar no X, Telegram e Instagram.',
@@ -1095,14 +1090,17 @@
           tokCommunityTag: "PROJET 100 % COMMUNAUTAIRE",
           tokCommunityDesc: "CRUMB est un projet pour sa communauté. Aucun jeton n’est réservé aux fondateurs, à l’équipe, au marketing ou aux partenaires.",
           heroCommunityNote: "PROJET 100 % COMMUNAUTAIRE · AUCUNE RÉSERVE INTERNE",
-          secPill1Title: '✓ MINT RÉVOQUÉ',
-          secPill1Sub: 'Offre Fixe 1B',
-          secPill2Title: '✓ FREEZE RÉVOQUÉ',
-          secPill2Sub: '100% Décentralisé',
-          secPill3Title: '✓ 0% TAXE ACHAT/VENTE',
-          secPill3Sub: 'Sans Friction Mémétique',
-          secPill4Title: '✓ LP INCINÉRÉ',
-          secPill4Sub: 'Fondation Inattaquable',
+          caPendingLabel: "CONTRAT OFFICIEL",
+          caPending: "Pas encore annoncé. Méfiez-vous des adresses partagées par des tiers.",
+          caVerifiedLater: "Seule l'adresse officielle vérifiée apparaîtra ici.",
+          securityPendingTitle: "SÉCURITÉ ON-CHAIN — NON VÉRIFIÉE",
+          securityPendingBody: "Les autorisations de création et de gel, les frais, la liquidité et la distribution réelle n'ont pas été vérifiés indépendamment. Aucune garantie de sécurité.",
+          allocationNote: "La répartition présentée est un projet, non une distribution vérifiée sur la chaîne.",
+          globalDestroyed: "Clics vérifiés de la communauté",
+          counterPending: "Compteur indisponible — base de données non connectée",
+          counterLive: "Compteur communautaire en direct · serveur",
+          counterError: "Compteur temporairement indisponible",
+          counterLimit: "Limite atteinte — certains clics non comptés",
           memeBadge: 'Moteur de Co-Création Communautaire',
           memeTitle: 'LE STUDIO À MÈMES DE LA BOÎTE À PAIN',
           memeSub: 'Générez des mèmes Crumb personnalisés en quelques secondes et téléchargez-les en PNG haute résolution.',
@@ -1200,14 +1198,17 @@
           tokCommunityTag: "100% 社区项目",
           tokCommunityDesc: "CRUMB 是属于社区的项目。创始人、团队、营销及合作伙伴均无代币预留份额。",
           heroCommunityNote: "100% 社区项目 · 无内部代币预留",
-          secPill1Title: '✓ 铸币权已撤销',
-          secPill1Sub: '固定 10 亿总量',
-          secPill2Title: '✓ 冻结权已撤销',
-          secPill2Sub: '100% 去中心化',
-          secPill3Title: '✓ 0% 买卖税率',
-          secPill3Sub: '纯粹模因零摩擦',
-          secPill4Title: '✓ LP 永久销毁',
-          secPill4Sub: '坚不可摧基石',
+          caPendingLabel: "官方合约地址",
+          caPending: "尚未公布。请勿相信第三方提供的合约地址。",
+          caVerifiedLater: "此处仅显示经过验证的官方代币地址。",
+          securityPendingTitle: "链上安全信息 — 尚未验证",
+          securityPendingBody: "铸币和冻结权限、交易费用、流动性锁定或销毁，以及实际分配情况均未经过独立核实。不作任何安全保证。",
+          allocationNote: "上方分配比例仅为项目计划，尚非经链上确认的结果。",
+          globalDestroyed: "已记录的社区点击次数",
+          counterPending: "实时计数不可用 — 数据库尚未连接",
+          counterLive: "社区实时计数 · 服务器更新",
+          counterError: "实时计数暂时不可用",
+          counterLimit: "已达到点击限制 — 部分点击未计入",
           memeBadge: '社区共创引擎',
           memeTitle: '面包盒梗图工坊',
           memeSub: '几秒内生成自定义 Crumb 梗图，下载高清 PNG 直接发布至 X 与 Telegram。',
@@ -1305,14 +1306,17 @@
           tokCommunityTag: "100% समुदाय का प्रोजेक्ट",
           tokCommunityDesc: "CRUMB समुदाय के लिए बना प्रोजेक्ट है। संस्थापकों, टीम, मार्केटिंग या भागीदारों के लिए कोई टोकन आरक्षित नहीं है।",
           heroCommunityNote: "100% कम्युनिटी प्रोजेक्ट · कोई अंदरूनी आवंटन नहीं",
-          secPill1Title: '✓ मिंट निरस्त',
-          secPill1Sub: 'फिक्स्ड 1B सप्लाई',
-          secPill2Title: '✓ फ्रीज निरस्त',
-          secPill2Sub: '100% विकेंद्रीकृत',
-          secPill3Title: '✓ 0% खरीद/बिक्री कर',
-          secPill3Sub: 'शुद्ध मीम अनुभव',
-          secPill4Title: '✓ LP भस्म',
-          secPill4Sub: 'अटूट नींव',
+          caPendingLabel: "आधिकारिक कॉन्ट्रैक्ट",
+          caPending: "अभी घोषित नहीं हुआ है। तीसरे पक्ष द्वारा दिए गए पते पर भरोसा न करें।",
+          caVerifiedLater: "यहाँ केवल सत्यापित आधिकारिक टोकन पता दिखाया जाएगा।",
+          securityPendingTitle: "ऑन-चेन सुरक्षा — अभी सत्यापित नहीं",
+          securityPendingBody: "मिंट और फ्रीज़ अधिकार, शुल्क, लिक्विडिटी लॉक/बर्न और वास्तविक वितरण स्वतंत्र रूप से सत्यापित नहीं हैं। सुरक्षा की कोई गारंटी नहीं।",
+          allocationNote: "ऊपर दिया आवंटन प्रस्तावित योजना है, सत्यापित ऑन-चेन वितरण नहीं।",
+          globalDestroyed: "समुदाय के दर्ज किए गए टैप",
+          counterPending: "लाइव काउंट उपलब्ध नहीं — डेटाबेस कनेक्शन लंबित",
+          counterLive: "लाइव कम्युनिटी काउंटर · सर्वर अपडेट",
+          counterError: "लाइव काउंटर अस्थायी रूप से उपलब्ध नहीं",
+          counterLimit: "सीमा पूरी — कुछ टैप नहीं गिने गए",
           memeBadge: 'कम्युनिटी मीम इंजन',
           memeTitle: 'ब्रेडबॉक्स मीम स्टूडियो',
           memeSub: 'सेकंडों में कस्टम क्रम्ब मीम बनाएं और X व टेलीग्राम के लिए हाई-रेस PNG डाउनलोड करें।',
@@ -1410,14 +1414,17 @@
           tokCommunityTag: "مشروع مجتمعي بنسبة 100%",
           tokCommunityDesc: "CRUMB مشروع لمجتمعه. لا توجد توكنات محجوزة للمؤسسين أو الفريق أو التسويق أو الشركاء.",
           heroCommunityNote: "مشروع مجتمعي 100% · دون تخصيصات داخلية",
-          secPill1Title: '✓ إلغاء سك العملة',
-          secPill1Sub: 'معروض ثابت 1 مليار',
-          secPill2Title: '✓ إلغاء التجميد',
-          secPill2Sub: 'لامركزية 100%',
-          secPill3Title: '✓ ضريبة 0% بيع/شراء',
-          secPill3Sub: 'حرية تداول كاملة',
-          secPill4Title: '✓ حرق السيولة LP',
-          secPill4Sub: 'أساس محمي بالكامل',
+          caPendingLabel: "العقد الرسمي",
+          caPending: "لم يُعلن بعد. لا تثق بعناوين العقود التي ينشرها أطراف آخرون.",
+          caVerifiedLater: "سيظهر هنا فقط عنوان الرمز الرسمي بعد التحقق منه.",
+          securityPendingTitle: "الأمان على السلسلة — لم يتم التحقق بعد",
+          securityPendingBody: "لم يتم التحقق بشكل مستقل من صلاحيات الإصدار والتجميد أو الرسوم أو السيولة أو التوزيع الفعلي. لا توجد ضمانات أمنية.",
+          allocationNote: "التوزيع الموضح أعلاه خطة مقترحة وليس توزيعاً مؤكداً على السلسلة.",
+          globalDestroyed: "نقرات المجتمع المسجلة",
+          counterPending: "العداد غير متاح — قاعدة البيانات غير متصلة",
+          counterLive: "عداد المجتمع المباشر · تحديث من الخادم",
+          counterError: "العداد غير متاح مؤقتاً",
+          counterLimit: "تم بلوغ حد النقر — بعض النقرات لم تُحتسب",
           memeBadge: 'محرك إبداع المجتمع',
           memeTitle: 'استوديو ميمز صندوق الخبز',
           memeSub: 'اصنع ميمز كرامب المخصصة في ثوانٍ وحمّل صورة PNG عالية الدقة جاهزة للنشر.',
@@ -1515,14 +1522,17 @@
           tokCommunityTag: "ПРОЕКТ НА 100% ДЛЯ СООБЩЕСТВА",
           tokCommunityDesc: "CRUMB — проект для своего сообщества. Для основателей, команды, маркетинга и партнёров токены не резервируются.",
           heroCommunityNote: "100% ПРОЕКТ СООБЩЕСТВА · БЕЗ ВНУТРЕННИХ АЛЛОКАЦИЙ",
-          secPill1Title: '✓ МИНТ ОТОЗВАН',
-          secPill1Sub: 'Фиксированный 1 млрд',
-          secPill2Title: '✓ ФРИЗ ОТОЗВАН',
-          secPill2Sub: '100% Децентрализация',
-          secPill3Title: '✓ 0% НАЛОГ',
-          secPill3Sub: 'Чистая Мем-Ликвидность',
-          secPill4Title: '✓ LP СОЖЖЕНЫ',
-          secPill4Sub: 'Защита от Рагпула',
+          caPendingLabel: "ОФИЦИАЛЬНЫЙ КОНТРАКТ",
+          caPending: "Пока не объявлен. Не доверяйте адресам, опубликованным третьими лицами.",
+          caVerifiedLater: "Здесь появится только проверенный официальный адрес токена.",
+          securityPendingTitle: "ОНЧЕЙН-БЕЗОПАСНОСТЬ — НЕ ПРОВЕРЕНА",
+          securityPendingBody: "Права выпуска и заморозки, комиссии, блокировки/сжигания ликвидности и фактическое распределение независимо не проверены. Гарантий безопасности нет.",
+          allocationNote: "Распределение выше — план проекта, а не подтверждённые данные блокчейна.",
+          globalDestroyed: "Зарегистрированные нажатия сообщества",
+          counterPending: "Счётчик недоступен — база данных не подключена",
+          counterLive: "Счётчик сообщества · обновляется сервером",
+          counterError: "Счётчик временно недоступен",
+          counterLimit: "Лимит достигнут — часть нажатий не учтена",
           memeBadge: 'Движок Сообщества',
           memeTitle: 'МЕМ-СТУДИЯ ХЛЕБНИЦЫ',
           memeSub: 'Создавайте собственные мемы с Крамбом за секунды и скачивайте PNG в высоком разрешении.',
@@ -1973,41 +1983,6 @@
       document.getElementById('openDeployModalBtn').addEventListener('click', openModal);
       document.getElementById('closeDeployModalBtn').addEventListener('click', closeModal);
       document.getElementById('ackModalBtn').addEventListener('click', closeModal);
-
-      // Copy & Edit Contract Address
-      document.getElementById('copyCaBtn').addEventListener('click', function() {
-        const ca = document.getElementById('contractAddressText').textContent.trim();
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(ca).catch(function() {});
-        } else {
-          const temp = document.createElement('textarea');
-          temp.value = ca;
-          document.body.appendChild(temp);
-          temp.select();
-          document.execCommand('copy');
-          temp.remove();
-        }
-        playDialSound(6);
-        const dict = i18n[currentLang] || i18n.en;
-        showToast(dict.toastCaCopied);
-      });
-
-      document.getElementById('editCaBtn').addEventListener('click', function() {
-        const row = document.getElementById('caEditRow');
-        row.classList.toggle('hidden');
-        document.getElementById('customCaInput').value = document.getElementById('contractAddressText').textContent.trim();
-      });
-
-      document.getElementById('saveCaBtn').addEventListener('click', function() {
-        const val = document.getElementById('customCaInput').value.trim();
-        if (val) {
-          document.getElementById('contractAddressText').textContent = val;
-          try { localStorage.setItem('crumb_custom_ca', val); } catch (e) {}
-          document.getElementById('caEditRow').classList.add('hidden');
-          const dict = i18n[currentLang] || i18n.en;
-          showToast(dict.toastCaSaved);
-        }
-      });
 
       // =========================================================================
       // REALISTIC KNIFE STRIKE, HIGH-CARBON BLADE FRACTURE & SPARK PHYSICS ENGINE
@@ -2636,7 +2611,10 @@
       function updateScoreUI() {
         const dict = i18n[currentLang] || i18n.en;
         document.getElementById('userStrikesCount').textContent = userStrikes.toLocaleString();
-        document.getElementById('globalStrikesCount').textContent = (globalStrikes + userStrikes).toLocaleString();
+        document.getElementById('globalStrikesCount').textContent = globalCounterReady && Number.isSafeInteger(globalStrikes) ? globalStrikes.toLocaleString() : '—';
+        const counterDict = i18n[currentLang] || i18n.en;
+        const status = document.getElementById('globalCounterStatus');
+        status.textContent = globalCounterLimited ? counterDict.counterLimit : globalCounterReady ? counterDict.counterLive : globalCounterFailed ? counterDict.counterError : counterDict.counterPending;
 
         let rank = dict.rank0;
         let pct = Math.min(100, Math.floor((userStrikes / 100) * 100));
@@ -2656,6 +2634,71 @@
         document.getElementById('progressPercentText').textContent = pct + '%';
         document.getElementById('rankProgressBar').style.width = pct + '%';
       }
+
+
+      // Durable server counter: one accepted tap = one increment, regardless of weapon damage.
+      // No synthetic counts or localStorage values are added to the community number.
+      async function syncGlobalCounter() {
+        try {
+          const response = await fetch('/api/counter', {method:'GET', cache:'no-store', credentials:'same-origin'});
+          if (!response.ok) {
+            globalCounterReady = false;
+            globalCounterFailed = response.status !== 503;
+            globalStrikes = null;
+          } else {
+            const data = await response.json();
+            if (data.ready === true && Number.isSafeInteger(data.total) && data.total >= 0) {
+              globalCounterReady = true;
+              globalCounterFailed = false;
+              globalStrikes = data.total;
+            } else {
+              globalCounterReady = false;
+              globalStrikes = null;
+            }
+          }
+        } catch (e) {
+          globalCounterReady = false;
+          globalCounterFailed = true;
+          globalStrikes = null;
+        }
+        updateScoreUI();
+      }
+
+      async function recordGlobalStrike() {
+        if (!globalCounterReady) return;
+        try {
+          const response = await fetch('/api/counter', {
+            method:'POST',
+            headers:{'Content-Type':'application/json'},
+            body:'{}',
+            cache:'no-store',
+            credentials:'same-origin'
+          });
+          if (response.status === 429) {
+            globalCounterLimited = true;
+            updateScoreUI();
+            return;
+          }
+          if (!response.ok) {
+            globalCounterReady = false;
+            globalCounterFailed = true;
+            globalStrikes = null;
+          } else {
+            const data = await response.json();
+            if (data.ready === true && Number.isSafeInteger(data.total)) {
+              globalStrikes = Math.max(globalStrikes || 0,data.total);
+              globalCounterLimited = false;
+            }
+          }
+          updateScoreUI();
+        } catch (e) {
+          globalCounterFailed = true;
+          await syncGlobalCounter();
+        }
+      }
+
+      // Refresh totals across visitors without showing made-up "live" numbers.
+      setInterval(syncGlobalCounter, 30000);
 
       // Weapon Selection
       document.querySelectorAll('.weapon-btn').forEach(function(btn) {
@@ -2679,6 +2722,7 @@
         userStrikes += currentWeaponPower;
         try { localStorage.setItem('crumb_user_strikes', String(userStrikes)); } catch (e) {}
         updateScoreUI();
+        if (globalCounterReady) recordGlobalStrike();
         playCrunchAndClang(currentWeaponPower);
 
         const wrapper = document.getElementById('crumbTargetWrapper');
@@ -2900,6 +2944,7 @@
         updateScoreUI();
         updateToasterDial(6);
         renderMemeCanvas();
+        syncGlobalCounter();
       });
     })();
   </script>
