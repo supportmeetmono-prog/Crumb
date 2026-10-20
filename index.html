@@ -59,6 +59,8 @@
     input[type="range"] {
       accent-color: #EA3323;
     }
+    /* Keep the original JS-dependent legacy meme studio inert in the DOM; visitors use Hero Lab with curated captions only. */
+    #memekit { display: none !important; }
   </style>
 </head>
 <body class="marble-bg min-h-screen font-sans antialiased selection:bg-crust selection:text-black" style="--glow-alpha: 0.35; --bg-heat: 0.18;">
@@ -103,7 +105,7 @@
         <a href="#clicker" class="hover:text-crust transition" data-i18n="navArena">The Knife Arena</a>
         <a href="#dial" class="hover:text-crust transition" data-i18n="navDial">Toaster Dial</a>
         <a href="#tokenomics" class="hover:text-crust transition" data-i18n="navTokenomics">Tokenomics</a>
-        <a href="#memekit" class="hover:text-crust transition" data-i18n="navMemeStudio">Meme Studio</a>
+        <a href="./hero-lab.html" class="hover:text-amber-300 transition font-extrabold" data-i18n="navHeroLab">Hero Lab</a>
       </nav>
 
       <div class="flex items-center gap-2">
@@ -190,8 +192,8 @@
             <a href="#clicker" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-ember to-crust text-black font-extrabold text-sm uppercase tracking-wider shadow-lg hover:brightness-110 transition">
               ⚔️ <span data-i18n="btnTestBlade">Test Your Blade</span>
             </a>
-            <a href="#memekit" class="px-5 py-3.5 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 text-sourdough font-bold text-sm transition">
-              🎨 <span data-i18n="btnCreateMeme">Meme Studio</span>
+            <a href="./hero-lab.html" class="px-5 py-3.5 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 text-sourdough font-bold text-sm transition">
+              🎨 <span data-i18n="btnOpenHeroLab">Hero Lab</span>
             </a>
           </div>
         </div>
@@ -475,6 +477,30 @@
     </section>
 
     <!-- INTERACTIVE FEATURE 4: THE BREADBOX MEME STUDIO -->
+
+    <!-- CRUMB HERO LAB: curated original-character creator -->
+    <section id="hero-lab" class="scroll-mt-20">
+      <div class="relative overflow-hidden rounded-3xl border border-amber-500/40 bg-gradient-to-br from-amber-950/70 via-zinc-950 to-zinc-950 px-6 sm:px-10 py-10 sm:py-14 shadow-2xl">
+        <div aria-hidden="true" class="pointer-events-none absolute -right-20 -top-20 w-80 h-80 rounded-full bg-orange-600/15 blur-3xl"></div>
+        <div aria-hidden="true" class="pointer-events-none absolute -left-16 -bottom-24 w-72 h-72 rounded-full bg-red-600/10 blur-3xl"></div>
+        <div class="relative flex flex-col md:flex-row md:items-center justify-between gap-8">
+          <div class="max-w-2xl space-y-4">
+            <div class="inline-flex items-center gap-2 text-amber-300 font-mono text-xs font-bold uppercase tracking-widest" data-i18n="heroLabBadge">✦ ORIGINAL CHARACTER CREATOR</div>
+            <h2 class="font-display font-black text-3xl sm:text-5xl text-sourdough leading-tight text-glow" data-i18n="heroLabTitle">THE CRUMB HERO LAB</h2>
+            <p class="text-zinc-300 text-sm sm:text-base leading-relaxed" data-i18n="heroLabDesc">Build your own CRUMB: speed hero, royal dress, cosmic armor, sunglasses, crowns and more. Hundreds of thousands of original combinations. No free-text captions.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs font-mono text-amber-200 bg-amber-950/60 border border-amber-700/40 rounded-lg px-3 py-2">✦ 8 HERO STYLES</span>
+              <span class="text-xs font-mono text-amber-200 bg-amber-950/60 border border-amber-700/40 rounded-lg px-3 py-2">✦ 620,928 COMBINATIONS</span>
+              <span class="text-xs font-mono text-amber-200 bg-amber-950/60 border border-amber-700/40 rounded-lg px-3 py-2">✦ PNG EXPORTS</span>
+            </div>
+            <p class="text-zinc-500 text-xs" data-i18n="heroLabNote">Original CRUMB art · approved captions · free in-browser image composition</p>
+          </div>
+          <a href="./hero-lab.html" class="shrink-0 inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl bg-gradient-to-r from-ember to-crust hover:brightness-110 text-black font-extrabold text-sm tracking-wide shadow-xl transition" data-i18n="heroLabCta">
+            ⚡ OPEN HERO LAB ↗
+          </a>
+        </div>
+      </div>
+    </section>
     <section id="memekit" class="scroll-mt-20">
       <div class="bg-zinc-950 border border-amber-500/30 rounded-3xl p-6 sm:p-10 coil-glow">
         <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
@@ -594,6 +620,13 @@
           navDial: 'Toaster Dial',
           navTokenomics: 'Tokenomics',
           navMemeStudio: 'Meme Studio',
+          navHeroLab: "Hero Lab",
+          btnOpenHeroLab: "Hero Lab",
+          heroLabBadge: "✦ ORIGINAL CHARACTER CREATOR",
+          heroLabTitle: "THE CRUMB HERO LAB",
+          heroLabDesc: "Build your own CRUMB: speed hero, royal dress, cosmic armor, sunglasses, crowns and more. Hundreds of thousands of original combinations. No free-text captions.",
+          heroLabNote: "Original CRUMB art · approved captions · free in-browser image composition",
+          heroLabCta: "⚡ OPEN HERO LAB ↗",
           sfxOn: '🔊 SFX: ON',
           sfxOff: '🔇 SFX: OFF',
           btnDeployInfo: 'Deploy Info',
@@ -702,6 +735,13 @@
           navDial: 'Nivel de Tostadora',
           navTokenomics: 'Tokenomics',
           navMemeStudio: 'Estudio de Memes',
+          navHeroLab: "Laboratorio de Héroes",
+          btnOpenHeroLab: "Laboratorio de Héroes",
+          heroLabBadge: "✦ CREADOR DE PERSONAJES ORIGINALES",
+          heroLabTitle: "LABORATORIO DE HÉROES CRUMB",
+          heroLabDesc: "Crea tu CRUMB con vestidos, armaduras, gafas y coronas. Cientos de miles de combinaciones originales. Sin texto libre.",
+          heroLabNote: "Arte original CRUMB · frases aprobadas · composición gratuita en tu navegador",
+          heroLabCta: "⚡ ABRIR LABORATORIO ↗",
           sfxOn: '🔊 SFX: SÍ',
           sfxOff: '🔇 SFX: NO',
           btnDeployInfo: 'Info de Despliegue',
@@ -810,6 +850,13 @@
           navDial: 'Manopola Tostapane',
           navTokenomics: 'Tokenomics',
           navMemeStudio: 'Studio Meme',
+          navHeroLab: "Laboratorio degli Eroi",
+          btnOpenHeroLab: "Laboratorio degli Eroi",
+          heroLabBadge: "✦ CREATORE DI PERSONAGGI ORIGINALI",
+          heroLabTitle: "CRUMB HERO LAB",
+          heroLabDesc: "Crea il tuo CRUMB con abiti, armature, occhiali e corone. Centinaia di migliaia di combinazioni originali, senza testo libero.",
+          heroLabNote: "Arte originale CRUMB · frasi approvate · composizione gratuita nel browser",
+          heroLabCta: "⚡ APRI HERO LAB ↗",
           sfxOn: '🔊 SFX: ON',
           sfxOff: '🔇 SFX: OFF',
           btnDeployInfo: 'Info Deploy',
@@ -918,6 +965,13 @@
           navDial: 'Nível da Torradeira',
           navTokenomics: 'Tokenomics',
           navMemeStudio: 'Estúdio de Memes',
+          navHeroLab: "Laboratório de Heróis",
+          btnOpenHeroLab: "Laboratório de Heróis",
+          heroLabBadge: "✦ CRIADOR DE PERSONAGENS ORIGINAIS",
+          heroLabTitle: "LABORATÓRIO DE HERÓIS CRUMB",
+          heroLabDesc: "Monte o seu CRUMB com vestido, armaduras, óculos, coroas e poderes. Centenas de milhares de combinações originais, sem frases livres.",
+          heroLabNote: "Arte original CRUMB · frases aprovadas · montagem grátis no navegador",
+          heroLabCta: "⚡ ABRIR LABORATÓRIO ↗",
           sfxOn: '🔊 SOM: LIG',
           sfxOff: '🔇 SOM: DESL',
           btnDeployInfo: 'Info de Deploy',
@@ -1029,6 +1083,13 @@
           navDial: 'Cadran du Grille-Pain',
           navTokenomics: 'Tokenomics',
           navMemeStudio: 'Studio à Mèmes',
+          navHeroLab: "Atelier des Héros",
+          btnOpenHeroLab: "Atelier des Héros",
+          heroLabBadge: "✦ CRÉATEUR DE PERSONNAGES ORIGINAUX",
+          heroLabTitle: "ATELIER DES HÉROS CRUMB",
+          heroLabDesc: "Créez votre CRUMB avec des robes, armures, lunettes et couronnes. Des centaines de milliers de combinaisons originales, sans texte libre.",
+          heroLabNote: "Art original CRUMB · phrases approuvées · création gratuite dans le navigateur",
+          heroLabCta: "⚡ OUVRIR L’ATELIER ↗",
           sfxOn: '🔊 SFX: ON',
           sfxOff: '🔇 SFX: OFF',
           btnDeployInfo: 'Info Déploiement',
@@ -1137,6 +1198,13 @@
           navDial: '烤面包机档位',
           navTokenomics: '代币经济学',
           navMemeStudio: '梗图工坊',
+          navHeroLab: "英雄实验室",
+          btnOpenHeroLab: "英雄实验室",
+          heroLabBadge: "✦ 原创角色制作器",
+          heroLabTitle: "CRUMB 英雄实验室",
+          heroLabDesc: "自由选择礼服、盔甲、眼镜、王冠和能力，打造自己的 CRUMB。数十万种组合，不开放文字输入。",
+          heroLabNote: "原创 CRUMB 艺术 · 审核文案 · 浏览器免费制作",
+          heroLabCta: "⚡ 打开英雄实验室 ↗",
           sfxOn: '🔊 音效: 开',
           sfxOff: '🔇 音效: 关',
           btnDeployInfo: '部署指南',
@@ -1245,6 +1313,13 @@
           navDial: 'टोस्टर डायल',
           navTokenomics: 'टोकनॉमिक्स',
           navMemeStudio: 'मीम स्टूडियो',
+          navHeroLab: "हीरो लैब",
+          btnOpenHeroLab: "हीरो लैब",
+          heroLabBadge: "✦ मूल चरित्र निर्माता",
+          heroLabTitle: "CRUMB हीरो लैब",
+          heroLabDesc: "कपड़े, चश्मे, मुकुट और विशेष शक्तियाँ चुनें। लाखों तरह के मूल CRUMB संयोजन, बिना मुक्त टेक्स्ट के।",
+          heroLabNote: "मूल CRUMB कला · स्वीकृत कैप्शन · ब्राउज़र में मुफ्त डिजाइन",
+          heroLabCta: "⚡ हीरो लैब खोलें ↗",
           sfxOn: '🔊 ध्वनि: चालू',
           sfxOff: '🔇 ध्वनि: बंद',
           btnDeployInfo: 'डिप्लॉय जानकारी',
@@ -1353,6 +1428,13 @@
           navDial: 'مؤشر المحمصة',
           navTokenomics: 'اقتصاديات العملة',
           navMemeStudio: 'استوديو الميمز',
+          navHeroLab: "مختبر الأبطال",
+          btnOpenHeroLab: "مختبر الأبطال",
+          heroLabBadge: "✦ منشئ شخصية أصلية",
+          heroLabTitle: "مختبر أبطال CRUMB",
+          heroLabDesc: "صمم CRUMB بملابس ونظارات وتيجان وقوى مميزة. مئات الآلاف من التركيبات الأصلية دون نصوص حرة.",
+          heroLabNote: "فن CRUMB أصلي · عبارات معتمدة · تصميم مجاني في المتصفح",
+          heroLabCta: "⚡ افتح المختبر ↗",
           sfxOn: '🔊 الصوت: مفعل',
           sfxOff: '🔇 الصوت: صامت',
           btnDeployInfo: 'معلومات النشر',
@@ -1461,6 +1543,13 @@
           navDial: 'Регулятор Тостера',
           navTokenomics: 'Токеномика',
           navMemeStudio: 'Мем-Студия',
+          navHeroLab: "Лаборатория Героев",
+          btnOpenHeroLab: "Лаборатория Героев",
+          heroLabBadge: "✦ СОЗДАНИЕ ОРИГИНАЛЬНЫХ ПЕРСОНАЖЕЙ",
+          heroLabTitle: "ЛАБОРАТОРИЯ ГЕРОЕВ CRUMB",
+          heroLabDesc: "Создайте своего CRUMB с платьем, бронёй, очками, коронами и силами. Сотни тысяч комбинаций без свободного текста.",
+          heroLabNote: "Оригинальный CRUMB · одобренные фразы · бесплатное создание в браузере",
+          heroLabCta: "⚡ ОТКРЫТЬ ЛАБОРАТОРИЮ ↗",
           sfxOn: '🔊 ЗВУК: ВКЛ',
           sfxOff: '🔇 ЗВУК: ВЫКЛ',
           btnDeployInfo: 'Инфо о Деплое',
