@@ -68,7 +68,7 @@ const JOIN_SCRIPT=[
   "return {1,total}"
 ].join('\n');
 
-export default {
+const mission = {
   async fetch(request){
     if(!['GET','POST'].includes(request.method))return response({error:'method_not_allowed'},405);
     if(!configured())return response({ready:false,error:'setup_required'},503);
@@ -124,3 +124,20 @@ export default {
     }
   }
 };
+
+// Vercel Node.js serverless entrypoint: retain Web Request/Response internally.
+export default async function handler(req,res) {
+  const host=String(req.headers.host||'');
+  if (!/^[a-zA-Z0-9.:-]+$/.test(host)) return res.status(400).json({error:'invalid_host'});
+  const url='https://'+host+(req.url||'/api/mission');
+  const headers=new Headers();
+  for (const [k,v] of Object.entries(req.headers)) {
+    if (v!==undefined) headers.set(k,Array.isArray(v)?v.join(','):String(v));
+  }
+  const request=new Request(url,{method:req.method,headers,
+    ...(req.method==='POST'?{body:JSON.stringify(req.body||{})}:{})});
+  const out=await mission.fetch(request);
+  res.status(out.status);
+  for (const [k,v] of out.headers) if(k!=='content-length')res.setHeader(k,v);
+  return res.send(await out.text());
+}
