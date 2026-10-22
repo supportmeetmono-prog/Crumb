@@ -1,0 +1,27 @@
+name: CRUMB token contract draft compile
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'contracts/**'
+      - '.github/workflows/contract-draft.yml'
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  compile-draft:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install pinned Solidity compiler and ERC20 dependencies
+        run: npm install --no-save --ignore-scripts --no-audit --no-fund solc@0.8.24 @openzeppelin/contracts@5.4.0
+      - name: Compile CRUMB draft only (NO DEPLOYMENT)
+        run: |
+          mkdir -p /tmp/crumb-solidity-artifacts
+          ./node_modules/.bin/solcjs --bin --abi --base-path . --include-path node_modules --output-dir /tmp/crumb-solidity-artifacts contracts/CRUMB.sol
+          test -n "$(find /tmp/crumb-solidity-artifacts -name '*CRUMB.bin' -print -quit)"
