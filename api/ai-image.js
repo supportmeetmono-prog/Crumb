@@ -93,6 +93,7 @@ async function imageEdit(prompt,size,referenceImage){
   data.append('image',new Blob([imageBytes],{type:'image/png'}),'crumb.png');
   data.append('n','1');data.append('size',size);data.append('quality','low');
   data.append('output_format','webp');data.append('output_compression','80');
+  if(size==='1024x1024'&&prompt.includes('Sticker design'))data.append('background','transparent');
   data.append('moderation','auto');
   const r=await fetch('https://api.openai.com/v1/images/edits',{
     method:'POST',headers:{Authorization:'Bearer '+process.env.OPENAI_API_KEY},
