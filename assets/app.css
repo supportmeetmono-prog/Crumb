@@ -157,3 +157,23 @@
     }
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
   
+/* Four-way token allocation; preserve responsive mobile layout. */
+.allocation-track-four span:nth-child(1){width:80%;background:#6bcf97}
+.allocation-track-four span:nth-child(2){width:10%;background:#bf9ce7}
+.allocation-track-four span:nth-child(3){width:5%;background:#e4875f}
+.allocation-track-four span:nth-child(4){width:5%;background:#72a8e8}
+.allocation-grid-four{grid-template-columns:repeat(4,minmax(0,1fr))}
+.allocation-grid-four .allocation-card{grid-column:auto}
+.allocation-grid-four .allocation-card:nth-child(3){border-color:#e4875f67}
+.allocation-grid-four .allocation-card:nth-child(4){border-color:#72a8e862}
+.token-security{margin-top:27px;padding:26px;border:1px solid #a9d89e50;border-radius:17px;background:linear-gradient(145deg,#122721,#101c25)}
+.token-security h3{margin:10px 0 12px;font:800 clamp(23px,3vw,33px)/1.15 'Barlow Condensed',sans-serif;color:#e7fbe5}
+.token-security-intro{font-size:14px;line-height:1.7;color:#bdceca;max-width:950px}
+.token-security-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;margin-top:24px}
+.token-security-step{padding:21px 19px;border-radius:12px;background:#0a171a;border:1px solid #b5e89927}
+.token-security-number{font:700 12px 'Space Mono',monospace;color:var(--mint)}
+.token-security-step h4{font:700 16px/1.3 'DM Sans',sans-serif;margin:12px 0 9px;color:#e8fbe3}
+.token-security-step p{font:400 13px/1.75 'DM Sans',sans-serif;color:#b7cbc4}
+.token-security-pending{border:1px solid #e6a47165;color:#f1ceb3;background:#6d421b3b;padding:15px 17px;border-radius:8px;margin-top:19px;font:600 12px/1.7 'DM Sans',sans-serif}
+@media(max-width:1050px){.allocation-grid-four{grid-template-columns:repeat(2,minmax(0,1fr))}.token-security-grid{grid-template-columns:1fr}}
+@media(max-width:610px){.allocation-grid-four{grid-template-columns:1fr}.token-security{padding:18px}.token-security-step{padding:17px}}
