@@ -161,14 +161,35 @@ async function handle(req){
     return respond({success:true,image:'data:image/webp;base64,'+base64,format});
   }catch{return respond({error:'temporarily_unavailable'},503);}
 }
+// Restrict publicly reachable API hostnames and enforce the actual serialized
+// request size (never trust the client-supplied Content-Length header).
 export default async function handler(req,res){
-  const host=String(req.headers.host||'');
-  if(!/^[a-zA-Z0-9.:-]+$/.test(host))return res.status(400).json({error:'invalid_host'});
+  const host=String(req.headers.host||'').toLowerCase().replace(/:443$/,'');
+  const permitted=host==='crumb.vision'||host==='www.crumb.vision'||
+    host==='crumb-ochre.vercel.app'||/^crumb-[a-z0-9-]+\\.vercel\\.app$/.test(host);
+  if(!permitted)return res.status(421).setHeader('Cache-Control','no-store').json({error:'unrecognized_host'});
+  const path=String(req.url||'/api/ai-image');
+  if(!path.startsWith('/')||path.startsWith('//'))return res.status(400).json({error:'invalid_path'});
+  let serializedBody;
+  if(req.method==='POST'){
+    try{
+      serializedBody=JSON.stringify(req.body??{});
+      if(Buffer.byteLength(serializedBody,'utf8')>1900000){
+        res.setHeader('Cache-Control','no-store');
+        return res.status(413).json({error:'too_large'});
+      }
+    }catch{
+      return res.status(400).json({error:'invalid_json'});
+    }
+  }
   const headers=new Headers();
-  for(const [k,v] of Object.entries(req.headers))if(v!==undefined)
+  for(const [k,v] of Object.entries(req.headers)){
+    if(v===undefined||k.toLowerCase()==='content-length')continue;
     headers.set(k,Array.isArray(v)?v.join(','):String(v));
-  const input=new Request('https://'+host+(req.url||'/api/ai-image'),{
-    method:req.method,headers,...(req.method==='POST'?{body:JSON.stringify(req.body||{})}:{})});
+  }
+  const input=new Request('https://'+host+path,{
+    method:req.method,headers,...(req.method==='POST'?{body:serializedBody}:{})
+  });
   const out=await handle(input);
   res.status(out.status);
   for(const [key,val] of out.headers)if(key!=='content-length')res.setHeader(key,val);
