@@ -8,11 +8,16 @@ const COUNT='crumb:mission:v1:count', MEMBERS='crumb:mission:v1:members';
 function response(data,status=200){
   return Response.json(data,{status,headers:{'Cache-Control':'no-store','X-Content-Type-Options':'nosniff'}});
 }
-function configured(){return !!(process.env.UPSTASH_REDIS_REST_URL?.startsWith('https://') &&
-  process.env.UPSTASH_REDIS_REST_TOKEN && process.env.TURNSTILE_SITE_KEY && process.env.TURNSTILE_SECRET_KEY);}
+// The Vercel Upstash marketplace provisions KV_REST_API_* names by default.
+function redisUrl(){return process.env.KV_REST_API_URL||process.env.UPSTASH_REDIS_REST_URL||
+  process.env.STORAGE_KV_REST_API_URL;}
+function redisToken(){return process.env.KV_REST_API_TOKEN||process.env.UPSTASH_REDIS_REST_TOKEN||
+  process.env.STORAGE_KV_REST_API_TOKEN;}
+function configured(){return !!(redisUrl()?.startsWith('https://') &&
+  redisToken() && process.env.TURNSTILE_SITE_KEY && process.env.TURNSTILE_SECRET_KEY);}
 async function redis(cmd){
-  const r=await fetch(process.env.UPSTASH_REDIS_REST_URL,{
-    method:'POST',headers:{'Authorization':'Bearer '+process.env.UPSTASH_REDIS_REST_TOKEN,
+  const r=await fetch(redisUrl(),{
+    method:'POST',headers:{'Authorization':'Bearer '+redisToken(),
       'Content-Type':'application/json'},body:JSON.stringify(cmd),
     signal:AbortSignal.timeout(6500),cache:'no-store'
   });
@@ -38,7 +43,7 @@ function message(wallet,nonce,host){
 async function rateLimit(request,action){
   const ip=(request.headers.get('x-vercel-forwarded-for')||
     request.headers.get('x-forwarded-for')||'unknown').split(',')[0].trim().slice(0,100);
-  const hash=createHash('sha256').update(ip+'|'+process.env.UPSTASH_REDIS_REST_TOKEN.slice(-32))
+  const hash=createHash('sha256').update(ip+'|'+redisToken().slice(-32))
     .digest('hex').slice(0,26);
   const k='crumb:mission:v1:rl:'+action+':'+Math.floor(Date.now()/60000)+':'+hash;
   const n=Number(await redis(['INCR',k]));
