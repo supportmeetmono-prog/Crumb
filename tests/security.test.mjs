@@ -84,11 +84,11 @@ test('Meme Lab gallery: four original downloadable images and nine translations'
  assert.equal((gallery.match(/data-gallery-download=/g)||[]).length,4);
  for(let i=1;i<=4;i++){
   const n=String(i).padStart(2,'0');
-  assert.ok(gallery.includes('/assets/meme-gallery/crumb-message-'+n+'.avif'));
+  assert.ok(gallery.includes('/assets/meme-gallery/crumb-message-'+n+'.png'));
   assert.ok(gallery.includes('data-i18n="downloadName'+i+'"'));
   assert.ok(js.includes('downloadAlt'+i));
  }
- assert.ok(js.includes("canvas.toBlob(resolve,'image/png')"));
+ assert.ok(js.includes("link.download='CRUMB-Message-0'+id+'.png'"));
  const translations=JSON.parse(js.slice('const translations='.length,js.indexOf(';\n')));
  for(const lang of ['en','es','it','pt','fr','zh','hi','ar','ru']){
   for(const key of ['downloadsTitle','downloadsDesc','downloadButton','downloadName1','downloadName2','downloadName3','downloadName4'])assert.ok(translations[lang][key],lang+'/'+key);
