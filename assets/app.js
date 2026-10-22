@@ -150,31 +150,14 @@ $('aiShare').addEventListener('click',()=>{
   tweet('My original CRUMB meme 👽🔋 #CRUMB https://crumb.vision/#aiStudio');
 });
 
-/* Free community gallery: convert local AVIF originals to PNG for broad sharing. */
+/* Public gallery: original user-uploaded PNG downloads without registration. */
 document.querySelectorAll('[data-gallery-download]').forEach(button=>{
-  button.addEventListener('click',async()=>{
+  button.addEventListener('click',()=>{
     const id=button.dataset.galleryDownload;
-    const src='/assets/meme-gallery/crumb-message-0'+id+'.avif';
-    const name='CRUMB-Message-0'+id+'.png';
-    button.disabled=true;
-    try{
-      const artwork=new Image();
-      artwork.decoding='async';
-      await new Promise((resolve,reject)=>{artwork.onload=resolve;artwork.onerror=reject;artwork.src=src;});
-      const canvas=document.createElement('canvas');
-      canvas.width=artwork.naturalWidth;canvas.height=artwork.naturalHeight;
-      const ctx=canvas.getContext('2d');if(!ctx)throw new Error('no_canvas');
-      ctx.drawImage(artwork,0,0);
-      const blob=await new Promise(resolve=>canvas.toBlob(resolve,'image/png'));
-      if(!blob)throw new Error('png_export_failed');
-      const url=URL.createObjectURL(blob);
-      const link=document.createElement('a');link.href=url;link.download=name;
-      document.body.appendChild(link);link.click();link.remove();
-      setTimeout(()=>URL.revokeObjectURL(url),5000);
-    }catch(err){
-      const link=document.createElement('a');link.href=src;link.download='CRUMB-Message-0'+id+'.avif';
-      document.body.appendChild(link);link.click();link.remove();
-    }finally{button.disabled=false;}
+    const link=document.createElement('a');
+    link.href='/assets/meme-gallery/crumb-message-0'+id+'.png';
+    link.download='CRUMB-Message-0'+id+'.png';
+    document.body.appendChild(link);link.click();link.remove();
   });
 });
 
