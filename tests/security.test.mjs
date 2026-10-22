@@ -45,9 +45,9 @@ test('SEO: public pages have canonical metadata and are indexable',()=>{
 });
 test('SEO: sitemap is valid XML-shaped with only canonical HTTPS URLs',()=>{
   const sitemap=read('sitemap.xml'),robots=read('robots.txt');
-  assert.match(sitemap,/^<\\?xml version="1.0" encoding="UTF-8"\\?>/);
+  assert.match(sitemap,/^<\?xml version="1.0" encoding="UTF-8"\?>/);
   for(const url of ['https://crumb.vision/','https://crumb.vision/hero-lab.html'])assert.ok(sitemap.includes('<loc>'+url+'</loc>'),url);
   assert.ok(!sitemap.includes('vercel.app'));
   assert.ok(robots.includes('Sitemap: https://crumb.vision/sitemap.xml'));
-  assert.ok(!robots.includes('Disallow: /\\n'));
+  assert.ok(!robots.split('\n').includes('Disallow: /'));
 });
