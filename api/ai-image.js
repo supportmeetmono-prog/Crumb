@@ -166,7 +166,7 @@ async function handle(req){
 export default async function handler(req,res){
   const host=String(req.headers.host||'').toLowerCase().replace(/:443$/,'');
   const permitted=host==='crumb.vision'||host==='www.crumb.vision'||
-    host==='crumb-ochre.vercel.app'||/^crumb-[a-z0-9-]+\\.vercel\\.app$/.test(host);
+    host==='crumb-ochre.vercel.app'||/^crumb-[a-z0-9-]+\.vercel\.app$/.test(host);
   if(!permitted)return res.status(421).setHeader('Cache-Control','no-store').json({error:'unrecognized_host'});
   const path=String(req.url||'/api/ai-image');
   if(!path.startsWith('/')||path.startsWith('//'))return res.status(400).json({error:'invalid_path'});
