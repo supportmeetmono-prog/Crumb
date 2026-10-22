@@ -280,6 +280,6 @@ $('look').addEventListener('change',scheduleDraw);$('format').addEventListener('
 $('resetBtn').addEventListener('click',()=>{$('look').value='classic';$('format').value='square';$('theme').value='space';caption.value=t('preset1');delete caption.dataset.custom;drawMeme()});
 $('downloadBtn').addEventListener('click',()=>{const text=caption.value.trim();if(text.length>75||/[<>\u0000-\u001f]/.test(text)||/\b(?:fuck|shit|puta|caralho|porn|nude)\b/i.test(text)){toast(t('labBad'));return}drawMeme();canvas.toBlob(blob=>{if(!blob){toast(t('labBad'));return}const link=document.createElement('a');const url=URL.createObjectURL(blob);link.href=url;link.download='CRUMB-'+$('look').value+'-'+$('format').value+'.png';document.body.appendChild(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),10000);toast(t('labSaved'))},'image/png')});
 document.querySelectorAll('[data-log]').forEach(button=>button.addEventListener('click',()=>{const id=button.dataset.log;tweet(t('log'+id+'Kicker')+' — '+t('log'+id+'Title')+'. '+t('log'+id+'Desc')+' #CRUMB')}));
-$('year').textContent=new Date().getFullYear();translate();refreshMission();setInterval(refreshMission,15000);
+$('year').textContent=new Date().getFullYear();translate();refreshMission();setInterval(()=>{if(!document.hidden)refreshMission()},60000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)refreshMission()});
 })();</script>
 </body></html>
