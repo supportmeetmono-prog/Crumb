@@ -277,6 +277,7 @@ function missionNumbers(n){
   $('missionPercent').textContent=(n/GOAL*100).toLocaleString(lang,{maximumFractionDigits:3})+'%';
 }
 function updateJoin(){
+  if(typeof aiControls==='function')aiControls();
   const eligible=missionReady&&wallet&&!walletUsed&&missionCount<GOAL&&!busy&&captchaToken;
   $('burnOnce').disabled=!eligible;
   const shortWallet=wallet?wallet.slice(0,6)+'…'+wallet.slice(-4):null;
@@ -409,6 +410,93 @@ $('look').addEventListener('change',scheduleDraw);$('format').addEventListener('
 $('resetBtn').addEventListener('click',()=>{$('look').value='classic';$('format').value='square';$('theme').value='space';caption.value=t('preset1');delete caption.dataset.custom;drawMeme()});
 $('downloadBtn').addEventListener('click',()=>{const text=caption.value.trim();if(text.length>75||/[<>\u0000-\u001f]/.test(text)||/\b(?:fuck|shit|puta|caralho|porn|nude)\b/i.test(text)){toast(t('labBad'));return}drawMeme();canvas.toBlob(blob=>{if(!blob){toast(t('labBad'));return}const link=document.createElement('a');const url=URL.createObjectURL(blob);link.href=url;link.download='CRUMB-'+$('look').value+'-'+$('format').value+'.png';document.body.appendChild(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),10000);toast(t('labSaved'))},'image/png')});
 document.querySelectorAll('[data-log]').forEach(button=>button.addEventListener('click',()=>{const id=button.dataset.log;tweet(t('log'+id+'Kicker')+' — '+t('log'+id+'Title')+'. '+t('log'+id+'Desc')+' #CRUMB')}));
-$('year').textContent=new Date().getFullYear();translate();refreshMission();setInterval(()=>{if(!document.hidden)refreshMission()},60000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)refreshMission()});
+
+// Paid AI Studio is completely off unless backend reports ready. Classic Meme Lab remains free.
+let aiEnabled=false,aiWorking=false,aiToken=null,aiWidget=null,aiSiteKey=null,aiOutput=null,aiOutputFormat='square';
+function aiMessage(key){$('aiStatus').textContent=t(key)}
+function aiControls(){
+  $('aiGenerate').disabled=!aiEnabled||aiWorking||!wallet||!aiToken;
+  if(!aiEnabled||aiWorking)return;
+  aiMessage(!wallet?'aiConnect':!aiToken?'aiCaptcha':'aiReady');
+}
+function aiLoadCaptcha(){
+  if(!aiEnabled||aiWidget!==null)return;
+  if(!window.turnstile){setTimeout(aiLoadCaptcha,500);return}
+  $('aiTurnstileWrap').hidden=false;
+  try{aiWidget=window.turnstile.render('#aiTurnstileTarget',{
+    sitekey:aiSiteKey,
+    callback:token=>{aiToken=token;aiControls()},
+    'expired-callback':()=>{aiToken=null;aiControls()},
+    'error-callback':()=>{aiToken=null;aiControls()}
+  })}catch(e){aiEnabled=false;aiMessage('aiError')}
+}
+async function aiRefresh(){
+  try{
+    const r=await fetch('/api/ai-image',{cache:'no-store'}),data=await r.json();
+    aiEnabled=r.ok&&data.ready===true&&typeof data.siteKey==='string';
+    aiSiteKey=aiEnabled?data.siteKey:null;
+    $('aiBadge').textContent=t(aiEnabled?'aiActive':'aiInactive');
+    if(aiEnabled)aiLoadCaptcha();else aiMessage('aiPending');
+  }catch(e){aiEnabled=false;aiMessage('aiPending')}
+  aiControls();
+}
+function aiOfficialReference(){
+  if(!charImg.complete||!charImg.naturalWidth||!charImg.naturalHeight)throw Error('reference_unloaded');
+  const c=document.createElement('canvas'),ratio=Math.min(1,780/charImg.naturalHeight);
+  c.width=Math.round(charImg.naturalWidth*ratio);c.height=Math.round(charImg.naturalHeight*ratio);
+  c.getContext('2d').drawImage(charImg,0,0,c.width,c.height);
+  const png=c.toDataURL('image/png');
+  if(png.length>1700000)throw Error('reference_unloaded');
+  return png;
+}
+async function aiPost(data){
+  const r=await fetch('/api/ai-image',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data),cache:'no-store'});
+  const result=await r.json().catch(()=>({}));
+  if(!r.ok)throw Error(result.error||'provider_error');
+  return result;
+}
+$('aiGenerate').addEventListener('click',async()=>{
+  if(!aiEnabled||aiWorking)return;
+  const prompt=$('aiPrompt').value.trim();
+  if(prompt.length<5||prompt.length>320){aiMessage('aiInvalidPrompt');return}
+  if(!wallet){aiMessage('aiConnect');return}
+  if(!aiToken){aiMessage('aiCaptcha');return}
+  const provider=metamaskProvider();if(!provider){aiMessage('aiConnect');return}
+  aiWorking=true;$('aiGenerate').disabled=true;aiMessage('aiBusy');
+  const activeWallet=wallet,verifiedToken=aiToken;
+  try{
+    const referenceImage=aiOfficialReference();
+    const challenge=await aiPost({action:'challenge',wallet:activeWallet});
+    const encoded='0x'+Array.from(new TextEncoder().encode(challenge.message)).map(x=>x.toString(16).padStart(2,'0')).join('');
+    const signature=await provider.request({method:'personal_sign',params:[encoded,activeWallet]});
+    if(activeWallet!==wallet)throw Error('wallet_changed');
+    const result=await aiPost({action:'generate',wallet:activeWallet,nonce:challenge.nonce,
+      signature,turnstile:verifiedToken,prompt,format:$('aiFormat').value,referenceImage});
+    if(result.success!==true||typeof result.image!=='string'||!result.image.startsWith('data:image/webp;base64,'))throw Error('bad_result');
+    aiOutput=result.image;aiOutputFormat=result.format;
+    $('aiPreview').src=aiOutput;$('aiPreview').hidden=false;$('aiPlaceholder').hidden=true;
+    $('aiDownload').disabled=false;$('aiShare').disabled=false;
+    aiMessage('aiSuccess');
+  }catch(err){
+    const limited=['wallet_daily_limit','studio_budget_limit','ip_daily_limit','rate_limited'].includes(err.message);
+    aiMessage(err.message==='reference_unloaded'?'aiBadArt':limited?'aiQuota':'aiError');
+  }finally{
+    aiWorking=false;aiToken=null;
+    if(aiWidget!==null&&window.turnstile)try{window.turnstile.reset(aiWidget)}catch(e){}
+    $('aiGenerate').disabled=true;
+  }
+});
+$('aiDownload').addEventListener('click',()=>{
+  if(!aiOutput)return;
+  const link=document.createElement('a');
+  link.href=aiOutput;link.download='CRUMB-AI-'+aiOutputFormat+'.webp';
+  document.body.appendChild(link);link.click();link.remove();
+});
+$('aiShare').addEventListener('click',()=>{
+  if(!aiOutput)return;
+  tweet('My original CRUMB meme 👽🔋 #CRUMB https://crumb-ochre.vercel.app/#aiStudio');
+});
+
+$('year').textContent=new Date().getFullYear();translate();refreshMission();aiRefresh();setInterval(()=>{if(!document.hidden)refreshMission()},60000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)refreshMission()});
 })();</script>
 </body></html>
