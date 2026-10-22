@@ -1,0 +1,32 @@
+name: CRUMB security checks
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: '25 7 * * 1'
+  workflow_dispatch:
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: JavaScript syntax
+        run: |
+          node --check assets/app.js
+          node --check assets/hero-lab.js
+          node --check api/ai-image.js
+          node --check api/mission.js
+          node --check api/counter.js
+      - name: Security regression tests
+        run: node --test tests/security.test.mjs
+      - name: Dependency audit
+        run: |
+          npm install --package-lock-only --ignore-scripts --no-fund --no-audit
+          npm audit --omit=dev --audit-level=high
