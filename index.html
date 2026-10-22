@@ -53,6 +53,27 @@
     @media(max-width:1020px){.navlinks{gap:15px}.navlinks a{font-size:12px}.navright>.btn{display:none}.hero-character{right:-85px;height:580px;opacity:.75}.hero::after{background:linear-gradient(90deg,#071017 0%,#071017ed 38%,#07101774 80%),linear-gradient(0deg,#071018aa,transparent 55%)}.mission-grid{gap:35px}.studio-grid{grid-template-columns:350px minmax(0,1fr)}}
     @media(max-width:770px){.container{width:min(100% - 32px,var(--container))}.section{padding:75px 0}.nav{min-height:67px}.brand{font-size:31px}.navright{margin-left:auto}.hamburger{display:flex}.navlinks{position:absolute;top:67px;left:0;right:0;background:#0a161b;display:none;flex-direction:column;align-items:stretch;gap:0;padding:10px 16px 18px;border-bottom:1px solid #b4ed8055}.navlinks.open{display:flex}.navlinks a{padding:12px 8px;border-bottom:1px solid #ffffff11;font-size:14px}.hero{min-height:850px;align-items:flex-start}.hero .container{padding-top:73px;padding-bottom:300px}.hero h1{font-size:clamp(66px,13vw,101px)}.hero .lead{font-size:17px;max-width:510px}.hero-character{height:380px;right:4px;bottom:0;opacity:.9}.hero-stats{max-width:470px}.scrollhint{left:20px;bottom:20px}.mission-grid,.battery-panel,.token-card,.studio-grid{grid-template-columns:1fr}.mission-visual{min-height:400px;order:2}.mission-visual img{height:390px}.mission-content{order:1}.battery-panel{gap:27px;padding:26px}.logs{grid-template-columns:1fr 1fr}.footer-main{flex-direction:column}.footright{align-items:flex-start}}
     @media(max-width:525px){.langwrap{padding:0 9px}.langwrap select{max-width:95px;width:95px}.hero{min-height:890px}.hero .container{padding-top:50px}.hero h1{font-size:clamp(59px,12.8vw,84px);line-height:1.0;letter-spacing:-1px}.hero .lead{margin-top:22px;font-size:16px}.hero-actions{flex-direction:column;align-items:flex-start}.hero-actions .btn{min-width:246px}.hero .microtag{max-width:300px;font-size:10px}.hero-stats{gap:6px;margin-top:25px;max-width:280px}.hero-stats span{font-size:9px;padding:7px 8px}.hero-character{height:315px;right:-45px;bottom:13px;opacity:.92}.scrollhint{display:none}.ticker{height:39px}.ticker-inner{font-size:17px}.section-head{margin-bottom:31px}.section-head p:last-child{font-size:15px}.battery-meter{padding:23px}.battery-shell{width:min(245px,85%);height:120px}.charge-btns{flex-direction:column}.studio-controls,.studio-preview{padding:16px}.studio-preview{padding:10px}.preview-top{font-size:10px}.canvas-frame{min-height:280px}.presets{grid-template-columns:1fr 1fr}.logs{grid-template-columns:1fr}.logcard{min-height:300px}.token-stat{padding:19px 15px}.token-stat strong{font-size:12px}.bottomline{flex-direction:column}.langwrap:before{display:none}}
+    /* Mobile background echo: CRUMB seated on Mars, overlooking Earth.
+       Explicit subject crop prevents the 3:1 banner from hiding him on narrow screens. */
+    .hero-seated-watermark{display:none;pointer-events:none;user-select:none}
+    @media(max-width:770px){
+      .hero .hero-bg{opacity:.32;background-position:76% center}
+      .hero-seated-watermark{
+        display:block;position:absolute;top:clamp(100px,22vw,170px);left:0;width:100%;
+        height:clamp(310px,108vw,460px);max-width:none;z-index:0;
+        object-fit:cover;object-position:79% center;
+        opacity:.30;filter:saturate(.72) contrast(1.12);
+        -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 15%,#000 77%,transparent 100%);
+        mask-image:linear-gradient(180deg,transparent 0%,#000 15%,#000 77%,transparent 100%);
+      }
+    }
+    @media(max-width:525px){
+      .hero-seated-watermark{
+        top:85px;height:clamp(320px,102vw,430px);
+        object-position:79% center;opacity:.36;
+      }
+    }
+
     /* Show CRUMB in BOTH poses. Full-body character is in document flow on mobile,
        rather than absolutely positioned below an expanding hero. Seated Mars scene is
        given a crop that keeps the character visible at narrow widths. */
@@ -112,7 +133,7 @@
   </nav>
 </header>
 <main id="top">
-<section class="hero" aria-labelledby="heroTitle"><div class="hero-bg" id="heroBackground"></div><div class="hero-noise"></div>
+<section class="hero" aria-labelledby="heroTitle"><div class="hero-bg" id="heroBackground"></div><img class="hero-seated-watermark" alt="" aria-hidden="true" draggable="false"><div class="hero-noise"></div>
  <div class="container"><div class="hero-body"><div class="smallcap eyebrow"><span class="signal-dot"></span><span data-i18n="eyebrow">TRANSMISSION FROM MARS • 001</span></div><h1 id="heroTitle"><span data-i18n="heroTitleA">EARTH,</span><span class="outline" data-i18n="heroTitleB">CAN YOU HEAR ME?</span></h1><p class="smallcap" style="margin-top:20px;color:#d7f3a2" data-i18n="heroTag">ONE ALIEN. ONE BATTERY. ONE IMPOSSIBLE MISSION.</p><div class="hero-mobile-portrait"><img class="character-art" alt="CRUMB standing on Mars, full body" draggable="false"></div><p class="lead" data-i18n="heroDesc">My name is CRUMB. I am a living battery from Mars. I came looking for Elon. Unfortunately, I forgot my charger.</p><p class="hero-mars-alias" data-i18n="footerMarsName">On Mars, my name is ksum mole.</p><div class="hero-actions"><button type="button" class="btn primary" id="walletHero"><span>◈</span><span data-i18n="walletConnect">CONNECT METAMASK</span></button><button type="button" class="btn secondary" id="heroShare"><span>↗</span><span data-i18n="heroCTA">Help me reach Elon</span></button><a class="btn secondary" href="#recharge"><span>ϟ</span><span data-i18n="heroSecondary">View the mission</span></a></div><p class="microtag" data-i18n="heroNote">Fictional character. Real community. Absolutely no guaranteed moon mission.</p><div class="hero-stats"><span data-i18n="badge1">SIGNAL: WEAK</span><span data-i18n="badge2">ORIGIN: MARS</span><span data-i18n="badge3">DESTINATION: ELON</span></div></div></div>
  <img class="hero-character character-art" alt="CRUMB, the green alien battery from Mars" draggable="false"><div class="scrollhint" data-i18n="heroScroll">Scroll to intercept transmission</div>
 </section>
@@ -287,7 +308,7 @@ if(window.ethereum?.on)window.ethereum.on('accountsChanged',accounts=>{
   updateJoin();refreshMission();
 });
 const charImg=new Image();charImg.onload=()=>drawMeme();charImg.src=characterSource;const marsImg=new Image();marsImg.onload=()=>drawMeme();marsImg.src=marsSource;
-document.querySelectorAll('.character-art').forEach(img=>img.src=characterSource);document.querySelectorAll('.mars-seated-art').forEach(img=>img.src=marsSource);$('heroBackground').style.backgroundImage='url("'+marsSource+'")';
+document.querySelectorAll('.character-art').forEach(img=>img.src=characterSource);document.querySelectorAll('.mars-seated-art, .hero-seated-watermark').forEach(img=>img.src=marsSource);$('heroBackground').style.backgroundImage='url("'+marsSource+'")';
 const canvas=$('memeCanvas'),c=canvas.getContext('2d'),caption=$('caption'); const formats={square:[1080,1080],banner:[1500,500],story:[1080,1920]};
 function roundRect(x,y,w,h,r){c.beginPath();if(c.roundRect)c.roundRect(x,y,w,h,r);else c.rect(x,y,w,h)}
 function drawText(str,x,y,maxWidth,size,color='#e9ffd7'){c.fillStyle=color;c.textAlign='center';c.textBaseline='middle';c.shadowColor='#050d0bf0';c.shadowBlur=15;c.font=`900 ${size}px 'Barlow Condensed', 'Arial Narrow', sans-serif`;c.lineWidth=Math.max(4,size*.1);c.strokeStyle='#0a151be6';let lines=[str.trim()];if(c.measureText(str).width>maxWidth){let left=str.trim().split(/\s+/);lines=[];let line='';for(const word of left){if(c.measureText((line+' '+word).trim()).width>maxWidth&&line){lines.push(line);line=word}else{line=(line+' '+word).trim()}}if(line)lines.push(line)}if(lines.length>3)lines=lines.slice(0,3);lines.forEach((line,i)=>{c.strokeText(line,x,y+i*(size*1.06),maxWidth);c.fillText(line,x,y+i*(size*1.06),maxWidth)});c.shadowBlur=0}
