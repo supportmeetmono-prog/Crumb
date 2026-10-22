@@ -147,7 +147,7 @@ $('aiDownload').addEventListener('click',()=>{
 });
 $('aiShare').addEventListener('click',()=>{
   if(!aiOutput)return;
-  tweet('My original CRUMB meme 👽🔋 #CRUMB https://crumb-ochre.vercel.app/#aiStudio');
+  tweet('My original CRUMB meme 👽🔋 #CRUMB https://crumb.vision/#aiStudio');
 });
 
 $('year').textContent=new Date().getFullYear();translate();aiRefresh();
