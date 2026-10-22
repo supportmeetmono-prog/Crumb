@@ -32,3 +32,22 @@ test('retired endpoints stay retired',()=>{
   assert.ok(read('api/counter.js').includes('status(410)'));
   assert.ok(read('api/mission.js').includes('status(410)'));
 });
+
+test('SEO: public pages have canonical metadata and are indexable',()=>{
+  const pages=[['index.html','https://crumb.vision/'],['hero-lab.html','https://crumb.vision/hero-lab.html']];
+  for(const [file,canonical] of pages){
+    const html=read(file);
+    assert.ok(html.includes('rel="canonical" href="'+canonical+'"'),file+' canonical');
+    assert.ok(html.includes('name="description"'),file+' description');
+    assert.ok(html.includes('name="robots" content="index, follow'),file+' robots');
+    assert.ok(!/noindex/i.test(html),file+' should be indexable');
+  }
+});
+test('SEO: sitemap is valid XML-shaped with only canonical HTTPS URLs',()=>{
+  const sitemap=read('sitemap.xml'),robots=read('robots.txt');
+  assert.match(sitemap,/^<\\?xml version="1.0" encoding="UTF-8"\\?>/);
+  for(const url of ['https://crumb.vision/','https://crumb.vision/hero-lab.html'])assert.ok(sitemap.includes('<loc>'+url+'</loc>'),url);
+  assert.ok(!sitemap.includes('vercel.app'));
+  assert.ok(robots.includes('Sitemap: https://crumb.vision/sitemap.xml'));
+  assert.ok(!robots.includes('Disallow: /\\n'));
+});
