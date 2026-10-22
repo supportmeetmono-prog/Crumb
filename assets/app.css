@@ -68,27 +68,6 @@
     .ai-actions .btn{flex:1}
     @media(max-width:800px){.ai-grid{grid-template-columns:1fr}.ai-panel{padding:18px}}
     @media(max-width:525px){.ai-form,.ai-preview{padding:14px}.ai-actions .btn{flex:1 1 100%}.ai-image-stage{min-height:250px}}
-    .allocation-track{display:flex;gap:2px;height:17px;border-radius:999px;overflow:hidden;margin-bottom:18px}
-    .allocation-track span:nth-child(1){width:5%;background:#6bcf97}
-    .allocation-track span:nth-child(2){width:5%;background:#72a8e8}
-    .allocation-track span:nth-child(3){width:90%;background:#8e9ca5}
-    .ai-form #walletAi{width:100%;margin-bottom:17px}
-    /* Clear three-part tokenomics that reflows safely on phones */
-    .tokenomics-explainer{margin-top:26px}
-    .allocation-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-    .allocation-card{min-width:0;background:#101e24;border:1px solid #b4e08c37;border-radius:16px;padding:25px;box-shadow:0 12px 35px #0003}
-    .allocation-card:nth-child(1){border-color:#e4875f67}
-    .allocation-card:nth-child(2){border-color:#78a8e262}
-    .allocation-card:nth-child(3){border-color:#92daa968}
-    .allocation-icon{font-size:27px;display:block;margin-bottom:13px}
-    .allocation-kicker{font:700 11px/1.5 'Space Mono',monospace;letter-spacing:.2px;color:#b6d9a0;display:block}
-    .allocation-value{font:800 clamp(22px,2.6vw,32px)/1.12 'Barlow Condensed',sans-serif;letter-spacing:.1px;color:#f3fff0;display:block;margin:12px 0 16px;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
-    .allocation-card p{color:#b3c4bc;font-size:13px;line-height:1.7}
-    .tokenomics-summary{border-left:3px solid var(--mint);padding:14px 18px;margin-top:21px;color:#dcebd5;font-size:13px;background:#12231e}
-    .hero-token-mini{margin:13px 0 5px;font:700 11px/1.55 'Space Mono',monospace;letter-spacing:.3px;color:#d0f8a9}
-    @media(max-width:900px){.allocation-grid{grid-template-columns:1fr 1fr}.allocation-card:last-child{grid-column:1/-1}}
-    @media(max-width:610px){.allocation-grid{grid-template-columns:1fr}.allocation-card:last-child{grid-column:auto}.allocation-card{padding:21px}.allocation-value{font-size:28px}.hero-token-mini{font-size:10px}}
-
     /* Mobile background echo: CRUMB seated on Mars, overlooking Earth.
        Explicit subject crop prevents the 3:1 banner from hiding him on narrow screens. */
     .hero-seated-watermark{display:none;pointer-events:none;user-select:none}
@@ -157,23 +136,18 @@
     }
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
   
-/* Four-way token allocation; preserve responsive mobile layout. */
-.allocation-track-four span:nth-child(1){width:80%;background:#6bcf97}
-.allocation-track-four span:nth-child(2){width:10%;background:#bf9ce7}
-.allocation-track-four span:nth-child(3){width:5%;background:#e4875f}
-.allocation-track-four span:nth-child(4){width:5%;background:#72a8e8}
-.allocation-grid-four{grid-template-columns:repeat(4,minmax(0,1fr))}
-.allocation-grid-four .allocation-card{grid-column:auto}
-.allocation-grid-four .allocation-card:nth-child(3){border-color:#e4875f67}
-.allocation-grid-four .allocation-card:nth-child(4){border-color:#72a8e862}
-.token-security{margin-top:27px;padding:26px;border:1px solid #a9d89e50;border-radius:17px;background:linear-gradient(145deg,#122721,#101c25)}
-.token-security h3{margin:10px 0 12px;font:800 clamp(23px,3vw,33px)/1.15 'Barlow Condensed',sans-serif;color:#e7fbe5}
-.token-security-intro{font-size:14px;line-height:1.7;color:#bdceca;max-width:950px}
-.token-security-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;margin-top:24px}
-.token-security-step{padding:21px 19px;border-radius:12px;background:#0a171a;border:1px solid #b5e89927}
-.token-security-number{font:700 12px 'Space Mono',monospace;color:var(--mint)}
-.token-security-step h4{font:700 16px/1.3 'DM Sans',sans-serif;margin:12px 0 9px;color:#e8fbe3}
-.token-security-step p{font:400 13px/1.75 'DM Sans',sans-serif;color:#b7cbc4}
-.token-security-pending{border:1px solid #e6a47165;color:#f1ceb3;background:#6d421b3b;padding:15px 17px;border-radius:8px;margin-top:19px;font:600 12px/1.7 'DM Sans',sans-serif}
-@media(max-width:1050px){.allocation-grid-four{grid-template-columns:repeat(2,minmax(0,1fr))}.token-security-grid{grid-template-columns:1fr}}
-@media(max-width:610px){.allocation-grid-four{grid-template-columns:1fr}.token-security{padding:18px}.token-security-step{padding:17px}}
+
+/* Community-first token announcement: no distribution values in public UI. */
+.token-coming-soon{position:relative;isolation:isolate;text-align:center;max-width:960px;margin:auto;padding:clamp(46px,8vw,94px) 30px;overflow:hidden;border-radius:27px;background:radial-gradient(ellipse at 50% -10%,#4a9c5640,transparent 61%),linear-gradient(155deg,#132b27,#0d1923 70%);border:1px solid #87bda344;box-shadow:0 28px 80px #03090c99}
+.token-coming-soon::after{content:"";position:absolute;inset:0;border-radius:inherit;z-index:-1;pointer-events:none;background:repeating-linear-gradient(115deg,transparent 0 85px,#ffffff06 86px 87px)}
+.token-coming-orb{height:94px;width:94px;display:grid;place-items:center;margin:0 auto 24px;border-radius:50%;background:radial-gradient(circle at 34% 25%,#acff9f,#347d6f 55%,#0d292f);border:2px solid #b7f8bc88;box-shadow:0 0 38px #73fa8570, inset 0 0 30px #ecffd640}
+.token-coming-orb span{font:800 56px/1 'Barlow Condensed',sans-serif;color:#0a2221;text-shadow:0 1px #c8ffc4}
+.token-coming-label{color:#b9eec6;letter-spacing:.2em}
+.token-coming-soon h2{margin:14px auto 20px;max-width:830px;font:900 clamp(42px,7.3vw,82px)/1.02 'Barlow Condensed',sans-serif;letter-spacing:.015em;color:#f1fff0;text-wrap:balance}
+.token-coming-status{display:inline-flex;align-items:center;justify-content:center;gap:11px;margin-bottom:20px;padding:11px 24px;border-radius:999px;background:#83f7a715;border:1px solid #7bf5aa65}
+.token-coming-status strong{font:700 clamp(14px,2.8vw,19px)/1.2 'Space Mono',monospace;letter-spacing:.075em;color:#b7fac9}
+.token-coming-dot{width:9px;height:9px;flex:0 0 9px;border-radius:50%;background:#7bf5aa;box-shadow:0 0 15px #7bf5aa}
+.token-coming-description{max-width:585px;margin:0 auto 18px;font-size:16px;line-height:1.7;color:#c4d8cc}
+.token-coming-warning{max-width:610px;margin:0 auto 24px;font-size:12px;line-height:1.65;color:#adc1b8}
+.token-coming-soon .btn{max-width:270px;margin:auto}
+@media(max-width:610px){.token-coming-soon{padding:48px 20px;border-radius:17px}.token-coming-soon h2{font-size:clamp(39px,11vw,62px)}.token-coming-description{font-size:14px}.token-coming-orb{height:77px;width:77px}.token-coming-orb span{font-size:45px}}
