@@ -51,3 +51,31 @@ test('SEO: sitemap is valid XML-shaped with only canonical HTTPS URLs',()=>{
   assert.ok(robots.includes('Sitemap: https://crumb.vision/sitemap.xml'));
   assert.ok(!robots.split('\n').includes('Disallow: /'));
 });
+
+test('tokenomics: percentages, visible totals and translations agree',()=>{
+  const html=read('index.html'),js=read('assets/app.js'),css=read('assets/app.css');
+  for(const [pct,amount] of [['80%','399,200,000'],['10%','49,900,000'],['5%','24,950,000']]){
+    assert.ok(html.includes(amount),amount);
+    assert.ok(html.includes(pct),pct);
+  }
+  assert.ok(!html.includes('449,100,000'),'retired 90% placeholder');
+  assert.ok(!html.includes('to define'),'retired allocation label');
+  for(const lang of ['en','es','it','pt','fr','zh','hi','ar','ru']){
+    for(const key of ['allocMarketLabel','allocReserveLabel','allocMarketingLabel','allocTreasuryLabel','securityStep1Text','securityStep2Text','securityStep3Text','securityCaution','faq7A','faq8A']){
+      assert.ok(js.includes('"'+key+'":'),key);
+    }
+  }
+  assert.ok(html.includes('data-i18n-aria="distributionLabel"'));
+  assert.ok(js.includes("dataset.i18nAria"));
+  assert.ok(css.includes('.allocation-grid-four'));
+});
+test('tokenomics: draft uses separate non-upgradeable on-chain lock',()=>{
+  const c=read('contracts/CRUMB.sol');
+  assert.ok(c.includes('399_200_000 * 10 ** 18'));
+  assert.ok(c.includes('49_900_000 * 10 ** 18'));
+  assert.ok(c.includes('24_950_000 * 10 ** 18'));
+  assert.ok(c.includes('365 days'));
+  assert.ok(c.includes('block.timestamp >= unlockAt'));
+  assert.ok(c.includes('token.transfer(beneficiaryMultisig, amount)'));
+  assert.ok(!c.includes('onlyOwner'));
+});
