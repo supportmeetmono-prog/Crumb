@@ -20,3 +20,7 @@ CRUMB runs as a public website on Vercel. Public clients can always inspect deli
 7. Keep recoverable offline backups and an incident plan; test restore procedures.
 
 No website is guaranteed 100% safe or protected against every denial-of-service attack. This repo is not a substitute for manual penetration testing of authorized systems or a professional contract audit before token launch.
+
+## Deployment recovery log (2026-10-22)
+
+The GitHub-to-Vercel project integration was reconnected for `supportmeetmono-prog/Crumb` on the existing Vercel `bullarenaaio/crumb` project. This documentation commit deliberately triggers the connected production Git build so commit `13a7520ce650bcb823358816614a3885f2b09c66` security fixes are included. After deployment, verify `crumb.vision`, browser console/CSP, static assets, translated content, and the AI endpoint is safely disabled by default.
