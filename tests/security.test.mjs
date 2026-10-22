@@ -76,3 +76,24 @@ test('private planning reminder: Solidity draft remains non-deployed',()=>{
  const c=read('contracts/CRUMB.sol');
  assert.ok(c.includes('DRAFT ONLY'));
 });
+
+test('Meme Lab gallery: four original downloadable images and nine translations',()=>{
+ const html=read('index.html'),js=read('assets/app.js'),css=read('assets/app.css');
+ assert.ok(html.includes('id="studio"')&&html.includes('id="officialDownloads"'));
+ const gallery=html.slice(html.indexOf('id="officialDownloads"'),html.indexOf('</section>',html.indexOf('id="officialDownloads"')));
+ assert.equal((gallery.match(/data-gallery-download=/g)||[]).length,4);
+ for(let i=1;i<=4;i++){
+  const n=String(i).padStart(2,'0');
+  assert.ok(gallery.includes('/assets/meme-gallery/crumb-message-'+n+'.png'));
+  assert.ok(gallery.includes('data-i18n="downloadName'+i+'"'));
+  assert.ok(js.includes('downloadAlt'+i));
+ }
+ assert.ok(js.includes("link.download='CRUMB-Message-0'+id+'.png'"));
+ const translations=JSON.parse(js.slice('const translations='.length,js.indexOf(';\n')));
+ for(const lang of ['en','es','it','pt','fr','zh','hi','ar','ru']){
+  for(const key of ['downloadsTitle','downloadsDesc','downloadButton','downloadName1','downloadName2','downloadName3','downloadName4'])assert.ok(translations[lang][key],lang+'/'+key);
+ }
+ assert.ok(css.includes('scroll-snap-type:x mandatory'));
+ assert.ok(js.includes('officialGalleryNavigate'));
+ assert.equal((gallery.match(/data-gallery-dot=/g)||[]).length,4);
+});
