@@ -89,7 +89,7 @@ test('Meme Lab gallery: four original downloadable images and nine translations'
   assert.ok(js.includes('downloadAlt'+i));
  }
  assert.ok(js.includes("canvas.toBlob(resolve,'image/png')"));
- const translations=JSON.parse(js.slice('const translations='.length,js.indexOf(';\\n')));
+ const translations=JSON.parse(js.slice('const translations='.length,js.indexOf(';\n')));
  for(const lang of ['en','es','it','pt','fr','zh','hi','ar','ru']){
   for(const key of ['downloadsTitle','downloadsDesc','downloadButton','downloadName1','downloadName2','downloadName3','downloadName4'])assert.ok(translations[lang][key],lang+'/'+key);
  }
