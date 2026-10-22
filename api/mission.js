@@ -3,7 +3,8 @@
 import { randomBytes, createHash } from 'node:crypto';
 import { getAddress, verifyMessage } from 'ethers';
 
-const GOAL=100000, REDUCTION=9990000, SUPPLY=1000000000000;
+const GOAL=100000, REDUCTION=9980000, REWARD_PER_WALLET=10000, SUPPLY=1000000000000;
+const PLANNED_BURN=998000000000, REWARD_POOL=1000000000, LAUNCH_POOL=1000000000;
 const COUNT='crumb:mission:v1:count', MEMBERS='crumb:mission:v1:members';
 function response(data,status=200){
   return Response.json(data,{status,headers:{'Cache-Control':'no-store','X-Content-Type-Options':'nosniff'}});
@@ -33,12 +34,17 @@ function count(value){
   return n;
 }
 function fullResponse(n,siteKey){return {ready:true,goal:GOAL,count:n,perWallet:REDUCTION,
-  plannedInitialSupply:SUPPLY,plannedCancelled:n*REDUCTION,
-  plannedRemaining:SUPPLY-n*REDUCTION,siteKey};}
+  rewardPerWallet:REWARD_PER_WALLET,lockDaysAfterLaunch:90,
+  plannedInitialSupply:SUPPLY,plannedBurnAtGoal:PLANNED_BURN,
+  plannedRewardPool:REWARD_POOL,plannedLaunchPool:LAUNCH_POOL,
+  plannedSupplyAfterBurnAtGoal:REWARD_POOL+LAUNCH_POOL,
+  plannedCancelled:n*REDUCTION,plannedRewardAllocated:n*REWARD_PER_WALLET,
+  plannedRemaining:SUPPLY-n*REDUCTION,onChainBurnLive:false,rewardsClaimable:false,siteKey};}
 function message(wallet,nonce,host){
   return 'CRUMB PRE-LAUNCH MISSION\nWebsite: '+host+'\nWallet: '+wallet+
-    '\nAction: I authorize exactly one free participation.\nPlanned supply reduction: 9,990,000 CRUMB.'+
-    '\nNo existing token is being burned and no funds are requested.\nNonce: '+nonce;
+    '\nAction: I authorize exactly one free participation.\nPlanned supply reduction: 9,980,000 CRUMB.'+
+    '\nProposed reward eligibility: 10,000 CRUMB, locked for 90 days after token launch.'+
+    '\nNo token is minted, burned, transferred or guaranteed by signing. No funds requested.\nNonce: '+nonce;
 }
 async function rateLimit(request,action){
   const ip=(request.headers.get('x-vercel-forwarded-for')||
