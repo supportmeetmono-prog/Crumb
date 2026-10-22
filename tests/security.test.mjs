@@ -13,8 +13,8 @@ test('security headers defend document and browser permissions',()=>{
 test('both HTML pages keep scripts and CSS outside HTML',()=>{
   for(const path of ['index.html','hero-lab.html']){
     const html=read(path);
-    assert.ok(!/<script(?![^>]*\\bsrc=)[^>]*>/i.test(html),'unexpected inline script: '+path);
-    assert.ok(!/<style[\\s>]/i.test(html),'unexpected inline style: '+path);
+    assert.ok(!/<script(?![^>]*\bsrc=)[^>]*>/i.test(html),'unexpected inline script: '+path);
+    assert.ok(!/<style[\s>]/i.test(html),'unexpected inline style: '+path);
     assert.ok(html.includes('/assets/'));
   }
 });
