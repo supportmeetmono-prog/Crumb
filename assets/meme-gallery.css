@@ -36,3 +36,6 @@
 @media(max-width:950px){.gallery-collection{padding:28px 22px}.gallery-collection .gallery-grid{grid-template-columns:minmax(230px,295px) minmax(0,1fr);gap:16px}}
 @media(max-width:700px){.gallery-collection{margin-top:45px;padding:22px 12px;border-radius:16px}.gallery-collection .gallery-heading{margin-bottom:23px;padding:0 6px}.gallery-collection .gallery-grid{grid-template-columns:1fr;gap:16px}.gallery-collection .gallery-side{gap:13px}.gallery-collection .gallery-panel{padding:14px}.gallery-collection .gallery-thumbs{display:flex;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x proximity;gap:9px;max-height:none}.gallery-collection .gallery-thumb{flex:0 0 106px;min-width:106px;scroll-snap-align:start}.gallery-collection .gallery-frame{min-height:260px;max-height:560px}.gallery-collection .gallery-canvas{max-height:535px}.gallery-collection .gallery-buttons{flex-direction:column}.gallery-collection .gallery-buttons .btn{flex:auto;width:100%}.gallery-collection .gallery-options{grid-template-columns:minmax(0,1fr) 85px}}
 @media(prefers-reduced-motion:reduce){.gallery-collection *{transition:none!important;scroll-behavior:auto!important}}
+
+/* Free CRUMB now occupies the original studio anchor without the retired generators. */
+.studio-section .gallery-collection{margin-top:0}
