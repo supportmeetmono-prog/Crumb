@@ -1,50 +1,120 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#070d13">
-  <meta name="description" id="metaDescription" content="CRUMB is on Mars preparing for his October 24, 2026 journey toward Earth. Follow his fictional quest to find Elon Musk and create your own meme in Free CRUMB.">
-  <link rel="canonical" href="https://crumb.vision/">
-  <meta name="robots" content="index, follow, max-image-preview:large">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="CRUMB">
-  <meta property="og:locale" content="en_US">
-  <meta property="og:url" content="https://crumb.vision/">
-  <meta property="og:title" content="CRUMB — The Journey Begins | Mars to Earth">
-  <meta property="og:description" content="The signal is ending. The journey begins. CRUMB leaves Mars for Earth on October 24, 2026. Follow the fictional saga and create your own Free CRUMB meme.">
-  <meta property="og:image" content="https://www.crumb.vision/assets/meme-gallery/CRUMB-Mars-City-05.jpg">
-  <meta property="og:image:alt" content="CRUMB in a futuristic Martian city — the journey begins">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://www.crumb.vision/assets/meme-gallery/CRUMB-Mars-City-05.jpg">
-  <meta name="twitter:title" content="CRUMB — The Journey Begins | Mars to Earth">
-  <meta name="twitter:description" content="The signal is ending. The journey begins October 24. Follow CRUMB from Mars to Earth.">
-
-  <title>CRUMB — The Journey Begins | Mars to Earth</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/app.css">
-  <link rel="stylesheet" href="/assets/meme-gallery.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="description" content="Just a raccoon. Just a meme coin. Nothing serious. Follow the experiment to reach one million followers before a planned 500 trillion CRUMB burn.">
+<link rel="canonical" href="https://www.crumb.vision/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="CRUMB">
+<meta property="og:title" content="CRUMB — Just a Raccoon. Nothing Serious.">
+<meta property="og:description" content="Can a raccoon reach 1,000,000 followers? Follow the experiment. No token is trading yet.">
+<meta property="og:url" content="https://www.crumb.vision/">
+<meta property="og:image" content="https://commons.wikimedia.org/wiki/Special:FilePath/Raccoon-scavenge.jpg">
+<meta property="og:image:alt" content="A real raccoon holding something to eat">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CRUMB — Just a Raccoon">
+<meta name="twitter:description" content="Just a raccoon. Just a meme coin. Nothing serious. Road to 1M followers.">
+<meta name="twitter:image" content="https://commons.wikimedia.org/wiki/Special:FilePath/Raccoon-scavenge.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext y='52' x='3' font-size='56'%3E%F0%9F%A6%9D%3C/text%3E%3C/svg%3E">
+<title>CRUMB — Just a Raccoon</title>
+<link rel="stylesheet" href="/assets/meme-gallery.css">
+<link rel="stylesheet" href="/assets/raccoon-site.css">
 </head>
 <body>
-<header>
-  <nav class="container nav" aria-label="Primary navigation">
-    <a class="brand" href="#top" aria-label="CRUMB home"><span class="brandmark">ϟ</span>CRUMB<sup>👽 $CRUMB</sup></a>
-    <div class="navlinks" id="navlinks">
-      <a href="#mission" data-i18n="navMission">The story</a><a href="#crumbDownloads" id="freeCrumbNav">FREE CRUMB</a><a href="#logs" data-i18n="navLog">Mission Log</a><a href="#token" data-i18n="navToken">$CRUMB</a>
+<header class="site-header" id="top">
+  <nav class="site-nav site-wrap" aria-label="Main menu">
+    <a class="brand" href="#top"><span class="brand-animal" aria-hidden="true">🦝</span><strong>CRUMB</strong></a>
+    <div class="nav-items">
+      <a href="#challenge" data-i18n="navPlan">THE PLAN</a>
+      <a href="#tokenomics" data-i18n="navToken">TOKENOMICS</a>
+      <a href="#crumbDownloads">FREE CRUMB</a>
+      <a href="#faq">FAQ</a>
     </div>
-    <div class="navright"><label class="langwrap" for="lang"><select id="lang" aria-label="Website language"><option value="en">🇺🇸 English</option><option value="es">🇪🇸 Español</option><option value="it">🇮🇹 Italiano</option><option value="pt">🇧🇷 Português</option><option value="fr">🇫🇷 Français</option><option value="zh">🇨🇳 中文</option><option value="hi">🇮🇳 हिन्दी</option><option value="ar">🇸🇦 العربية</option><option value="ru">🇷🇺 Русский</option></select></label><button class="btn primary smol wallet-top" type="button" id="walletTop" data-i18n="walletConnect">CONNECT METAMASK</button><button class="hamburger" id="menuToggle" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="navlinks">☰</button></div>
+    <div class="nav-right">
+      <label class="lang-label" for="lang"><span aria-hidden="true">🌐</span><span class="visually-hidden">Language</span></label>
+      <select id="lang" aria-label="Language">
+        <option value="en">EN</option><option value="pt">PT</option><option value="es">ES</option>
+        <option value="fr">FR</option><option value="it">IT</option><option value="zh">中文</option>
+        <option value="hi">हिन्दी</option><option value="ar">العربية</option><option value="ru">RU</option>
+      </select>
+      <a href="https://x.com/realcrumb_" class="button button-dark nav-follow" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">𝕏</span> <span data-i18n="follow">FOLLOW ON X</span></a>
+    </div>
   </nav>
 </header>
-<main id="top">
-<section class="hero" aria-labelledby="heroTitle"><div class="hero-bg" id="heroBackground"></div><img class="hero-seated-watermark" alt="" aria-hidden="true" draggable="false"><div class="hero-noise"></div>
- <div class="container"><div class="hero-body"><div class="smallcap eyebrow"><span class="signal-dot"></span><span data-i18n="eyebrow">TRANSMISSION FROM MARS • 001</span></div><h1 id="heroTitle"><span data-i18n="heroTitleA">EARTH,</span><span class="outline" data-i18n="heroTitleB">CAN YOU HEAR ME?</span></h1><p class="smallcap" style="margin-top:20px;color:#d7f3a2" data-i18n="heroTag">THE SIGNAL IS ENDING. THE JOURNEY BEGINS.</p><div class="hero-mobile-portrait"><img class="character-art" alt="CRUMB standing on Mars, full body" draggable="false"></div><p class="lead" data-i18n="heroDesc">I'm CRUMB. I'm still on Mars, preparing to depart for Earth on October 24, 2026. I have a mysterious message from the future for Elon Musk.</p><p class="hero-mars-alias" data-i18n="footerMarsName">On Mars, my name is ksum mole.</p><div class="hero-actions"><a class="btn primary" href="#mission"><span>◈</span><span data-i18n="heroPrimary">DISCOVER THE STORY</span></a><button type="button" class="btn secondary" id="heroShare"><span>↗</span><span data-i18n="heroCTA">Help me reach Elon</span></button><a class="btn secondary" href="#crumbDownloads"><span>▣</span><span>FREE CRUMB</span></a></div><p class="microtag" data-i18n="heroNote">undefined</p><div class="hero-stats"><span data-i18n="badge1">SIGNAL: WEAK</span><span data-i18n="badge2">ORIGIN: MARS</span><span data-i18n="badge3">DESTINATION: ELON</span></div></div></div>
- <img class="hero-character character-art" alt="CRUMB, the green Martian messenger" draggable="false"><div class="scrollhint" data-i18n="heroScroll">Scroll to intercept transmission</div>
+
+<main>
+<section class="hero site-wrap" aria-labelledby="hero-title">
+  <div class="hero-copy">
+    <div class="eyebrow"><span class="tiny-circle"></span><span data-i18n="eyebrow">THE INTERNET'S LEAST SERIOUS EXPERIMENT</span></div>
+    <h1 id="hero-title"><span data-i18n="hero1">JUST A RACCOON.</span><span data-i18n="hero2">JUST A MEME COIN.</span><span class="muted-line" data-i18n="hero3">NOTHING SERIOUS.</span></h1>
+    <p class="hero-sub" data-i18n="heroSub">Can one ordinary raccoon reach 1,000,000 followers? We have absolutely no idea. Let's find out.</p>
+    <div class="hero-actions">
+      <a class="button button-dark" href="https://x.com/realcrumb_" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">𝕏</span><span data-i18n="follow">FOLLOW ON X</span><span aria-hidden="true">↗</span></a>
+      <a class="button button-outline" href="#challenge"><span data-i18n="seePlan">THE 1M PLAN</span><span aria-hidden="true">↓</span></a>
+    </div>
+    <p class="microcopy" data-i18n="disclaimerHero">A fictional meme coin experiment. No investment promises. Token not launched.</p>
+  </div>
+  <div class="hero-photo-wrap">
+    <div class="hero-watermark" aria-hidden="true"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Raccoon-scavenge.jpg" alt="" loading="lazy"></div>
+    <div class="hero-photo-card">
+      <img class="hero-photo" src="https://commons.wikimedia.org/wiki/Special:FilePath/Raccoon-scavenge.jpg" alt="A real raccoon standing with food" fetchpriority="high" decoding="async">
+      <div class="photo-caption"><span>CRUMB / 001</span><span data-i18n="photoCaption">JUST A REAL RACCOON.</span></div>
+    </div>
+  </div>
 </section>
-<div class="ticker" aria-hidden="true"><div class="ticker-inner"><span data-i18n="tickerA">CRUMB ϟ MARS TO EARTH</span><i>✳</i><span data-i18n="tickerB">THE FUTURE SENT A MESSAGE</span><i>✳</i><span data-i18n="tickerC">FIND ELON · DELIVER THE MESSAGE</span><i>✳</i><span data-i18n="tickerA">CRUMB ϟ MARS TO EARTH</span><i>✳</i><span data-i18n="tickerB">THE FUTURE SENT A MESSAGE</span><i>✳</i><span data-i18n="tickerC">FIND ELON · DELIVER THE MESSAGE</span><i>✳</i></div></div>
-<section class="section" id="mission"><div class="container mission-grid"><div class="mission-visual"><span class="orbitnote" data-i18n="orbitNote">MARTIAN VISITOR · CRUMB-001</span><img class="mars-seated-art" alt="CRUMB sitting on Mars, watching planet Earth" loading="lazy" decoding="async"></div><div class="mission-content"><div class="smallcap" data-i18n="missionOverline">THE OFFICIAL ORIGIN STORY</div><h2><span data-i18n="missionTitle">My story begins on Mars.</span><span class="accent" style="display:block" data-i18n="missionHighlight">One message. One destination.</span></h2><p class="muted" data-i18n="missionDesc">CRUMB is on Mars preparing for an October 24 journey toward Earth. He carries a mysterious message from the future for Elon Musk. His arrival on Earth belongs to a future chapter.</p><div class="mission-points"><div class="mission-point"><span class="number">01</span><div><h3 data-i18n="missionCard1Title">Born on Mars</h3><p data-i18n="missionCard1Desc">Born on Mars, preparing to carry a secret message across space.</p></div></div><div class="mission-point"><span class="number">02</span><div><h3 data-i18n="missionCard2Title">One name, one quest</h3><p data-i18n="missionCard2Desc">Only Elon Musk is meant to receive the mysterious message.</p></div></div><div class="mission-point"><span class="number">03</span><div><h3 data-i18n="missionCard3Title">Powered by people</h3><p data-i18n="missionCard3Desc">Every share makes the fictional signal louder. Every meme extends the story.</p></div></div></div></div></div></section>
-<section class="section studio-section" id="studio"><div class="container">
+
+<section class="status-strip">
+ <div class="site-wrap status-grid">
+  <div class="status-cell"><span class="overline" data-i18n="goalLabel">THE GOAL</span><strong>1,000,000</strong><span data-i18n="followersLabel">FOLLOWERS</span></div>
+  <div class="status-cell"><span class="overline" data-i18n="currentCount">CURRENT COUNT</span><strong class="status-text" data-i18n="notConnected">NOT CONNECTED</strong><span data-i18n="countDetail">No live follower count is connected yet.</span></div>
+  <div class="status-cell"><span class="overline" data-i18n="tokenStatus">TOKEN STATUS</span><strong class="status-text" data-i18n="preLaunch">PRE-LAUNCH</strong><span data-i18n="noMarket">No official trading pool is open.</span></div>
+  <div class="status-cell"><span class="overline" data-i18n="theIdea">THE IDEA</span><strong class="status-text" data-i18n="oneRaccoon">ONE RACCOON.</strong><span data-i18n="oneGoal">ONE RIDICULOUS GOAL.</span></div>
+ </div>
+</section>
+
+<section id="challenge" class="section site-wrap">
+  <div class="section-header"><div><p class="section-kicker" data-i18n="planKicker">THE EXPERIMENT</p><h2 data-i18n="planTitle">THE 1M FOLLOWER PLAN.</h2></div><p class="section-note" data-i18n="planIntro">The plan is intentionally simple. Grow the community first. Token later.</p></div>
+  <div class="roadmap">
+    <article class="road-step"><div class="step-number">01</div><h3 data-i18n="step1Title">FOLLOW THE RACCOON</h3><p data-i18n="step1Body">We start with a real raccoon and a ridiculous dream. Share the story if it makes you laugh.</p></article>
+    <article class="road-step"><div class="step-number">02</div><h3 data-i18n="step2Title">REACH ONE MILLION</h3><p data-i18n="step2Body">The milestone is one million genuine followers on the official X account.</p></article>
+    <article class="road-step"><div class="step-number">03</div><h3 data-i18n="step3Title">BURN 500 TRILLION</h3><p data-i18n="step3Body">A planned, publicly verifiable burn of 50% of the initial token supply.</p></article>
+    <article class="road-step"><div class="step-number">04</div><h3 data-i18n="step4Title">OPEN TRADING</h3><p data-i18n="step4Body">Only after the milestone and verified burn, subject to security and launch readiness.</p></article>
+  </div>
+  <div class="progress-area"><div class="progress-line"><strong data-i18n="roadTo1M">ROAD TO 1,000,000</strong><span data-i18n="trackingSoon">Follower verification pending</span></div><div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="1000000" aria-valuenow="0" aria-label="Follower progress, not yet connected"><div class="progress-fill"></div></div><p class="progress-note" data-i18n="counterHonesty">We won't invent a live follower count. Official data will appear when verification is connected.</p></div>
+</section>
+
+<section id="tokenomics" class="section alt-section">
+<div class="site-wrap">
+ <div class="section-header"><div><p class="section-kicker" data-i18n="tokenKicker">JUST THE NUMBERS</p><h2 data-i18n="tokenTitle">TOKENOMICS. NO DRAMA.</h2></div><p class="section-note" data-i18n="tokenIntro">Proposed distribution for the future CRUMB token on Robinhood Chain. Not deployed yet.</p></div>
+ <div class="token-grid">
+   <div class="token-big">
+    <p class="overline" data-i18n="totalSupply">PROPOSED INITIAL SUPPLY</p>
+    <strong class="mega-number">1,000,000,000,000,000</strong>
+    <p class="caption-line" data-i18n="oneQuadrillion">ONE QUADRILLION CRUMB</p>
+    <div class="split-bar" role="img" aria-label="50 percent reserved for the burn, 50 percent reserved for future launch"><span></span><span></span></div>
+    <div class="legend"><span><i class="dot dot-dark"></i><span data-i18n="burnReserve">50% BURN RESERVE</span></span><span><i class="dot dot-gray"></i><span data-i18n="launchReserve">50% FUTURE LAUNCH</span></span></div>
+   </div>
+   <div class="token-facts">
+    <div><span data-i18n="burnAt1M">BURN AT 1M FOLLOWERS</span><strong>500,000,000,000,000</strong></div>
+    <div><span data-i18n="futureLaunch">RESERVED FOR FUTURE LAUNCH</span><strong>500,000,000,000,000</strong></div>
+    <div><span data-i18n="afterBurn">PLANNED SUPPLY AFTER BURN</span><strong>500,000,000,000,000</strong></div>
+    <div><span data-i18n="network">NETWORK</span><strong>Robinhood Chain (planned)</strong></div>
+    <div><span data-i18n="trading">TRADING</span><strong data-i18n="notOpen">NOT OPEN</strong></div>
+    <div><span data-i18n="contract">OFFICIAL CONTRACT</span><strong data-i18n="notDeployed">NOT DEPLOYED</strong></div>
+   </div>
+ </div>
+ <p class="token-legal" data-i18n="tokenLegal">No token has been deployed or burned. The planned reserves must be verifiably secured before launch. A burn does not guarantee any price increase or return.</p>
+</div>
+</section>
+
+<section id="about" class="section site-wrap about-section">
+  <div class="about-mark" aria-hidden="true">🦝</div><div><p class="section-kicker" data-i18n="aboutKicker">ABOUT THE RACCOON</p><h2 data-i18n="aboutTitle">WHY A RACCOON?</h2><p data-i18n="aboutText">Because it's a raccoon. It eats snacks, has no idea what crypto is, and apparently wants a million followers. That's the entire personality.</p><p class="about-punch" data-i18n="aboutPunch">NOT A REVOLUTION. JUST A RACCOON.</p></div>
+</section>
+
+<section class="section studio-section" id="free-crumb"><div class="container">
 <div class="gallery-collection" id="crumbDownloads" aria-label="Free CRUMB — official image creator">
   <div class="gallery-heading">
     <div class="smallcap" data-gallery-i18n="eyebrow">FREE CRUMB • THE OFFICIAL COLLECTION</div>
@@ -122,31 +192,20 @@
 </div>
 </div>
 </div></section>
-<section class="section" id="logs"><div class="container"><div class="section-head"><div class="smallcap" data-i18n="logOverline">THE SAGA • MARS TO EARTH</div><h2 data-i18n="logTitle">THE MISSION LOG</h2><p data-i18n="logDesc">From the final Martian transmission to the October 24 departure and the search for Elon Musk. Follow every chapter.</p></div><div class="logs"><article class="logcard"><span class="iconlarge" aria-hidden="true">☄️</span><div class="day" data-i18n="log1Kicker">DAY 001</div><h3 data-i18n="log1Title">The last transmission from Mars</h3><p data-i18n="log1Desc">Still on Mars, CRUMB turns on his transmitter. 'Earth, can you hear me?'</p><button data-log="1" type="button" data-i18n="logBroadcast">Share episode idea</button></article><article class="logcard two"><span class="iconlarge" aria-hidden="true">🔋</span><div class="day" data-i18n="log2Kicker">DAY 002</div><h3 data-i18n="log2Title">Departure • October 24</h3><p data-i18n="log2Desc">CRUMB is preparing to leave Mars on October 24. His destination: Earth. The message remains sealed.</p><button data-log="2" type="button" data-i18n="logBroadcast">Share episode idea</button></article><article class="logcard three"><span class="iconlarge" aria-hidden="true">📡</span><div class="day" data-i18n="log3Kicker">DAY 003</div><h3 data-i18n="log3Title">The message crosses space</h3><p data-i18n="log3Desc">CRUMB's signal reaches outward. The community spreads the story and helps his message reach Elon Musk.</p><button data-log="3" type="button" data-i18n="logBroadcast">Share episode idea</button></article></div><p class="log-note" data-i18n="logNote">A fictional saga told in episodes. A departure is not an arrival on Earth.</p></div></section>
-<section class="section token-section" id="token">
-<div class="container token-coming-soon">
-  <div class="token-coming-orb" aria-hidden="true"><span>ϟ</span></div>
-  <div class="smallcap token-coming-label" data-i18n="coinOverline">THE $CRUMB SIGNAL</div>
-  <h2 data-i18n="coinTitle">499 MILLION TOKENS</h2>
-  <div class="token-coming-status"><span class="token-coming-dot" aria-hidden="true"></span><strong data-i18n="coinComingSoon">COMING SOON</strong></div>
-  <p class="token-coming-description" data-i18n="coinDesc">The story starts with our community. Token details will be announced before any official launch.</p>
-  <p class="token-coming-warning" data-i18n="coinWarning">The token has not launched. No official contract or sale is live. Beware of imitators.</p>
-  <a href="#mission" class="btn secondary smol" data-i18n="coinCTA">Discover CRUMB's story</a>
-</div>
+
+<section id="faq" class="section site-wrap faq-section">
+  <p class="section-kicker">FAQ</p><h2 data-i18n="faqTitle">SERIOUS QUESTIONS. NOT-SO-SERIOUS ANSWERS.</h2>
+  <div class="faq-list">
+   <details><summary data-i18n="faqQ1">Is this actually a meme coin?</summary><p data-i18n="faqA1">That's the plan. CRUMB is a recreational meme coin idea, not a promise of profits.</p></details>
+   <details><summary data-i18n="faqQ2">Can I buy it now?</summary><p data-i18n="faqA2">No. There is no official token contract or public trading yet. Beware of impersonators.</p></details>
+   <details><summary data-i18n="faqQ3">What happens at one million followers?</summary><p data-i18n="faqA3">The plan is to verify the milestone, burn 500 trillion tokens on-chain, then prepare trading. These steps have not happened yet.</p></details>
+   <details><summary data-i18n="faqQ4">Are the points or followers worth money?</summary><p data-i18n="faqA4">No. Following the page does not grant tokens or financial rewards.</p></details>
+   <details><summary data-i18n="faqQ5">Where can I make raccoon memes?</summary><p data-i18n="faqA5">Free CRUMB will have real raccoon photos and a meme caption editor. New pictures are coming.</p></details>
+  </div>
 </section>
-<section class="section faq-section" id="faq"><div class="container"><div class="section-head"><div class="smallcap" data-i18n="faqOverline">BEFORE YOU RADIO MARS</div><h2 data-i18n="faqTitle">FREQUENTLY ASKED QUESTIONS</h2></div><div class="faq-list">
-<details><summary data-i18n="faq1Q">Who is CRUMB?</summary><p data-i18n="faq1A">CRUMB is a fictional Martian who is still on Mars, preparing to travel toward Earth with a message for Elon Musk.</p></details>
-
-<details><summary data-i18n="faq3Q">Can I make CRUMB memes?</summary><p data-i18n="faq3A">Yes. Choose official artwork in Free CRUMB, add your own message, and download your meme for free.</p></details>
-<details><summary data-i18n="faq4Q">Has $CRUMB launched?</summary><p data-i18n="faq4A">No verified contract address is published yet.</p></details>
-<details><summary data-i18n="faq5Q">How can I help CRUMB?</summary><p data-i18n="faq5A">Share the story or create a meme to help CRUMB reach Elon Musk. No purchase necessary.</p></details>
-<details><summary data-i18n="faq6Q">When will $CRUMB token details be announced?</summary><p data-i18n="faq6A">Coming soon. Our focus is building the CRUMB community first. Details will be published before any launch.</p></details>
-
-
-</div></div></section>
 </main>
-<footer><div class="container"><div class="footer-main"><div class="footer-col"><a class="brand" href="#top"><span class="brandmark">ϟ</span>CRUMB</a><p class="smallcap" style="color:var(--mint)" data-i18n="footerTag">ONE MARTIAN. ONE MESSAGE FOR ELON.</p><p data-i18n="footerDisclaimer">CRUMB is a fictional character and entertainment-first meme concept. Nothing on this site constitutes investment advice or promises of returns. Not affiliated with Elon Musk or his companies.</p></div><div class="footright"><a href="#top" class="btn secondary smol" data-i18n="footerTop">BACK TO MARS</a><button type="button" id="footerShare" class="btn primary smol" data-i18n="navContact">Share the signal</button></div></div><div class="bottomline"><span>© <span id="year">2026</span> CRUMB · MARS / EARTH TRANSMISSION</span><span>CRUMB.VISION • <span data-i18n="footerSignal">SIGNAL FROM MARS</span></span></div></div></footer>
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
-<script src="/assets/app.js"></script>
+<footer class="footer"><div class="site-wrap footer-row"><div><div class="footer-logo">🦝 CRUMB</div><p data-i18n="footerDesc">Just a raccoon. Just a meme coin. Nothing serious.</p><small data-i18n="footDisclaimer">Fictional and recreational. No financial promises. No affiliation with Robinhood.</small></div><div class="footer-side"><a href="https://x.com/realcrumb_" target="_blank" rel="noopener noreferrer">𝕏 <span data-i18n="follow">FOLLOW ON X</span></a><a href="#top" data-i18n="backTop">BACK TO TOP ↑</a><small>© 2026 CRUMB</small></div></div><div class="site-wrap credit"><small data-i18n="photoCredit">Wildlife photo: Feezo / CC BY-SA 3.0.</small> <a href="https://commons.wikimedia.org/wiki/File:Raccoon-scavenge.jpg" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a> · <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 3.0</a></div></footer>
+<script src="/assets/raccoon-site.js" defer></script>
 <script src="/assets/meme-gallery.js" defer></script>
-</body></html>
+</body>
+</html>

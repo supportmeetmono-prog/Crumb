@@ -44,6 +44,15 @@
   Object.assign(translations.ar, {"intro":"صور الراكون الحقيقية ستصل قريبًا إلى FREE CRUMB. استعد لصنع الميمات!","chooseHint":"نعمل على تجهيز مجموعة من صور الراكون الحقيقية. عُد قريبًا.","create":"02 / اصنع الميم الخاص بك","placeholder":"اكتب تعليقًا مضحكًا هنا…","empty":"عند وصول الصور يمكنك إضافة تعليقك دون تغيير الصورة الأصلية.","shareNote":"نزّل صورة PNG وأرفقها بنفسك بمنشور X. يجهّز زر المشاركة النص فقط.","sharePrefix":"ميم CRUMB الخاص بي:","noArtwork":"صور الراكون قريبًا","noArtworkPreview":"🦝 ستصل مجموعة صور الراكون الحقيقية قريبًا.","pickerEmpty":"لا توجد صور للراكون بعد. قريبًا."});
   Object.assign(translations.ru, {"intro":"НАСТОЯЩИЕ ФОТО ЕНОТА СКОРО ПОЯВЯТСЯ В FREE CRUMB. ГОТОВЬТЕ МЕМЫ!","chooseHint":"Мы готовим коллекцию реальных фотографий енота. Возвращайтесь скоро.","create":"02 / ПРИДУМАЙТЕ МЕМ","placeholder":"Напишите смешную подпись…","empty":"Когда фотографии появятся, добавьте подпись, не меняя оригинал.","shareNote":"Скачайте PNG и прикрепите его к посту в X самостоятельно. Кнопка публикации готовит только текст.","sharePrefix":"Мой мем CRUMB:","noArtwork":"ФОТО ЕНОТА СКОРО ПОЯВЯТСЯ","noArtworkPreview":"🦝 Коллекция настоящих фото енота скоро появится.","pickerEmpty":"Фотографий енота пока нет. Скоро."});
 
+  Object.assign(translations.en,{"title":"THE RACCOON COLLECTION","posting":"03 / DOWNLOAD & SHARE"});
+  Object.assign(translations.pt,{"title":"COLEÇÃO DO GUAXINIM","posting":"03 / BAIXAR E COMPARTILHAR"});
+  Object.assign(translations.es,{"title":"COLECCIÓN DEL MAPACHE","posting":"03 / DESCARGAR Y COMPARTIR"});
+  Object.assign(translations.fr,{"title":"COLLECTION DE RATONS LAVEURS","posting":"03 / TÉLÉCHARGER ET PARTAGER"});
+  Object.assign(translations.it,{"title":"COLLEZIONE PROCIONI","posting":"03 / SCARICA E CONDIVIDI"});
+  Object.assign(translations.zh,{"title":"浣熊照片集","posting":"03 / 下载与分享"});
+  Object.assign(translations.hi,{"title":"रैकून संग्रह","posting":"03 / डाउनलोड और शेयर"});
+  Object.assign(translations.ar,{"title":"مجموعة صور الراكون","posting":"03 / التنزيل والمشاركة"});
+  Object.assign(translations.ru,{"title":"КОЛЛЕКЦИЯ ЕНОТА","posting":"03 / СКАЧАТЬ И ПОДЕЛИТЬСЯ"});
   const $ = id => root.querySelector('#' + id);
 
   const canvas = $('galleryCanvas');
