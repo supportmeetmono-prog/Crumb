@@ -46,7 +46,7 @@ body::before {
   background-repeat:no-repeat;
   background-size:auto 94vh;
   background-position:center center;
-  opacity:.10925;
+  opacity:.142025;
   filter:grayscale(1);
 }
 main{position:relative;z-index:1;background:transparent;}
@@ -62,12 +62,12 @@ main{position:relative;z-index:1;background:transparent;}
 .site-header{background:rgba(255,255,255,.96)}
 .gallery-collection{background:rgba(248,248,247,.95)!important}
 @media (max-width:800px){
-  body::before{background-size:auto 72vh; background-position:center 43%; opacity:.1035}
+  body::before{background-size:auto 72vh; background-position:center 43%; opacity:.13455}
   .hero{min-height:500px;padding-top:62px;padding-bottom:54px;}
   .hero h1{font-size:clamp(36px,8.5vw,75px)}
 }
 @media (max-width:480px){
-  body::before{background-size:100% auto; background-position:center 43%;opacity:.12075}
+  body::before{background-size:100% auto; background-position:center 43%;opacity:.156975}
   .hero{min-height:465px;padding-top:50px;padding-bottom:48px}
   .hero h1{font-size:clamp(31px,8.3vw,45px)}
 }
