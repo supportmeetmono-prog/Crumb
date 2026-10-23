@@ -6,11 +6,11 @@
 
   // ADD FUTURE ARTWORK HERE: upload its text-free image to assets/meme-gallery/ and add one entry.
   const galleryImages = [
-    { id: '01', title: 'Mars Signal 01', category: 'Messages', tags: 'mars signal message', src: '/assets/meme-gallery/CRUMB-Message-01-clean.jpg' },
-    { id: '02', title: 'Mars Signal 02', category: 'Messages', tags: 'mars signal message', src: '/assets/meme-gallery/CRUMB-Message-02-clean.jpg' },
-    { id: '03', title: 'Mars Signal 03', category: 'Messages', tags: 'mars signal message', src: '/assets/meme-gallery/CRUMB-Message-03-clean.jpg' },
-    { id: '04', title: 'Mars Signal 04', category: 'Messages', tags: 'mars signal message', src: '/assets/meme-gallery/CRUMB-Message-04-clean.jpg' },
-    { id: '05', title: 'Futuristic Mars City', category: 'Mars City', tags: 'futuristic city mars space architecture spaceship hoodie spaceX alien', src: '/assets/meme-gallery/CRUMB-Mars-City-05.jpg' }
+    { id: '01', title: 'Mars Signal 01', category: 'Messages', tags: 'mars signal message', src: '/assets/meme-gallery/CRUMB-Message-01-clean.jpg', thumb: '/assets/meme-gallery/thumbs/CRUMB-01-thumb.jpg' },
+    { id: '02', title: 'Mars Signal 02', category: 'Messages', tags: 'mars signal message', src: '/assets/meme-gallery/CRUMB-Message-02-clean.jpg', thumb: '/assets/meme-gallery/thumbs/CRUMB-02-thumb.jpg' },
+    { id: '03', title: 'Mars Signal 03', category: 'Messages', tags: 'mars signal message', src: '/assets/meme-gallery/CRUMB-Message-03-clean.jpg', thumb: '/assets/meme-gallery/thumbs/CRUMB-03-thumb.jpg' },
+    { id: '04', title: 'Mars Signal 04', category: 'Messages', tags: 'mars signal message', src: '/assets/meme-gallery/CRUMB-Message-04-clean.jpg', thumb: '/assets/meme-gallery/thumbs/CRUMB-04-thumb.jpg' },
+    { id: '05', title: 'Futuristic Mars City', category: 'Mars City', tags: 'futuristic city mars space architecture spaceship hoodie spaceX alien', src: '/assets/meme-gallery/CRUMB-Mars-City-05.jpg', thumb: '/assets/meme-gallery/thumbs/CRUMB-05-thumb.jpg' }
   ];
 
   const translations = {
@@ -77,7 +77,7 @@
   }
   function updateSelection() {
     const entry = galleryImages[selected];
-    $('galleryCurrentImage').src = entry.src;
+    $('galleryCurrentImage').src = entry.thumb || entry.src;
     $('galleryCurrentImage').alt = entry.title;
     $('galleryCurrentName').textContent = entry.title;
     const num = String(selected + 1).padStart(2, '0') + ' / ' + String(galleryImages.length).padStart(2, '0');
