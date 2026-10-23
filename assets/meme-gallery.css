@@ -80,3 +80,11 @@
 @media(max-width:790px){.gallery-picker{padding:7px;align-items:flex-start}.gallery-picker-shell{max-height:calc(100dvh - 14px);padding:14px;border-radius:14px}.gallery-picker-columns{display:flex;flex-direction:column;gap:18px}.gallery-picker-stage-panel,.gallery-picker-grid-panel{width:100%}.gallery-picker-stage{min-height:220px;height:34vh;max-height:390px}.gallery-picker-grid{grid-template-columns:repeat(6,minmax(0,1fr));gap:7px}.gallery-picker-toolbar{margin:12px 0;gap:8px}.gallery-picker-toolbar input{font-size:14px}.gallery-picker-selection{margin:8px 0 10px}.gallery-picker-swipe{margin:7px 0}.gallery-picker-thumb span{font-size:9px}}
 @media(max-width:400px){.gallery-picker-grid{grid-template-columns:repeat(5,minmax(0,1fr))}.gallery-picker-toolbar{flex-wrap:wrap}}
 @media(prefers-reduced-motion:reduce){.gallery-picker *{scroll-behavior:auto!important}}
+
+/* Empty collection state: wait for the first genuine raccoon photograph. */
+.gallery-collection.gallery-empty .gallery-canvas { display:none; }
+.gallery-collection .gallery-empty-preview { display:none; min-height:320px; padding:28px; align-items:center; justify-content:center; text-align:center; color:#d1f2c2; font:700 clamp(16px,2.4vw,23px)/1.5 'DM Sans',sans-serif; }
+.gallery-collection.gallery-empty .gallery-empty-preview { display:flex; }
+.gallery-collection .gallery-current-choice img[hidden], .gallery-collection .gallery-picker-stage img[hidden], .gallery-collection .gallery-picker-empty[hidden] {display:none!important;}
+.gallery-collection .gallery-picker-empty {padding:28px; text-align:center; color:#b7c7be; font:600 15px/1.5 'DM Sans',sans-serif;}
+.gallery-collection [disabled] {cursor:not-allowed; opacity:.55;}

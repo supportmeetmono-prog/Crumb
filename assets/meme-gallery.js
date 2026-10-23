@@ -4,14 +4,11 @@
   const root = document.getElementById('crumbDownloads');
   if (!root) return;
 
-  // ADD FUTURE ARTWORK HERE: upload its text-free image to assets/meme-gallery/ and add one entry.
-  const galleryImages = [
-    { id: '01', title: 'Mars Signal 01', category: 'Messages', tags: 'mars signal message', src: '/assets/meme-gallery/CRUMB-Message-01-clean.jpg', thumb: '/assets/meme-gallery/thumbs/CRUMB-01-thumb.jpg' },
-    { id: '02', title: 'Mars Signal 02', category: 'Messages', tags: 'mars signal message', src: '/assets/meme-gallery/CRUMB-Message-02-clean.jpg', thumb: '/assets/meme-gallery/thumbs/CRUMB-02-thumb.jpg' },
-    { id: '03', title: 'Mars Signal 03', category: 'Messages', tags: 'mars signal message', src: '/assets/meme-gallery/CRUMB-Message-03-clean.jpg', thumb: '/assets/meme-gallery/thumbs/CRUMB-03-thumb.jpg' },
-    { id: '04', title: 'Mars Signal 04', category: 'Messages', tags: 'mars signal message', src: '/assets/meme-gallery/CRUMB-Message-04-clean.jpg', thumb: '/assets/meme-gallery/thumbs/CRUMB-04-thumb.jpg' },
-    { id: '05', title: 'Futuristic Mars City', category: 'Mars City', tags: 'futuristic city mars space architecture spaceship hoodie spaceX alien', src: '/assets/meme-gallery/CRUMB-Mars-City-05.jpg', thumb: '/assets/meme-gallery/thumbs/CRUMB-05-thumb.jpg' }
-  ];
+  // Add only real raccoon photos here when the new collection is ready.
+  // Example: { id:'01', title:'Raccoon 01', category:'Raccoon', tags:'raccoon real photo',
+  //   src:'/assets/meme-gallery/Raccoon-01.jpg',
+  //   thumb:'/assets/meme-gallery/thumbs/Raccoon-01-thumb.jpg' }
+  const galleryImages = [];
 
   const translations = {
     en: { nav: 'FREE CRUMB', eyebrow: 'FREE CRUMB • THE OFFICIAL COLLECTION', title: 'CHOOSE YOUR IMAGE!', intro: 'CREATE YOUR APPEAL, POST IT AND TAG ELON MUSK AND @realcrumb_.', choose: '01 / CHOOSE YOUR IMAGE', chooseHint: 'Select an official CRUMB image. New artworks will be added to this collection.', create: '02 / CREATE YOUR APPEAL', label: 'YOUR MESSAGE', placeholder: 'Write your message to Elon here…', font: 'TEXT SIZE', color: 'TEXT COLOR', position: 'TEXT POSITION', top: 'Top', middle: 'Middle', bottom: 'Bottom', download: '↓ DOWNLOAD PNG', posting: '03 / POST AND TAG', share: 'POST ON X ↗', shareNote: 'Download your image and attach the PNG to your X post. Include @elonmusk and @realcrumb_ — this button prepares your post text but cannot attach an image automatically.', error: 'This image could not be loaded. Try again.', image: 'Choose CRUMB image', selected: 'Selected', empty: 'Write your own appeal. The original artwork will stay unchanged.', sharePrefix: 'My appeal to Elon Musk:', createPreview: 'Live preview', reset: 'CLEAR TEXT' },
@@ -35,6 +32,17 @@
   Object.assign(translations.hi, {"openPicker":"▣ चित्र गैलरी खोलें","pickerEyebrow":"FREE CRUMB संग्रह","pickerTitle":"अपनी तस्वीर चुनें","pickerSearch":"नंबर, नाम या श्रेणी खोजें…","pickerClose":"गैलरी बंद करें","pickerPrev":"पिछली तस्वीर","pickerNext":"अगली तस्वीर","pickerUse":"✓ यह तस्वीर चुनें","pickerSwipe":"बाएँ-दाएँ स्वाइप करें या तीर दबाएँ।","pickerPagination":"तेज़ लोडिंग के लिए छोटे समूह दिखाए जाते हैं।","pickerPreviousPage":"पिछला पेज","pickerNextPage":"अगला पेज","pickerResults":"तस्वीरें","pickerEmpty":"कोई तस्वीर नहीं मिली।"});
   Object.assign(translations.ar, {"openPicker":"▣ افتح معرض الصور","pickerEyebrow":"مجموعة FREE CRUMB","pickerTitle":"اختر صورتك","pickerSearch":"ابحث بالرقم أو الاسم أو الفئة…","pickerClose":"إغلاق المعرض","pickerPrev":"الصورة السابقة","pickerNext":"الصورة التالية","pickerUse":"✓ استخدم هذه الصورة","pickerSwipe":"اسحب يمينًا ويسارًا أو استخدم الأسهم.","pickerPagination":"تظهر الصور في مجموعات صغيرة لتسريع التحميل.","pickerPreviousPage":"الصفحة السابقة","pickerNextPage":"الصفحة التالية","pickerResults":"صور","pickerEmpty":"لا توجد صور مطابقة."});
   Object.assign(translations.ru, {"openPicker":"▣ ОТКРЫТЬ ГАЛЕРЕЮ","pickerEyebrow":"КОЛЛЕКЦИЯ FREE CRUMB","pickerTitle":"ВЫБЕРИТЕ ИЗОБРАЖЕНИЕ","pickerSearch":"Поиск по номеру, названию или категории…","pickerClose":"Закрыть галерею","pickerPrev":"Предыдущее изображение","pickerNext":"Следующее изображение","pickerUse":"✓ ИСПОЛЬЗОВАТЬ ЭТУ КАРТИНКУ","pickerSwipe":"Листайте в стороны или используйте стрелки.","pickerPagination":"Изображения загружаются небольшими группами.","pickerPreviousPage":"Предыдущая страница","pickerNextPage":"Следующая страница","pickerResults":"изображений","pickerEmpty":"Ничего не найдено."});
+
+  // New raccoon collection copy, preserved in all nine site languages.
+  Object.assign(translations.en, {"intro":"REAL RACCOON PHOTOS ARE COMING TO FREE CRUMB. GET READY TO MAKE YOUR OWN MEMES.","chooseHint":"The collection is being prepared with real raccoon photos. Come back soon.","create":"02 / WRITE YOUR MEME","placeholder":"Your funny caption goes here…","empty":"Once the raccoon photos arrive, add your own caption without changing the original image.","shareNote":"Download your finished PNG and attach it to your X post. The share button prepares the text but cannot attach the image automatically.","sharePrefix":"My CRUMB meme:","noArtwork":"RACCOON PHOTOS COMING SOON","noArtworkPreview":"🦝 The raccoon photo collection is coming soon.","pickerEmpty":"No raccoon photos yet. Coming soon."});
+  Object.assign(translations.pt, {"intro":"FOTOS REAIS DO GUAXINIM EM BREVE NO FREE CRUMB. PREPARE-SE PARA CRIAR SEUS MEMES.","chooseHint":"Estamos preparando a coleção com fotos reais do guaxinim. Volte em breve.","create":"02 / ESCREVA SEU MEME","placeholder":"Escreva aqui uma legenda engraçada…","empty":"Quando as fotos chegarem, você poderá adicionar sua legenda sem alterar a imagem original.","shareNote":"Baixe seu PNG finalizado e anexe à postagem no X. O botão prepara o texto, mas não anexa a imagem automaticamente.","sharePrefix":"Meu meme CRUMB:","noArtwork":"FOTOS DO GUAXINIM EM BREVE","noArtworkPreview":"🦝 A coleção de fotos do guaxinim chega em breve.","pickerEmpty":"Ainda não há fotos do guaxinim. Em breve."});
+  Object.assign(translations.es, {"intro":"MUY PRONTO, FOTOS REALES DEL MAPACHE EN FREE CRUMB. ¡PREPÁRATE PARA CREAR MEMES!","chooseHint":"Estamos preparando la colección de fotos reales del mapache. Vuelve pronto.","create":"02 / ESCRIBE TU MEME","placeholder":"Escribe aquí una frase divertida…","empty":"Cuando lleguen las fotos, añade tu frase sin modificar la imagen original.","shareNote":"Descarga tu PNG y adjúntalo a tu publicación en X. El botón prepara el texto, pero no adjunta la imagen.","sharePrefix":"Mi meme CRUMB:","noArtwork":"PRÓXIMAMENTE: FOTOS DEL MAPACHE","noArtworkPreview":"🦝 La colección de fotos del mapache llegará pronto.","pickerEmpty":"Aún no hay fotos del mapache. Próximamente."});
+  Object.assign(translations.it, {"intro":"PRESTO FOTO REALI DEL PROCIONE SU FREE CRUMB. PREPARATI A CREARE MEME!","chooseHint":"Stiamo preparando la raccolta di foto reali del procione. Torna presto.","create":"02 / SCRIVI IL TUO MEME","placeholder":"Scrivi una didascalia divertente…","empty":"Quando arriveranno le foto, potrai aggiungere una frase senza modificare l'immagine originale.","shareNote":"Scarica il PNG e allegalo al post su X. Il pulsante prepara solo il testo e non allega l'immagine.","sharePrefix":"Il mio meme CRUMB:","noArtwork":"FOTO DEL PROCIONE IN ARRIVO","noArtworkPreview":"🦝 La raccolta di foto del procione arriva presto.","pickerEmpty":"Non ci sono ancora foto del procione. In arrivo."});
+  Object.assign(translations.fr, {"intro":"BIENTÔT DES PHOTOS DE VRAIS RATONS LAVEURS DANS FREE CRUMB. PRÉPAREZ VOS MÈMES !","chooseHint":"Nous préparons la collection de photos de vrais ratons laveurs. À bientôt.","create":"02 / CRÉEZ VOTRE MÈME","placeholder":"Écrivez une légende amusante…","empty":"Lorsque les photos seront disponibles, ajoutez votre légende sans modifier l'image d'origine.","shareNote":"Téléchargez le PNG et ajoutez-le à votre publication X. Le bouton prépare seulement le texte.","sharePrefix":"Mon mème CRUMB :","noArtwork":"PHOTOS DE RATONS LAVEURS À VENIR","noArtworkPreview":"🦝 La collection de photos de ratons laveurs arrive bientôt.","pickerEmpty":"Aucune photo de raton laveur pour le moment."});
+  Object.assign(translations.zh, {"intro":"真实浣熊照片即将加入 FREE CRUMB，准备制作你的表情包！","chooseHint":"我们正在准备真实浣熊照片集，敬请期待。","create":"02 / 制作你的表情包","placeholder":"写下有趣的配文…","empty":"照片上线后，你可以添加配文，而不更改原始图片。","shareNote":"下载完成的 PNG 并自行附加到 X 帖子中。分享按钮只能准备文字。","sharePrefix":"我的 CRUMB 表情包：","noArtwork":"浣熊照片即将上线","noArtworkPreview":"🦝 真实浣熊照片集即将上线。","pickerEmpty":"暂时还没有浣熊照片，敬请期待。"});
+  Object.assign(translations.hi, {"intro":"असली रैकून की तस्वीरें जल्द ही FREE CRUMB में आएँगी। अपने मीम बनाने को तैयार रहें।","chooseHint":"असली रैकून की तस्वीरों का संग्रह तैयार हो रहा है। जल्द लौटें।","create":"02 / अपना मीम बनाएँ","placeholder":"मज़ेदार कैप्शन लिखें…","empty":"तस्वीरें आने पर मूल फोटो बदले बिना अपना कैप्शन जोड़ सकेंगे।","shareNote":"बना हुआ PNG डाउनलोड करके X पोस्ट में स्वयं लगाएँ। शेयर बटन सिर्फ़ टेक्स्ट तैयार करता है।","sharePrefix":"मेरा CRUMB मीम:","noArtwork":"रैकून की तस्वीरें जल्द आएँगी","noArtworkPreview":"🦝 असली रैकून की तस्वीरों का संग्रह जल्द आ रहा है।","pickerEmpty":"अभी रैकून की तस्वीरें उपलब्ध नहीं हैं।"});
+  Object.assign(translations.ar, {"intro":"صور الراكون الحقيقية ستصل قريبًا إلى FREE CRUMB. استعد لصنع الميمات!","chooseHint":"نعمل على تجهيز مجموعة من صور الراكون الحقيقية. عُد قريبًا.","create":"02 / اصنع الميم الخاص بك","placeholder":"اكتب تعليقًا مضحكًا هنا…","empty":"عند وصول الصور يمكنك إضافة تعليقك دون تغيير الصورة الأصلية.","shareNote":"نزّل صورة PNG وأرفقها بنفسك بمنشور X. يجهّز زر المشاركة النص فقط.","sharePrefix":"ميم CRUMB الخاص بي:","noArtwork":"صور الراكون قريبًا","noArtworkPreview":"🦝 ستصل مجموعة صور الراكون الحقيقية قريبًا.","pickerEmpty":"لا توجد صور للراكون بعد. قريبًا."});
+  Object.assign(translations.ru, {"intro":"НАСТОЯЩИЕ ФОТО ЕНОТА СКОРО ПОЯВЯТСЯ В FREE CRUMB. ГОТОВЬТЕ МЕМЫ!","chooseHint":"Мы готовим коллекцию реальных фотографий енота. Возвращайтесь скоро.","create":"02 / ПРИДУМАЙТЕ МЕМ","placeholder":"Напишите смешную подпись…","empty":"Когда фотографии появятся, добавьте подпись, не меняя оригинал.","shareNote":"Скачайте PNG и прикрепите его к посту в X самостоятельно. Кнопка публикации готовит только текст.","sharePrefix":"Мой мем CRUMB:","noArtwork":"ФОТО ЕНОТА СКОРО ПОЯВЯТСЯ","noArtworkPreview":"🦝 Коллекция настоящих фото енота скоро появится.","pickerEmpty":"Фотографий енота пока нет. Скоро."});
 
   const $ = id => root.querySelector('#' + id);
 
@@ -77,12 +85,20 @@
   }
   function updateSelection() {
     const entry = galleryImages[selected];
-    $('galleryCurrentImage').src = entry.thumb || entry.src;
-    $('galleryCurrentImage').alt = entry.title;
-    $('galleryCurrentName').textContent = entry.title;
-    const num = String(selected + 1).padStart(2, '0') + ' / ' + String(galleryImages.length).padStart(2, '0');
+    const hasArtwork = Boolean(entry);
+    root.classList.toggle('gallery-empty', !hasArtwork);
+    $('galleryCurrentImage').hidden = !hasArtwork;
+    if (hasArtwork) {
+      $('galleryCurrentImage').src = entry.thumb || entry.src;
+      $('galleryCurrentImage').alt = entry.title;
+    } else {
+      $('galleryCurrentImage').removeAttribute('src');
+    }
+    $('galleryCurrentName').textContent = hasArtwork ? entry.title : t('noArtwork');
+    const num = hasArtwork ? String(selected + 1).padStart(2, '0') + ' / ' + String(galleryImages.length).padStart(2, '0') : '0 / 0';
     $('galleryCurrentCount').textContent = num;
     $('galleryNumber').textContent = num;
+    ['galleryCaption','galleryFontSize','galleryColor','galleryPosition','galleryDownload','galleryShare','galleryReset'].forEach(id => { $(id).disabled = !hasArtwork; });
   }
   function filterGallery() {
     const q = pickerSearch.value.trim().toLocaleLowerCase();
@@ -102,12 +118,17 @@
     const preview = $('galleryPickerImage');
     const entry = count ? galleryImages[pickerIndex] : null;
     if (entry) {
+      preview.hidden = false;
+      $('galleryPickerEmpty').hidden = true;
       if (preview.getAttribute('src') !== entry.src) preview.src = entry.src;
       preview.alt = entry.title;
       $('galleryPickerName').textContent = entry.title;
       $('galleryPickerPosition').textContent = (filtered.indexOf(pickerIndex)+1).toLocaleString() + ' / ' + count.toLocaleString();
     } else {
       preview.removeAttribute('src');
+      preview.hidden = true;
+      $('galleryPickerEmpty').hidden = false;
+      $('galleryPickerEmpty').textContent = t('pickerEmpty');
       $('galleryPickerName').textContent = t('pickerEmpty');
       $('galleryPickerPosition').textContent = '0 / 0';
     }
@@ -278,6 +299,11 @@
     const cycle = ++renderCycle;
     const entry = galleryImages[selected];
     status.textContent = '';
+    if (!entry) {
+      delete canvas.dataset.readyImage;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      return;
+    }
     try {
       const img = await getImage(entry);
       if (cycle !== renderCycle) return;
@@ -290,6 +316,7 @@
     } catch (e) { if (cycle === renderCycle) status.textContent = t('error'); }
   }
   function download() {
+    if (!galleryImages[selected]) { status.textContent = t('noArtwork'); return; }
     if (canvas.dataset.readyImage !== galleryImages[selected].id) { status.textContent = t('error'); return; }
     canvas.toBlob(blob => {
       if (!blob) { status.textContent = t('error'); return; }
@@ -302,7 +329,8 @@
     }, 'image/png');
   }
   function postToX() {
-    const text = [caption.value.trim() ? t('sharePrefix') + ' ' + caption.value.trim() : '', '@elonmusk @realcrumb_ #CRUMB', 'https://crumb.vision/#crumbDownloads'].filter(Boolean).join('\n\n');
+    if (!galleryImages[selected]) { status.textContent = t('noArtwork'); return; }
+    const text = [caption.value.trim() ? t('sharePrefix') + ' ' + caption.value.trim() : '', '#CRUMB', 'https://crumb.vision/#crumbDownloads'].filter(Boolean).join('\n\n');
     const url = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(text);
     window.open(url, '_blank', 'noopener,noreferrer');
   }

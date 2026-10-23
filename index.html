@@ -49,39 +49,39 @@
   <div class="gallery-heading">
     <div class="smallcap" data-gallery-i18n="eyebrow">FREE CRUMB • THE OFFICIAL COLLECTION</div>
     <h3 data-gallery-i18n="title">CHOOSE YOUR IMAGE!</h3>
-    <p data-gallery-i18n="intro">CREATE YOUR APPEAL, POST IT AND TAG ELON MUSK AND @realcrumb_.</p>
+    <p data-gallery-i18n="intro">REAL RACCOON PHOTOS ARE COMING TO FREE CRUMB. GET READY TO MAKE YOUR OWN MEMES.</p>
   </div>
   <div class="gallery-grid">
     <div class="gallery-side">
       <div class="gallery-panel">
         <h4 data-gallery-i18n="choose">01 / CHOOSE YOUR IMAGE</h4>
         <div class="gallery-current-choice">
-          <img id="galleryCurrentImage" src="/assets/meme-gallery/CRUMB-Message-01-clean.jpg" alt="Selected CRUMB artwork" loading="lazy" decoding="async">
-          <div><strong id="galleryCurrentName">CRUMB 01</strong><span class="gallery-muted" id="galleryCurrentCount">01 / 05</span></div>
+          <img id="galleryCurrentImage" alt="Selected CRUMB artwork" loading="lazy" decoding="async" hidden>
+          <div><strong id="galleryCurrentName">RACCOON PHOTOS COMING SOON</strong><span class="gallery-muted" id="galleryCurrentCount">0 / 0</span></div>
         </div>
         <button id="galleryOpen" type="button" class="btn primary gallery-open-btn" data-gallery-i18n="openPicker">▣ OPEN IMAGE GALLERY</button>
-        <p class="gallery-small" data-gallery-i18n="chooseHint">Select an official CRUMB image. New artworks will be added to this collection.</p>
+        <p class="gallery-small" data-gallery-i18n="chooseHint">The collection is being prepared with real raccoon photos. Come back soon.</p>
       </div>
       <div class="gallery-panel">
-        <h4 data-gallery-i18n="create">02 / CREATE YOUR APPEAL</h4>
+        <h4 data-gallery-i18n="create">02 / WRITE YOUR MEME</h4>
         <label for="galleryCaption" data-gallery-i18n="label">YOUR MESSAGE</label>
-        <textarea id="galleryCaption" maxlength="180" rows="3" data-gallery-placeholder="placeholder" placeholder="Write your message to Elon here…" spellcheck="true"></textarea>
+        <textarea id="galleryCaption" maxlength="180" rows="3" data-gallery-placeholder="placeholder" placeholder="Your funny caption goes here…" spellcheck="true"></textarea>
         <div class="gallery-options">
           <div><label for="galleryFontSize" data-gallery-i18n="font">TEXT SIZE</label><input id="galleryFontSize" type="range" min="32" max="105" value="64"><span class="gallery-muted" id="galleryFontValue">64px</span></div>
           <div><label for="galleryColor" data-gallery-i18n="color">TEXT COLOR</label><input id="galleryColor" type="color" value="#ffffff"></div>
           <div><label for="galleryPosition" data-gallery-i18n="position">TEXT POSITION</label><select id="galleryPosition"><option value="top" data-gallery-i18n="top">Top</option><option value="middle" data-gallery-i18n="middle">Middle</option><option value="bottom" data-gallery-i18n="bottom" selected>Bottom</option></select></div>
           <div><button type="button" class="btn secondary smol" id="galleryReset" data-gallery-i18n="reset">CLEAR TEXT</button></div>
         </div>
-        <p class="gallery-small" data-gallery-i18n="empty">Write your own appeal. The original artwork will stay unchanged.</p>
+        <p class="gallery-small" data-gallery-i18n="empty">Once the raccoon photos arrive, add your own caption without changing the original image.</p>
       </div>
     </div>
     <div class="gallery-display">
-      <div class="gallery-preview-top"><div class="smallcap" data-gallery-i18n="createPreview">Live preview</div><span class="gallery-muted" id="galleryNumber">01 / 05</span></div>
-      <div class="gallery-frame"><canvas class="gallery-canvas" id="galleryCanvas" width="1030" height="1536" role="img" aria-label="Live preview"></canvas></div>
+      <div class="gallery-preview-top"><div class="smallcap" data-gallery-i18n="createPreview">Live preview</div><span class="gallery-muted" id="galleryNumber">0 / 0</span></div>
+      <div class="gallery-frame"><canvas class="gallery-canvas" id="galleryCanvas" width="1030" height="1536" role="img" aria-label="Live preview"></canvas><div class="gallery-empty-preview" id="galleryEmptyPreview" data-gallery-i18n="noArtworkPreview">🦝 The raccoon photo collection is coming soon.</div></div>
       <div class="gallery-panel" style="margin-top:15px">
         <h4 data-gallery-i18n="posting">03 / POST AND TAG</h4>
         <div class="gallery-buttons"><button type="button" class="btn primary smol" id="galleryDownload" data-gallery-i18n="download">↓ DOWNLOAD PNG</button><button type="button" class="btn secondary smol" id="galleryShare" data-gallery-i18n="share">POST ON X ↗</button></div>
-        <p class="gallery-note" data-gallery-i18n="shareNote">Download your image and attach the PNG to your X post. Include @elonmusk and @realcrumb_ — this button prepares your post text but cannot attach an image automatically.</p>
+        <p class="gallery-note" data-gallery-i18n="shareNote">Download your finished PNG and attach it to your X post. The share button prepares the text but cannot attach the image automatically.</p>
         <p class="gallery-status" id="galleryStatus" role="status" aria-live="polite"></p>
       </div>
     </div>
@@ -101,10 +101,10 @@
       <div class="gallery-picker-stage-panel">
         <div class="gallery-picker-stage" id="galleryPickerStage">
           <button type="button" id="galleryPickerPrev" class="gallery-picker-arrow" data-gallery-i18n-aria="pickerPrev" aria-label="Previous image">‹</button>
-          <img id="galleryPickerImage" alt="CRUMB artwork preview" decoding="async">
+          <img id="galleryPickerImage" alt="CRUMB artwork preview" decoding="async" hidden><div class="gallery-picker-empty" id="galleryPickerEmpty" data-gallery-i18n="pickerEmpty">No raccoon photos yet. Coming soon.</div>
           <button type="button" id="galleryPickerNext" class="gallery-picker-arrow" data-gallery-i18n-aria="pickerNext" aria-label="Next image">›</button>
         </div>
-        <div class="gallery-picker-selection"><strong id="galleryPickerName">CRUMB 01</strong><span id="galleryPickerPosition">1 / 5</span></div>
+        <div class="gallery-picker-selection"><strong id="galleryPickerName">No raccoon photos yet. Coming soon.</strong><span id="galleryPickerPosition">0 / 0</span></div>
         <button type="button" class="btn primary gallery-picker-use" id="galleryPickerUse" data-gallery-i18n="pickerUse">✓ USE THIS IMAGE</button>
         <p class="gallery-picker-swipe" data-gallery-i18n="pickerSwipe">Swipe sideways to browse or use the arrows.</p>
       </div>
