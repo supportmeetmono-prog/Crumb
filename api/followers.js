@@ -3,8 +3,10 @@
 /**
  * CRUMB X follower-count endpoint.
  * Only server-side code sees X_BEARER_TOKEN. The visitor receives public numbers.
- * Vercel Edge Cache reduces billable X API lookups to roughly one request per
- * five minutes per active CDN cache (not one lookup per visitor).
+ * Vercel CDN caches a successful response for 24 hours per cache region.
+ * This substantially reduces X API calls, but is not a global hard limit of
+ * one request daily: cache regions/evictions, manual tests, and deployments
+ * may trigger additional origin requests.
  */
 const USERNAME = "realcrumb_";
 const GOAL = 1000000;
@@ -67,8 +69,8 @@ export default async function followersHandler(req, res) {
     }
 
     // Do not cache access problems. Success response is safe to share among visitors.
-    res.setHeader("Cache-Control", "public, max-age=30");
-    res.setHeader("Vercel-CDN-Cache-Control", "s-maxage=300, stale-while-revalidate=600");
+    res.setHeader("Cache-Control", "public, max-age=120");
+    res.setHeader("Vercel-CDN-Cache-Control", "public, s-maxage=86400, stale-while-revalidate=3600");
     return res.status(200).json({
       status: "ok",
       source: "X API",
