@@ -20,7 +20,7 @@
 <meta name="twitter:image" content="https://www.crumb.vision/assets/raccoon-standing.jpg">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext y='52' x='3' font-size='56'%3E%F0%9F%A6%9D%3C/text%3E%3C/svg%3E">
 <title>CRUMB — Just a Raccoon</title>
-<link rel="stylesheet" href="/assets/meme-gallery.css?v=20261023-photo-only">
+<link rel="stylesheet" href="/assets/meme-gallery.css?v=20261023-free-crumb-restore">
 <link rel="stylesheet" href="/assets/raccoon-site.css?v=20261023-watermark-130">
 </head>
 <body>
@@ -114,31 +114,69 @@
 </section>
 
 <section class="section studio-section" id="free-crumb"><div class="container">
-<div class="gallery-collection" id="crumbDownloads" aria-label="Free CRUMB — original raccoon photo gallery">
+<div class="gallery-collection" id="crumbDownloads" aria-label="Free CRUMB — official raccoon photo collection">
   <div class="gallery-heading">
-    <div class="smallcap" data-gallery-i18n="eyebrow">FREE CRUMB · THE OFFICIAL COLLECTION</div>
-    <h3 data-gallery-i18n="title">THE RACCOON ALBUM.</h3>
-    <p data-gallery-i18n="intro">Real raccoon photographs. Just the pictures — no captions, edits or filters.</p>
+    <div class="smallcap" data-gallery-i18n="eyebrow">FREE CRUMB • THE OFFICIAL COLLECTION</div>
+    <h3 data-gallery-i18n="title">CHOOSE YOUR IMAGE!</h3>
+    <p data-gallery-i18n="intro">REAL RACCOON PHOTOS ARE COMING TO FREE CRUMB. VIEW AND DOWNLOAD THE ORIGINALS.</p>
   </div>
-  <div class="gallery-photos" id="galleryPhotos" aria-label="Raccoon photo album"></div>
-  <div class="gallery-empty-state" id="galleryEmpty" role="status">
-    <span class="gallery-empty-icon" aria-hidden="true">🦝</span>
-    <strong data-gallery-i18n="coming">PHOTOS COMING SOON.</strong>
-    <p data-gallery-i18n="empty">We're preparing our real raccoon photo collection. Check back soon.</p>
+  <div class="gallery-grid">
+    <div class="gallery-side">
+      <div class="gallery-panel">
+        <h4 data-gallery-i18n="choose">01 / CHOOSE YOUR IMAGE</h4>
+        <div class="gallery-current-choice">
+          <img id="galleryCurrentImage" alt="Selected CRUMB artwork" loading="lazy" decoding="async" hidden>
+          <div><strong id="galleryCurrentName">RACCOON PHOTOS COMING SOON</strong><span class="gallery-muted" id="galleryCurrentCount">0 / 0</span></div>
+        </div>
+        <button id="galleryOpen" type="button" class="btn primary gallery-open-btn" data-gallery-i18n="openPicker">▣ OPEN IMAGE GALLERY</button>
+        <p class="gallery-small" data-gallery-i18n="chooseHint">The collection is being prepared with real raccoon photos. Come back soon.</p>
+      </div>
+    </div>
+    <div class="gallery-display">
+      <div class="gallery-preview-top"><div class="smallcap" data-gallery-i18n="createPreview">Original photograph</div><span class="gallery-muted" id="galleryNumber">0 / 0</span></div>
+      <div class="gallery-frame"><img class="gallery-canvas" id="galleryPreviewImage" alt="Selected original raccoon photograph" hidden decoding="async"><div class="gallery-empty-preview" id="galleryEmptyPreview" data-gallery-i18n="noArtworkPreview">🦝 The raccoon photo collection is coming soon.</div></div>
+      <div class="gallery-panel" style="margin-top:15px">
+        <h4 data-gallery-i18n="posting">02 / DOWNLOAD & SHARE</h4>
+        <div class="gallery-buttons"><button type="button" class="btn primary smol" id="galleryDownload" data-gallery-i18n="download">↓ DOWNLOAD PNG</button><button type="button" class="btn secondary smol" id="galleryShare" data-gallery-i18n="share">POST ON X ↗</button></div>
+        <p class="gallery-note" data-gallery-i18n="shareNote">Download the original photo, or share the Free CRUMB collection on X. No captions are added to images.</p>
+        <p class="gallery-status" id="galleryStatus" role="status" aria-live="polite"></p>
+      </div>
+    </div>
   </div>
-  <div class="gallery-lightbox" id="galleryLightbox" hidden role="dialog" aria-modal="true" aria-label="Raccoon photo viewer" tabindex="-1">
-    <div class="gallery-lightbox-bar">
-      <button type="button" id="galleryClose" class="gallery-close" aria-label="Close photo" data-gallery-i18n-aria="close">×</button>
+
+<div class="gallery-picker" id="galleryPicker" hidden role="dialog" aria-modal="true" aria-labelledby="galleryPickerTitle" tabindex="-1">
+  <div class="gallery-picker-shell">
+    <div class="gallery-picker-head">
+      <div><div class="smallcap" data-gallery-i18n="pickerEyebrow">FREE CRUMB COLLECTION</div><h3 id="galleryPickerTitle" data-gallery-i18n="pickerTitle">CHOOSE YOUR IMAGE</h3></div>
+      <button type="button" id="galleryPickerClose" class="gallery-picker-close" data-gallery-i18n-aria="pickerClose" aria-label="Close gallery">×</button>
     </div>
-    <div class="gallery-lightbox-stage">
-      <button type="button" id="galleryPrev" class="gallery-arrow" aria-label="Previous photo" data-gallery-i18n-aria="prev">‹</button>
-      <img id="galleryFullImage" alt="Raccoon photo" decoding="async">
-      <button type="button" id="galleryNext" class="gallery-arrow" aria-label="Next photo" data-gallery-i18n-aria="next">›</button>
+    <div class="gallery-picker-toolbar">
+      <input id="galleryPickerSearch" type="search" data-gallery-placeholder="pickerSearch" placeholder="Search by number, title or category…" autocomplete="off" aria-label="Search gallery">
+      <span id="galleryPickerResults" aria-live="polite"></span>
     </div>
-    <div class="gallery-lightbox-actions">
-      <a id="gallerySave" href="#" class="gallery-save" download data-gallery-i18n="download">↓ DOWNLOAD ORIGINAL PHOTO</a>
+    <div class="gallery-picker-columns">
+      <div class="gallery-picker-stage-panel">
+        <div class="gallery-picker-stage" id="galleryPickerStage">
+          <button type="button" id="galleryPickerPrev" class="gallery-picker-arrow" data-gallery-i18n-aria="pickerPrev" aria-label="Previous image">‹</button>
+          <img id="galleryPickerImage" alt="CRUMB artwork preview" decoding="async" hidden><div class="gallery-picker-empty" id="galleryPickerEmpty" data-gallery-i18n="pickerEmpty">No raccoon photos yet. Coming soon.</div>
+          <button type="button" id="galleryPickerNext" class="gallery-picker-arrow" data-gallery-i18n-aria="pickerNext" aria-label="Next image">›</button>
+        </div>
+        <div class="gallery-picker-selection"><strong id="galleryPickerName">No raccoon photos yet. Coming soon.</strong><span id="galleryPickerPosition">0 / 0</span></div>
+        <button type="button" class="btn primary gallery-picker-use" id="galleryPickerUse" data-gallery-i18n="pickerUse">✓ USE THIS IMAGE</button>
+        <p class="gallery-picker-swipe" data-gallery-i18n="pickerSwipe">Swipe sideways to browse or use the arrows.</p>
+      </div>
+      <div class="gallery-picker-grid-panel">
+        <div id="galleryPickerGrid" class="gallery-picker-grid" role="group" aria-label="Choose an image"></div>
+        <div class="gallery-picker-pages">
+          <button id="galleryPickerPagePrev" type="button" data-gallery-i18n-aria="pickerPreviousPage" aria-label="Previous page">‹</button>
+          <span id="galleryPickerPageCount">1 / 1</span>
+          <button id="galleryPickerPageNext" type="button" data-gallery-i18n-aria="pickerNextPage" aria-label="Next page">›</button>
+        </div>
+        <p class="gallery-picker-pagination-note" data-gallery-i18n="pickerPagination">Images load in small groups for faster browsing.</p>
+      </div>
     </div>
   </div>
+</div>
 </div>
 </div></section>
 
@@ -156,6 +194,6 @@
 <footer class="footer"><div class="site-wrap footer-row"><div><div class="footer-logo">🦝 CRUMB</div><p data-i18n="footerDesc">Just a raccoon. Just a meme coin. Nothing serious.</p><small data-i18n="footDisclaimer">Fictional and recreational. No financial promises. No affiliation with Robinhood.</small></div><div class="footer-side"><a href="https://x.com/realcrumb_" target="_blank" rel="noopener noreferrer">𝕏 <span data-i18n="follow">FOLLOW ON X</span></a><a href="#top" data-i18n="backTop">BACK TO TOP ↑</a><small>© 2026 CRUMB</small></div></div></footer>
 <script src="/assets/raccoon-site.js" defer></script>
 <script src="/assets/follower-counter.js?v=20261023-manual-34" defer></script>
-<script src="/assets/meme-gallery.js?v=20261023-photo-only" defer></script>
+<script src="/assets/meme-gallery.js?v=20261023-free-crumb-restore" defer></script>
 </body>
 </html>
