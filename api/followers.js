@@ -10,7 +10,7 @@ const USERNAME = "realcrumb_";
 const GOAL = 1000000;
 const UPSTREAM_TIMEOUT_MS = 8000;
 
-module.exports = async function followersHandler(req, res) {
+export default async function followersHandler(req, res) {
   res.setHeader("Content-Type", "application/json; charset=utf-8");
   res.setHeader("X-Content-Type-Options", "nosniff");
 
