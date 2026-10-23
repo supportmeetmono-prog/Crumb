@@ -52,7 +52,11 @@
     <div class="gallery-side">
       <div class="gallery-panel">
         <h4 data-gallery-i18n="choose">01 / CHOOSE YOUR IMAGE</h4>
-        <div class="gallery-thumbs" id="galleryThumbs" role="group" aria-label="Choose CRUMB image"></div>
+        <div class="gallery-current-choice">
+          <img id="galleryCurrentImage" src="/assets/meme-gallery/CRUMB-Message-01-clean.jpg" alt="Selected CRUMB artwork" loading="lazy" decoding="async">
+          <div><strong id="galleryCurrentName">CRUMB 01</strong><span class="gallery-muted" id="galleryCurrentCount">01 / 05</span></div>
+        </div>
+        <button id="galleryOpen" type="button" class="btn primary gallery-open-btn" data-gallery-i18n="openPicker">▣ OPEN IMAGE GALLERY</button>
         <p class="gallery-small" data-gallery-i18n="chooseHint">Select an official CRUMB image. New artworks will be added to this collection.</p>
       </div>
       <div class="gallery-panel">
@@ -69,13 +73,47 @@
       </div>
     </div>
     <div class="gallery-display">
-      <div class="gallery-preview-top"><div class="smallcap" data-gallery-i18n="createPreview">Live preview</div><span class="gallery-muted" id="galleryNumber">01 / 04</span></div>
+      <div class="gallery-preview-top"><div class="smallcap" data-gallery-i18n="createPreview">Live preview</div><span class="gallery-muted" id="galleryNumber">01 / 05</span></div>
       <div class="gallery-frame"><canvas class="gallery-canvas" id="galleryCanvas" width="1030" height="1536" role="img" aria-label="Live preview"></canvas></div>
       <div class="gallery-panel" style="margin-top:15px">
         <h4 data-gallery-i18n="posting">03 / POST AND TAG</h4>
         <div class="gallery-buttons"><button type="button" class="btn primary smol" id="galleryDownload" data-gallery-i18n="download">↓ DOWNLOAD PNG</button><button type="button" class="btn secondary smol" id="galleryShare" data-gallery-i18n="share">POST ON X ↗</button></div>
         <p class="gallery-note" data-gallery-i18n="shareNote">Download your image and attach the PNG to your X post. Include @elonmusk and @realcrumb_ — this button prepares your post text but cannot attach an image automatically.</p>
         <p class="gallery-status" id="galleryStatus" role="status" aria-live="polite"></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="gallery-picker" id="galleryPicker" hidden role="dialog" aria-modal="true" aria-labelledby="galleryPickerTitle" tabindex="-1">
+  <div class="gallery-picker-shell">
+    <div class="gallery-picker-head">
+      <div><div class="smallcap" data-gallery-i18n="pickerEyebrow">FREE CRUMB COLLECTION</div><h3 id="galleryPickerTitle" data-gallery-i18n="pickerTitle">CHOOSE YOUR IMAGE</h3></div>
+      <button type="button" id="galleryPickerClose" class="gallery-picker-close" data-gallery-i18n-aria="pickerClose" aria-label="Close gallery">×</button>
+    </div>
+    <div class="gallery-picker-toolbar">
+      <input id="galleryPickerSearch" type="search" data-gallery-placeholder="pickerSearch" placeholder="Search by number, title or category…" autocomplete="off" aria-label="Search gallery">
+      <span id="galleryPickerResults" aria-live="polite"></span>
+    </div>
+    <div class="gallery-picker-columns">
+      <div class="gallery-picker-stage-panel">
+        <div class="gallery-picker-stage" id="galleryPickerStage">
+          <button type="button" id="galleryPickerPrev" class="gallery-picker-arrow" data-gallery-i18n-aria="pickerPrev" aria-label="Previous image">‹</button>
+          <img id="galleryPickerImage" alt="CRUMB artwork preview" decoding="async">
+          <button type="button" id="galleryPickerNext" class="gallery-picker-arrow" data-gallery-i18n-aria="pickerNext" aria-label="Next image">›</button>
+        </div>
+        <div class="gallery-picker-selection"><strong id="galleryPickerName">CRUMB 01</strong><span id="galleryPickerPosition">1 / 5</span></div>
+        <button type="button" class="btn primary gallery-picker-use" id="galleryPickerUse" data-gallery-i18n="pickerUse">✓ USE THIS IMAGE</button>
+        <p class="gallery-picker-swipe" data-gallery-i18n="pickerSwipe">Swipe sideways to browse or use the arrows.</p>
+      </div>
+      <div class="gallery-picker-grid-panel">
+        <div id="galleryPickerGrid" class="gallery-picker-grid" role="group" aria-label="Choose an image"></div>
+        <div class="gallery-picker-pages">
+          <button id="galleryPickerPagePrev" type="button" data-gallery-i18n-aria="pickerPreviousPage" aria-label="Previous page">‹</button>
+          <span id="galleryPickerPageCount">1 / 1</span>
+          <button id="galleryPickerPageNext" type="button" data-gallery-i18n-aria="pickerNextPage" aria-label="Next page">›</button>
+        </div>
+        <p class="gallery-picker-pagination-note" data-gallery-i18n="pickerPagination">Images load in small groups for faster browsing.</p>
       </div>
     </div>
   </div>
