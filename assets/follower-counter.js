@@ -1,8 +1,16 @@
 "use strict";
 
-/* Read-only visitor widget. X credentials stay on the Vercel server. */
+/* CRUMB free manual follower counter.
+ * To update, edit FOLLOWERS and LAST_MANUAL_UPDATE only.
+ * This file makes ZERO requests to the X API, Vercel Functions, or external sites.
+ * The number is entered by the project owner, not independently verified.
+ */
 (() => {
-  const goal = 1000000;
+  const FOLLOWERS = 34;
+  const GOAL = 1000000;
+  const LAST_MANUAL_UPDATE = "2026-10-23";
+  const username = "realcrumb_";
+
   const elCount = document.getElementById("xFollowerCount");
   const elSource = document.getElementById("xFollowerSource");
   const elProgress = document.getElementById("xFollowerProgress");
@@ -11,95 +19,40 @@
   const elNote = document.getElementById("xFollowerProgressNote");
   if (![elCount, elSource, elProgress, elFill, elLabel, elNote].every(Boolean)) return;
 
-  const messages = {
-    en: { checking:"CHECKING X…", checkingNote:"Requesting official X data…", pending:"Follower verification pending", unavailable:"NOT AVAILABLE", unavailableNote:"Official X data is temporarily unavailable.", credits:"X API credits or access may be required.", goal:"of 1,000,000 followers", remaining:"followers to go", completed:"GOAL REACHED!", updated:"Updated", note:"Official count from X. Updates approximately every 24 hours." },
-    pt: { checking:"CONSULTANDO O X…", checkingNote:"Consultando dados oficiais do X…", pending:"Verificação de seguidores em andamento", unavailable:"INDISPONÍVEL", unavailableNote:"Os dados oficiais do X estão temporariamente indisponíveis.", credits:"Pode ser necessário liberar créditos ou acesso à API do X.", goal:"de 1.000.000 de seguidores", remaining:"seguidores restantes", completed:"META ATINGIDA!", updated:"Atualizado", note:"Contagem oficial do X. Atualiza aproximadamente a cada 24 horas." },
-    es: { checking:"CONSULTANDO X…", checkingNote:"Consultando datos oficiales de X…", pending:"Verificación de seguidores pendiente", unavailable:"NO DISPONIBLE", unavailableNote:"Los datos oficiales de X no están disponibles ahora.", credits:"Es posible que se necesiten créditos o acceso a la API de X.", goal:"de 1.000.000 seguidores", remaining:"seguidores restantes", completed:"¡META CONSEGUIDA!", updated:"Actualizado", note:"Conteo oficial de X. Se actualiza aproximadamente cada 24 horas." },
-    fr: { checking:"CONSULTATION DE X…", checkingNote:"Demande de données officielles de X…", pending:"Vérification des abonnés en attente", unavailable:"INDISPONIBLE", unavailableNote:"Les données officielles de X sont temporairement indisponibles.", credits:"Des crédits ou un accès à l'API X peuvent être requis.", goal:"sur 1 000 000 d'abonnés", remaining:"abonnés restants", completed:"OBJECTIF ATTEINT !", updated:"Mis à jour", note:"Nombre officiel de X. Actualisation toutes les 24 heures environ." },
-    it: { checking:"CONTROLLO X…", checkingNote:"Richiesta dei dati ufficiali di X…", pending:"Verifica follower in attesa", unavailable:"NON DISPONIBILE", unavailableNote:"I dati ufficiali di X non sono disponibili al momento.", credits:"Potrebbero servire crediti o accesso API X.", goal:"su 1.000.000 di follower", remaining:"follower mancanti", completed:"OBIETTIVO RAGGIUNTO!", updated:"Aggiornato", note:"Conteggio ufficiale di X. Aggiornato circa ogni 24 ore." },
-    zh: { checking:"正在查询 X…", checkingNote:"正在读取 X 官方数据…", pending:"等待粉丝数验证", unavailable:"暂不可用", unavailableNote:"暂时无法获取 X 官方数据。", credits:"可能需要 X API 额度或权限。", goal:"／1,000,000 粉丝", remaining:"粉丝还差", completed:"已达成目标！", updated:"更新时间", note:"数据来自 X 官方接口，约每 24 小时更新一次。" },
-    hi: { checking:"X जाँच जारी…", checkingNote:"आधिकारिक X डेटा प्राप्त किया जा रहा है…", pending:"फ़ॉलोअर सत्यापन लंबित", unavailable:"उपलब्ध नहीं", unavailableNote:"आधिकारिक X डेटा अभी उपलब्ध नहीं है।", credits:"X API क्रेडिट या अनुमति की ज़रूरत हो सकती है।", goal:"/ 10,00,000 फ़ॉलोअर्स", remaining:"फ़ॉलोअर्स बाकी", completed:"लक्ष्य पूरा!", updated:"अपडेट", note:"X की आधिकारिक गिनती। लगभग हर 24 घंटे में अपडेट।" },
-    ar: { checking:"جارٍ التحقق من X…", checkingNote:"جارٍ قراءة بيانات X الرسمية…", pending:"بانتظار التحقق من المتابعين", unavailable:"غير متاح", unavailableNote:"بيانات X الرسمية غير متاحة مؤقتًا.", credits:"قد يلزم رصيد أو تصريح من واجهة X.", goal:"من مليون متابع", remaining:"متابع متبقٍ", completed:"تم تحقيق الهدف!", updated:"آخر تحديث", note:"العدد الرسمي من X. يتم التحديث كل 24 ساعة تقريبًا." },
-    ru: { checking:"ПРОВЕРКА X…", checkingNote:"Запрос официальных данных X…", pending:"Проверка подписчиков", unavailable:"НЕДОСТУПНО", unavailableNote:"Официальные данные X временно недоступны.", credits:"Может потребоваться доступ или средства API X.", goal:"из 1 000 000 подписчиков", remaining:"подписчиков осталось", completed:"ЦЕЛЬ ДОСТИГНУТА!", updated:"Обновлено", note:"Официальные данные X. Обновление примерно раз в 24 часа." }
-  };
-  const locales = {
-    en:"en-US",pt:"pt-BR",es:"es-ES",fr:"fr-FR",it:"it-IT",
-    zh:"zh-CN",hi:"hi-IN",ar:"ar-SA",ru:"ru-RU"
+  const languages = {
+    en: { locale:"en-US", manual:"Manual count", target:"of 1,000,000 followers", remaining:"to go", full:"GOAL REACHED!", note:"Manual update: October 23, 2026. Not a live or independently verified X count." },
+    pt: { locale:"pt-BR", manual:"Contagem manual", target:"de 1.000.000 de seguidores", remaining:"restantes", full:"META ATINGIDA!", note:"Atualização manual: 23 de outubro de 2026. Não é uma contagem ao vivo nem verificada independentemente no X." },
+    es: { locale:"es-ES", manual:"Conteo manual", target:"de 1.000.000 seguidores", remaining:"restantes", full:"¡META ALCANZADA!", note:"Actualización manual: 23 de octubre de 2026. No es un conteo en vivo ni verificado de forma independiente en X." },
+    fr: { locale:"fr-FR", manual:"Nombre manuel", target:"sur 1 000 000 d’abonnés", remaining:"restants", full:"OBJECTIF ATTEINT !", note:"Mise à jour manuelle : 23 octobre 2026. Pas de comptage en direct ni de vérification indépendante sur X." },
+    it: { locale:"it-IT", manual:"Conteggio manuale", target:"su 1.000.000 di follower", remaining:"mancanti", full:"OBIETTIVO RAGGIUNTO!", note:"Aggiornamento manuale: 23 ottobre 2026. Non è un conteggio in tempo reale né verificato indipendentemente su X." },
+    zh: { locale:"zh-CN", manual:"手动更新的数量", target:"／1,000,000 位关注者", remaining:"位关注者仍需增加", full:"目标已达成！", note:"手动更新日期：2026年10月23日。不是实时数据，未经独立核实。" },
+    hi: { locale:"hi-IN", manual:"मैन्युअल गिनती", target:"/ 10,00,000 फ़ॉलोअर्स", remaining:"बाकी", full:"लक्ष्य पूरा!", note:"मैन्युअल अपडेट: 23 अक्टूबर 2026। यह लाइव या स्वतंत्र रूप से सत्यापित X गिनती नहीं है।" },
+    ar: { locale:"ar-SA", manual:"عدد مُدخل يدويًا", target:"من ١٬٠٠٠٬٠٠٠ متابع", remaining:"متابع متبقٍ", full:"تم تحقيق الهدف!", note:"تحديث يدوي: ٢٣ أكتوبر ٢٠٢٦. العدد ليس مباشرًا ولم يتم التحقق منه بصورة مستقلة على X." },
+    ru: { locale:"ru-RU", manual:"Подсчёт вручную", target:"из 1 000 000 подписчиков", remaining:"осталось", full:"ЦЕЛЬ ДОСТИГНУТА!", note:"Обновлено вручную 23 октября 2026 г. Это не данные в реальном времени и не независимая проверка X." }
   };
 
-  let state = { status:"checking" };
-  function language() {
-    const lang = document.documentElement.lang || "en";
-    return Object.prototype.hasOwnProperty.call(messages,lang) ? lang : "en";
-  }
   function render() {
-    const lang = language();
-    const text = messages[lang];
-    const locale = locales[lang];
-    const number = new Intl.NumberFormat(locale);
-    if (state.status !== "ok") {
-      const failed = state.status === "unavailable";
-      elCount.textContent = failed ? text.unavailable : text.checking;
-      elSource.textContent = failed ? text.unavailableNote : text.checkingNote;
-      elLabel.textContent = text.pending;
-      elNote.textContent = failed && state.reason === "credits_required" ? text.credits : text.unavailableNote;
-      if (!failed) elNote.textContent = text.note;
-      elFill.style.width = "0%";
-      elProgress.removeAttribute("aria-valuenow");
-      elProgress.setAttribute("aria-valuetext",elLabel.textContent);
-      return;
-    }
-    const amount = state.followers;
-    const remaining = Math.max(0,goal - amount);
-    const pct = Math.min(100, amount / goal * 100);
-    const percent = new Intl.NumberFormat(locale, {
-      maximumFractionDigits: pct > 0 && pct < 0.01 ? 4 : 2,
-      minimumFractionDigits: 0
-    }).format(pct) + "%";
-    elCount.textContent = number.format(amount);
-    let time = "";
-    if (state.updatedAt) {
-      const date = new Date(state.updatedAt);
-      if (!Number.isNaN(date.valueOf())) {
-        time = " · " + text.updated + " " +
-          new Intl.DateTimeFormat(locale,{hour:"2-digit",minute:"2-digit"}).format(date);
-      }
-    }
-    elSource.textContent = "@" + state.username + " · X" + time;
-    elLabel.textContent = remaining === 0 ? text.completed : percent + " · " + number.format(remaining) + " " + text.remaining;
-    elNote.textContent = number.format(amount) + " " + text.goal + ". " + text.note;
-    elFill.style.width = pct + "%";
-    elProgress.setAttribute("aria-valuenow",String(Math.min(goal,amount)));
-    elProgress.setAttribute("aria-valuetext",number.format(amount) + " " + text.goal);
-  }
+    const lang = document.documentElement.lang || "en";
+    const t = languages[lang] || languages.en;
+    const fmt = new Intl.NumberFormat(t.locale);
+    const progress = Math.max(0, Math.min(100, FOLLOWERS / GOAL * 100));
+    const pct = new Intl.NumberFormat(t.locale, {maximumFractionDigits:4}).format(progress) + "%";
+    const remaining = Math.max(0, GOAL - FOLLOWERS);
 
-  async function loadFollowers() {
-    try {
-      const response = await fetch("/api/followers", {
-        method:"GET",
-        credentials:"omit",
-        headers:{ Accept:"application/json" }
-      });
-      const json = await response.json();
-      if (response.ok && json.status === "ok" &&
-          json.username === "realcrumb_" &&
-          Number.isSafeInteger(json.followers) && json.followers >= 0) {
-        state = { status:"ok", followers:json.followers, username:json.username, updatedAt:json.updatedAt };
-      } else {
-        // Never pretend a failed request means zero followers.
-        state = { status:"unavailable", reason:typeof json.reason === "string" ? json.reason : "unknown" };
-      }
-    } catch (err) {
-      state = { status:"unavailable", reason:"network" };
-    }
-    render();
-  }
+    elCount.textContent = fmt.format(FOLLOWERS);
+    elSource.textContent = t.manual + " · @" + username;
+    elLabel.textContent = remaining ? pct + " · " + fmt.format(remaining) + " " + t.remaining : t.full;
+    elNote.textContent = fmt.format(FOLLOWERS) + " " + t.target + ". " + t.note;
 
+    elFill.style.width = progress + "%";
+    elFill.style.minWidth = FOLLOWERS > 0 ? "3px" : "0";
+    elProgress.setAttribute("aria-valuenow", String(Math.min(FOLLOWERS, GOAL)));
+    elProgress.setAttribute("aria-valuetext", fmt.format(FOLLOWERS) + " " + t.target);
+    elProgress.setAttribute("data-updated", LAST_MANUAL_UPDATE);
+  }
   render();
-  const observer = new MutationObserver(render);
-  observer.observe(document.documentElement,{attributes:true,attributeFilter:["lang"]});
-  loadFollowers();
-  // Refresh once per 24 hours while this tab is open.
-  // New page loads still consult the Vercel CDN, which caches successful data for 24h.
-  setInterval(loadFollowers,86400000);
+  // The existing 9-language selector updates <html lang>; redraw labels only.
+  new MutationObserver(render).observe(document.documentElement, {
+    attributes:true, attributeFilter:["lang"]
+  });
 })();
